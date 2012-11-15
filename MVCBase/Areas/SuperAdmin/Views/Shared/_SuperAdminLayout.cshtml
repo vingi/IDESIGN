@@ -1,0 +1,234 @@
+﻿@Html.Partial("_UserPowerCheck")
+
+@{
+    ViewBag.AdminName = MVCBase.Common.common.requestCookies("Superusername");
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>@ViewBag.Title</title>
+    <!--                       CSS                       -->
+    <!-- Reset Stylesheet -->
+    <link rel="stylesheet" href="@Url.Content("~/Areas/SuperAdmin/Content/reset.css")" type="text/css" media="screen" />
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="@Url.Content("~/Areas/SuperAdmin/Content/style.css")" type="text/css" media="screen" />
+    <!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
+    <link rel="stylesheet" href="@Url.Content("~/Areas/SuperAdmin/Content/invalid.css")" type="text/css" media="screen" />
+    <!-- Colour Schemes
+	  
+		Default colour scheme is green. Uncomment prefered stylesheet to use it.
+		
+		<link rel="stylesheet" href="@Url.Content("~/Areas/SuperAdmin/Content/blue.css")" type="text/css" media="screen" />
+		
+		<link rel="stylesheet" href="@Url.Content("~/Areas/SuperAdmin/Content/red.css")" type="text/css" media="screen" />  
+	 
+		-->
+    <!-- Internet Explorer Fixes Stylesheet -->
+    <!--[if lte IE 7]>
+			<link rel="stylesheet" href="@Url.Content("~/Areas/SuperAdmin/Content/ie.css")" type="text/css" media="screen" />
+		<![endif]-->
+    <!--                       Javascripts                       -->
+    <!-- jQuery -->
+    <script src="@Url.Content("~/Scripts/jquery.js?V=1.7.1")" type="text/javascript"></script>
+    <!-- jQuery Configuration -->
+    <script type="text/javascript" src="@Url.Content("~/Areas/SuperAdmin/Scripts/simpla.jquery.configuration.js")"></script>
+    <!-- Facebox jQuery Plugin -->
+    <script type="text/javascript" src="@Url.Content("~/Areas/SuperAdmin/Scripts/facebox.js")"></script>
+    <!-- Internet Explorer .png-fix -->
+    <!--[if IE 6]>
+			<script type="text/javascript" src="@Url.Content("~/Areas/SuperAdmin/Scripts/DD_belatedPNG_0.0.7a.js")"></script>
+			<script type="text/javascript">
+				DD_belatedPNG.fix('.png_bg, img, li');
+			</script>
+		<![endif]-->
+    @RenderSection("header", false)
+</head>
+<body>
+    <div id="body-wrapper">
+        <!-- Wrapper for the radial gradient background -->
+        <div id="sidebar">
+            <div id="sidebar-wrapper">
+                <!-- Sidebar with logo and menu -->
+                <h1 id="sidebar-title">
+                    <a href="#">FVLO Admin</a></h1>
+                <!-- Logo (221px wide) -->
+                <a href="#">
+                    <img id="logo" src="@Url.Content("~/Areas/SuperAdmin/Content/images/logo.png")" alt="FVLO Admin logo" /></a>
+                <!-- Sidebar Profile links -->
+                <div id="profile-links">
+                    Hello, <a href="#" title="Edit your profile">@ViewBag.AdminName</a>, you have <a href="#messages"
+                        rel="modal" title="3 Messages">3 Messages</a><br />
+                    <br />
+                    <a href="#" title="View the Site">View the Site</a> | <a href="#" onclick="javascript:SignOut();" title="Sign Out">Sign
+                        Out</a>
+                </div>
+                <ul id="main-nav">
+                    <!-- Accordion Menu -->
+                    <li><a href="@Url.Action("index","Default")" class="nav-top-item no-submenu">
+                        <!-- Add the class "no-submenu" to menu items with no sub menu -->
+                        Index & News </a></li>
+                    <li><a href="#" id="NewsManage" class="nav-top-item">
+                        <!-- Add the class "current" to current menu item -->
+                        News Manage </a>
+                        <ul>
+                            <li><a id="NewsList" href="@Url.Action("index","NewsList")">消息列表</a></li>
+                            <!-- Add class "current" to sub menu items also -->
+                            <li><a id="NewsOperate" href="@Url.Action("index","NewsOperate")">新增消息</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" id="KeywordManage" class="nav-top-item">Keyword Manage </a>
+                        <ul>
+                            <li><a id="AddKeyword" href="/Views/Superadmin/Keyword.html">新增關鍵字</a></li>
+                            <li><a id="KeywordList" href="/Views/Superadmin/KeywordList.html">關鍵字列表</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-top-item">Image Gallery </a>
+                        <ul>
+                            <li><a href="#">Upload Images</a></li>
+                            <li><a href="#">Manage Galleries</a></li>
+                            <li><a href="#">Manage Albums</a></li>
+                            <li><a href="#">Gallery Settings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-top-item">Events Calendar </a>
+                        <ul>
+                            <li><a href="#">Calendar Overview</a></li>
+                            <li><a href="#">Add a new Event</a></li>
+                            <li><a href="#">Calendar Settings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-top-item">Settings </a>
+                        <ul>
+                            <li><a href="#">General</a></li>
+                            <li><a href="#">Design</a></li>
+                            <li><a href="#">Your Profile</a></li>
+                            <li><a href="#">Users and Permissions</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- End #main-nav -->
+                <div id="messages" style="display: none">
+                    <!-- Messages are shown when a link with these attributes are clicked: href="#messages" rel="modal"  -->
+                    <h3>訂單編號 xxxxx</h3>
+                    <p class="infolist">
+                        <strong>關鍵字</strong> 租屋<br />
+                        <strong>域  名</strong> http://www.xxx.com<br />
+                        <strong>網站名稱</strong> asdfasdf<br />
+                        <strong>定制時間</strong> 12個月<br />
+                        <strong>定價</strong> NT$ <span class="price">20000/月</span><br />
+                        <strong>定制時間</strong> 12個月<br />
+                        <strong>付款狀態</strong> 未付<br />
+                        <strong>訂金</strong> NT$ <span class="price">500(已付)</span><br />
+                        <strong>流程狀態</strong> 未審核<br />
+                        <strong>訂單日期</strong> 2012/7/15 0:55:35
+                    </p>
+                    <p class="infolist">
+                        <strong>User</strong> vingi<br />
+                        <strong>聯絡人</strong> vingi<br />
+                        <strong>行動電話</strong> 13850198473<br />
+                        <strong>E-mail</strong> vingi@xx.com<br />
+                    </p>
+@*                    <form action="">
+                        <h4>審核</h4>
+                        <fieldset>
+                            <select id="check" name="check" class="small-input">
+                                <option value="">未處理...</option>
+                                <option value="1">審核通過</option>
+                                <option value="2">審核未通過</option>
+                            </select>
+                            <input id="actionpost" class="button" type="button" value="Send" />
+                        </fieldset>
+                    </form>*@
+
+
+
+                </div>
+                <!-- End #messages -->
+            </div>
+        </div>
+        <!-- End #sidebar -->
+        <div id="main-content">
+            <!-- Main Content Section with everything -->
+            <noscript>
+                <!-- Show a notification if the user has disabled javascript -->
+                <div class="notification error png_bg">
+                    <div>
+                        Javascript is disabled or is not supported by your browser. Please <a href="http://browsehappy.com/"
+                            title="Upgrade to a better browser">upgrade</a> your browser or <a href="http://www.google.com/support/bin/answer.py?answer=23852"
+                                title="Enable Javascript in your browser">enable</a> Javascript to navigate
+                        the interface properly.
+                    </div>
+                </div>
+            </noscript>
+            <!-- <form id="form1"> -->
+                @RenderBody()
+            <!-- </form> -->
+            <div id="footer">
+                <small>&#169; Copyright 2012 FVLO Admin | Powered by <a href="http://www.FVLO.com">FVLO Admin</a> | <a href="#">Top</a> </small>
+            </div>
+            <!-- End #footer -->
+        </div>
+        <!-- End #main-content -->
+    </div>
+
+    <script type="text/javascript">
+        jQuery.cookie = function (name, value, options) {
+            if (typeof value != 'undefined') {
+                options = options || {};
+                if (value === null) {
+                    value = '';
+                    options = $.extend({}, options);
+                    options.expires = -1;
+                }
+                var expires = '';
+                if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+                    var date;
+                    if (typeof options.expires == 'number') {
+                        date = new Date();
+                        date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+                    } else {
+                        date = options.expires;
+                    }
+                    expires = '; expires=' + date.toUTCString();
+                }
+                var path = options.path ? '; path=' + (options.path) : '';
+                var domain = options.domain ? '; domain=' + (options.domain) : '';
+                var secure = options.secure ? '; secure' : '';
+                document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+            } else {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        //alert(name + '*' + cookie.substring(0, name.length) + '*' + cookie.substring(name.length + 1));
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        };
+        function readCookie() {
+            var loginName = $.cookie('Superusername');
+            //alert(loginName);
+            if (loginName != null) {
+
+            } else {
+                window.location.href = "/SuperAdmin";
+            }
+        }
+
+        function SignOut() {
+            $.cookie("Superusername", null, { path: '/' });
+            readCookie();
+        }
+        //readCookie();
+    </script>
+</body>
+</html>
+

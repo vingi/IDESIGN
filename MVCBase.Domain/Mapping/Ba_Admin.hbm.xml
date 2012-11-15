@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MVCBase.Domain" namespace="MVCBase.Domain.Entity" default-lazy="false">
+	<class name="MVCBase.Domain.Entity.Ba_Admin" table="Ba_Admin">
+		<id name="Ad_ID" column="Ad_ID" type="int" unsaved-value="0">
+
+    </id>      		
+		<property name="Ad_AdminName" column="Ad_AdminName" type="String"  />
+		<property name="Ad_AdminPwd" column="Ad_AdminPwd" type="String"  />
+		<property name="Ad_LastLoginTime" column="Ad_LastLoginTime" type="DateTime"  />
+		<property name="Ad_BuildTime" column="Ad_BuildTime" type="DateTime"  />
+		<property name="Ad_State" column="Ad_State" type="int"  />
+				
+	</class>
+</hibernate-mapping>

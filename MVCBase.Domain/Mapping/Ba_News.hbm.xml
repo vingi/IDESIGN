@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MVCBase.Domain" namespace="MVCBase.Domain.Entity" default-lazy="false">
+  <class name="MVCBase.Domain.Entity.Ba_News" table="Ba_News">
+    <id name="Ns_ID" column="Ns_ID" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="Ns_Title" column="Ns_Title" type="string"  />
+    <property name="Ns_SubTitle" column="Ns_SubTitle" type="string"  />
+    <property name="Ns_Content" column="Ns_Content" type="string"  />
+    <property name="Ns_BuildTime" column="Ns_BuildTime" type="DateTime"  />
+    <property name="Ns_State" column="Ns_State" type="bool"  />
+
+  </class>
+</hibernate-mapping>

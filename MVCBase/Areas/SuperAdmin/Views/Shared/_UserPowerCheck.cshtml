@@ -1,0 +1,20 @@
+﻿@{
+    //用户身份权限验证
+    string callback_url = "~/SuperAdmin/Login";
+    if (string.IsNullOrWhiteSpace(MVCBase.Common.common.requestCookies("Superusername")) || string.IsNullOrWhiteSpace(MVCBase.Common.common.requestCookies("SuperAccount")))
+    {
+        Response.Redirect(callback_url);
+    }
+    else
+    {
+        string Superusername = MVCBase.Common.common.requestCookies("Superusername");
+        string SupserAccount = MVCBase.Common.common.requestCookies("SuperAccount");
+        string Accountkey = System.Configuration.ConfigurationManager.AppSettings["AccountKey"];        
+        SupserAccount = MVCBase.Common.Encrypt.DESDecrypt(SupserAccount).Replace(Accountkey,"");
+        
+        if (!Superusername.Equals(SupserAccount))
+        {
+            Response.Redirect(callback_url);
+        }
+    }
+}

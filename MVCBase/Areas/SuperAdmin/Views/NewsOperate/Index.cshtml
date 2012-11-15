@@ -1,0 +1,147 @@
+﻿
+<!-- Page Head -->
+
+    <h2>@ViewBag.Title</h2>
+@if (ViewBag.model.Ns_ID == 0)
+{
+    <p id="page-intro">Add a news.</p>
+}
+else
+{
+    <p id="page-intro">Update news @ViewBag.model.Ns_ID .</p>
+}
+<div class="clear"></div>
+<!-- End .clear -->
+<div class="content-box">
+    <!-- Start Content Box -->
+    <div class="content-box-header">
+        @if (ViewBag.model.Ns_ID == 0)
+        {
+            <h3>Add 最新消息</h3>
+        }
+        else
+        {
+            <h3>Update 最新消息 @ViewBag.model.Ns_ID</h3>
+        }
+        <div class="clear">
+        </div>
+    </div>
+    <!-- End .content-box-header -->
+    <div class="content-box-content">
+        <div class="tab-content default-tab" id="tab1">
+            <form action="" method="post">
+                <fieldset>
+                    <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+                    <p>
+                        <label>標題 Title</label>
+                        <input class="text-input small-input" type="text" id="news_title" name="news_title" value="@ViewBag.model.Ns_Title" />
+                        <!-- Classes for input-notification: success, error, information, attention -->
+                        <br />
+                        <small>A small description of the title, Required</small>
+                    </p>
+
+                    <p>
+                        <label>子標題 Sub title</label>
+                        <input class="text-input medium-input" type="text" id="news_subtitle" name="news_subtitle" value="@ViewBag.model.Ns_SubTitle" />
+                    </p>
+
+                    <p>
+                        <label>消息內容 Description</label>
+                        <textarea class="text-input textarea wysiwyg1" id="news_description" name="news_description" cols="79" rows="15">@ViewBag.model.Ns_Content</textarea>
+                    </p>
+
+                    <p>
+                        <input id="news_button" class="button" type="button" value="Submit" />
+                    </p>
+                </fieldset>
+                <div class="clear"></div>
+                <!-- End .clear -->
+                <input type="hidden" id="news_id" name="news_id" value="@ViewBag.model.Ns_ID" />
+            </form>
+        </div>
+        <!-- End #tab1 -->
+    </div>
+    <!-- End .content-box-content -->
+</div>
+<!-- End .content-box -->
+
+<div class="clear">
+</div>
+
+<style type="text/css">
+    .price {
+        color: Red;
+    }
+
+    .content-box-content .action {
+        cursor: pointer;
+    }
+
+    #facebox .content p, #facebox .content form {
+        border-top: 1px solid #DDD;
+        padding: 10px 0;
+    }
+
+    #facebox .content .orderid {
+        color: Green;
+    }
+
+    #note {
+        color: #d3d3d3;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        @Html.Raw(ViewBag.jsInit)
+
+        var editor = $('#news_description').xheditor({
+            tools: 'Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,SelectAll,Removeformat,Align,List,Outdent,Indent,Link,Unlink,Img,Table,Source,Fullscreen',
+            hoverExecDelay: -1,
+            html5Upload: false,
+            upMultiple: '1',
+            upImgUrl: '/Areas/SuperAdmin/Public/UploadHandler.ashx?immediate=1',
+            upImgExt: "jpg,jpeg,gif,png"
+        });
+        $("#news_button").click(function () {
+            var er = "";
+            if ($.trim($("#news_title").val()).length == 0) {
+                er = "請填寫標題!";
+            }
+            else if ($.trim($("#news_title").val()).length < 3 || $.trim($("#news_title").val()).length > 50) {
+                er = "標題長度不符!";
+            }
+
+            if ($.trim($("#news_description").val()).length < 5) {
+                er += "\r\n消息內容長度太短!";
+            }
+            if (er.length > 0) {
+                alert(er);
+                return;
+            }
+
+            var fields = $("form").serializeArray();
+            $.ajax({
+                type: "POST",
+                url: "/SuperAdmin/NewsOperate/submit",
+                dataType: "text",
+                data: fields,
+                error: function () {
+                    alert("error");
+                },
+                success: function (msg) {
+                    var ac = "新增";
+                    if ($("#news_id").val() != 0)
+                        ac = "更新";
+                    if (msg == "1") {
+                        alert(ac + "成功");
+                    }
+                    else
+                        alert(ac + "失敗");
+                }
+            });
+        });
+    });
+</script>
+<script src="@Url.Content("~/Areas/SuperAdmin/Scripts/xheditor/xheditor.js")" type="text/javascript"></script>
+@*<script type="text/javascript" src="@Url.Content("~/Areas/SuperAdmin/Scripts/jquery.wysiwyg.js")"></script>*@
