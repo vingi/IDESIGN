@@ -22,10 +22,14 @@ namespace MVCBase.Controllers
             //customer.LastName = "Chen";
             //dal.UpdateCustomer(customer);
 
-            Admin dal = new Admin();
-            var model = dal.GetAdminById(1);
-            ViewBag.Message = model.Ad_AdminPwd;
-            ViewBag.Model = model;
+            //Admin dal = new Admin();
+            //var model = dal.GetAdminById(1);
+            //ViewBag.Message = model.Ad_AdminPwd;
+            //ViewBag.Model = model;
+
+            //FurnitureType dal = new FurnitureType();
+            //var furnitureType = dal.GetAllModel();
+            //int xx = furnitureType.Count;
 
             return View();
         }

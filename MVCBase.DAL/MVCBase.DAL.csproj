@@ -61,6 +61,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="DesignStyleType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DesignType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FurnitureType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HouseType.cs" />
     <Compile Include="News.cs" />
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -39,23 +39,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Ba_Admin.cs" />
     <Compile Include="Entity\Ba_News.cs" />
     <Compile Include="Entity\Customer.cs" />
+    <Compile Include="Entity\ID_Admin.cs" />
+    <Compile Include="Entity\ID_DesignStyleType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\ID_DesignType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\ID_FurnitureType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\ID_HouseType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\Customer.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Mapping\Ba_Admin.hbm.xml">
+    <EmbeddedResource Include="Mapping\ID_DesignStyleType.hbm.xml" />
+    <EmbeddedResource Include="Mapping\ID_DesignType.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\ID_FurnitureType.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\Ba_News.hbm.xml" />
+    <EmbeddedResource Include="Mapping\ID_Admin.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mapping\ID_HouseType.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

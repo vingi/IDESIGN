@@ -2,8 +2,10 @@
 
 namespace MVCBase.Domain.Entity
 {
-    public class Ba_Admin
+    //ID_Admin
+    public class ID_Admin
     {
+
         /// <summary>
         /// Ad_ID
         /// </summary>
@@ -27,7 +29,7 @@ namespace MVCBase.Domain.Entity
         /// <summary>
         /// Ad_State
         /// </summary>
-        public virtual int? Ad_State { get; set; }        
+        public virtual int? Ad_State { get; set; }
 
     }
 }

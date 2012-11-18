@@ -38,7 +38,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             bool istrue = false;
 
             Admin dal = new Admin();
-            IList<Ba_Admin> admins = dal.GetModel(LoginName, Common.Encrypt.MD5Encrypt(Password));
+            IList<ID_Admin> admins = dal.GetModel(LoginName, Common.Encrypt.MD5Encrypt(Password));
             istrue = admins.Count > 0 ? true : false;
 
             if (istrue)
@@ -55,7 +55,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         }
 
         //设置cookies
-        public void setcookie(Ba_Admin entity)
+        public void setcookie(ID_Admin entity)
         {
             string _domain = ConfigurationManager.AppSettings["WebDomain"];
             HttpCookieCollection cookiecollect = new HttpCookieCollection();

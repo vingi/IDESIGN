@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MVCBase.Domain" namespace="MVCBase.Domain.Entity">
+  <class name="MVCBase.Domain.Entity.ID_HouseType" table="ID_HouseType">
+    <id name="Ht_Id" column="Ht_Id" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="Ht_name" column="Ht_name" type="string"  />
+    <property name="Ht_orderby" column="Ht_orderby" type="int"  />
+
+  </class>
+</hibernate-mapping>
