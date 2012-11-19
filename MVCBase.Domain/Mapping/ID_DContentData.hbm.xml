@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MVCBase.Domain" namespace="MVCBase.Domain.Entity">
+  <class name="MVCBase.Domain.Entity.ID_DContentData" table="ID_DContentData">
+    <id name="Dc_Id" column="Dc_Id" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="Dc_name" column="Dc_name" type="string"  />
+    <property name="Dc_company" column="Dc_company" type="string"  />
+    <property name="Dc_tel" column="Dc_tel" type="string"  />
+    <property name="Dc_email" column="Dc_email" type="string"  />
+    <property name="Dc_address" column="Dc_address" type="string"  />
+    <property name="Dc_url" column="Dc_url" type="string"  />
+    <property name="Dc_local" column="Dc_local" type="string"  />
+    <property name="Dc_htype" column="Dc_htype" type="string"  />
+    <property name="Dc_dtype" column="Dc_dtype" type="string"  />
+    <property name="Dc_stype" column="Dc_stype" type="string"  />
+    <property name="Dc_Entrust" column="Dc_Entrust" type="string"  />
+    <property name="Dc_Decoration" column="Dc_Decoration" type="string"  />
+    <property name="Dc_price" column="Dc_price" type="string"  />
+    <property name="Dc_Strengths" column="Dc_Strengths" type="string"  />
+    <property name="Dc_Text" column="Dc_Text" type="string"  />
+    <property name="Dc_ImageUrl" column="Dc_ImageUrl" type="string"  />
+    <property name="Dc_createdate" column="Dc_createdate" type="DateTime"  />
+    <property name="Dc_enddate" column="Dc_enddate" type="DateTime"  />
+    <property name="Dc_display" column="Dc_display" type="bool"  />
+    <property name="Dc_pdesign" column="Dc_pdesign" type="bool"  />
+    <property name="Dc_ndesign" column="Dc_ndesign" type="bool"  />
+    <property name="Dc_sdesign" column="Dc_sdesign" type="bool"  />
+
+  </class>
+</hibernate-mapping>

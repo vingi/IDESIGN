@@ -16,15 +16,15 @@ namespace MVCBase.DAL
             session = (new NHibernateHelper()).GetSession();
         }
 
-        public DesignType GetAdminById(int Dt_Id)
+        public ID_DesignType GetAdminById(int Dt_Id)
         {
-            return session.Get<DesignType>(Dt_Id);
+            return session.Get<ID_DesignType>(Dt_Id);
         }
 
-        public IList<DesignType> GetAllModel()
+        public IList<ID_DesignType> GetAllModel()
         {
             return session.CreateQuery("from ID_DesignType as dt order by dt.Dt_orderby")
-                .List<DesignType>();
+                .List<ID_DesignType>();
         }
     }
 }

@@ -42,6 +42,7 @@
     <Compile Include="Entity\Ba_News.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\ID_Admin.cs" />
+    <Compile Include="Entity\ID_DContentData.cs" />
     <Compile Include="Entity\ID_DesignStyleType.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -69,7 +70,8 @@
     <EmbeddedResource Include="Mapping\ID_Admin.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Mapping\ID_HouseType.hbm.xml" />
+    <EmbeddedResource Include="Mapping\ID_DContentData.hbm.xml" />
+    <EmbeddedResource Include="Mapping\ID_HouseType.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

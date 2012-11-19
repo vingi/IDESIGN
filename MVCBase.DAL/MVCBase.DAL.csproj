@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="Designer.cs" />
     <Compile Include="DesignStyleType.cs">
       <SubType>Code</SubType>
     </Compile>
