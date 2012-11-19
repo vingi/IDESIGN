@@ -128,6 +128,9 @@
     <Compile Include="Areas\SuperAdmin\Public\UploadHandler.ashx.cs">
       <DependentUpon>UploadHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\SuperAdmin\Scripts\uploadify\ReceiveImage.ashx.cs">
+      <DependentUpon>ReceiveImage.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Areas\SuperAdmin\SuperAdminAreaRegistration.cs" />
     <Compile Include="Common\common.cs" />
     <Compile Include="Common\Database.cs" />
@@ -197,6 +200,20 @@
     <Content Include="Areas\SuperAdmin\Content\images\shortcut-button-bg.gif" />
     <Content Include="Areas\SuperAdmin\Content\images\tl.png" />
     <Content Include="Areas\SuperAdmin\Content\images\tr.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify_BBK\jquery.uploadify.js" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify_BBK\jquery.uploadify.min.js" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify_BBK\license.txt" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify_BBK\selectbtn.jpg" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify_BBK\uploadify-cancel.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify_BBK\uploadify.css" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify_BBK\uploadify.swf" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify\cancel.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify\close.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify\jquery.uploadify.js" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify\jquery.uploadify.min.js" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify\selectbtn.jpg" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify\uploadify.css" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify\uploadify.swf" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\CHANGE.txt" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\demos\common.css" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\demos\demo01.html" />
@@ -531,6 +548,9 @@
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\serverscript\php\ubb2html.php" />
     <Content Include="Areas\SuperAdmin\Public\UploadHandler.ashx" />
     <Content Include="Areas\SuperAdmin\Views\Designer\Index.cshtml" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify\ReceiveImage.ashx" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify\UploadHandler.ashx" />
+    <Content Include="Areas\SuperAdmin\Scripts\uploadify_BBK\UploadHandler.ashx" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="hibernate.cfg.xml">

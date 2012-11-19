@@ -66,7 +66,9 @@
     <EmbeddedResource Include="Mapping\ID_FurnitureType.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mapping\Ba_News.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Ba_News.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mapping\ID_Admin.hbm.xml" />
   </ItemGroup>
   <ItemGroup>

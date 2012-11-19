@@ -33,6 +33,16 @@ else
                 <fieldset>
                     <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
                     <p>
+                        <div class="checkboxfloat">
+                        <input type="checkbox" id="designer_pdesign" name="designer_pdesign" value="@Model.Dc_pdesign" /> <span>人氣設計師</span></div>
+                        <div class="checkboxfloat">
+                        <input type="checkbox" id="designer_ndesign" name="designer_ndesign" value="@Model.Dc_ndesign" /> <span>新星設計師</span></div>
+                        <div class="checkboxfloat">
+                        <input type="checkbox" id="designer_sdesign" name="designer_sdesign" value="@Model.Dc_sdesign" /> <span>嚴選設計師</span></div>
+                        <div class="clear"></div>
+                    </p>
+
+                    <p>
                         <label>設計師</label>
                         <input class="text-input small-input" type="text" id="designer_name" name="designer_name" value="@Model.Dc_name" />
                         <!-- Classes for input-notification: success, error, information, attention -->
@@ -89,22 +99,64 @@ else
                         <label>設計型式</label>
                         @foreach (var item in @ViewBag.designtype)
                         {
-                            <input type="checkbox" id="designer_dtype_@(item.Dt_Id)" name="designer_dtype" value="@item.Dt_Id" /> @item.St_name 
+                            <input type="checkbox" id="designer_dtype_@(item.Dt_Id)" name="designer_dtype" value="@item.Dt_Id" /> @item.Dt_name 
                         }
-                        <input type="hidden" id="designer_dtype_h" name="designer_htype_h" value="@Model.Dc_dtype" />
+                        <input type="hidden" id="designer_dtype_h" name="designer_dtype_h" value="@Model.Dc_dtype" />
                         <br />
                     </p>
 
-
-
-@*                    <p>
-                        <label>消息內容 Description</label>
-                        <textarea class="text-input textarea wysiwyg1" id="news_description" name="news_description" cols="79" rows="15">@ViewBag.model.Ns_Content</textarea>
-                    </p>*@
+                    <p>
+                        <label>設計風格</label>
+                        @foreach (var item in @ViewBag.designstyletype)
+                        {
+                            <input type="checkbox" id="designer_stype_@(item.St_Id)" name="designer_stype" value="@item.St_Id" /> @item.St_name 
+                        }
+                        <input type="hidden" id="designer_stype_h" name="designer_stype_h" value="@Model.Dc_stype" />
+                        <br />
+                    </p>
 
                     <p>
-                        <input id="news_button" class="button" type="button" value="Submit" />
+                        <div class="checkboxfloat"><label>委拖設計</label>
+                        <input type="checkbox" id="designer_entrust" name="designer_entrust" value="@Model.Dc_Entrust" /> 接受</div>
+                        <div class="checkboxfloat"><label>局部裝修</label>
+                        <input type="checkbox" id="designer_decoration" name="designer_decoration" value="@Model.Dc_Decoration" /> 接受</div>
+                        <div class="clear"></div>
                     </p>
+
+                    <p>
+                        <label>平均收費</label>
+                        <input class="text-input small-input" type="text" id="designer_price" name="designer_price" value="@Model.Dc_price" />
+                        <br />
+                    </p>
+
+                    <p>
+                        <label>設計強項</label>
+                        <input class="text-input medium-input" type="text" id="designer_strengths" name="designer_strengths" value="@Model.Dc_Strengths" />
+                    </p>
+
+                    <p>
+                        <label>設計理念</label>
+                        <textarea class="text-input textarea" id="designer_text" name="designer_text" cols="79" rows="15">@Model.Dc_Text</textarea>                        
+                    </p>
+
+                    <p>
+                        <div id="showimg" class="clearfix"></div>
+                        <div id="status-message">
+                        </div>
+                        <div id="fileQueue">
+                        </div>
+                        <div style="clear: both;"></div>
+                        <div style="width: 140px; margin-top: 20px;">
+                            <input type="file" name="uploadify" id="uploadify" />
+                        </div>
+                    </p>
+
+                    <p>
+                        <input id="designer_button" class="button" type="button" value="Submit" />
+                    </p>
+
+
+
                 </fieldset>
                 <div class="clear"></div>
                 <!-- End .clear -->
@@ -141,20 +193,139 @@ else
     #note {
         color: #d3d3d3;
     }
-</style>
 
+    .checkboxfloat {
+        float: left;
+        width: 110px;
+    }
+    .checkboxfloat span {
+        padding: 0 0 10px;
+        font-weight: bold;
+    }
+
+    .uploadifyButton
+    {
+        background-color: #505050;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color: #FFF;
+        font: 12px Arial, Helvetica, sans-serif;
+        padding: 8px 0;
+        text-align: center;
+        width: 100%;
+    }
+    .uploadify:hover .uploadifyButton
+    {
+        background-color: #808080;
+    }
+    .uploadifyQueueItem
+    {
+        background-color: White;
+        font: 11px Verdana, Geneva, sans-serif;
+        margin-top: 5px;
+        width: 150px;
+        max-width: 150px;
+        padding: 6px;
+        border: 1px solid #E0E0E0;
+        /* border: 1px solid #DBDBDB; */
+        float: left;
+        margin-left: 5px;
+        -o-transition: opacity .4s ease-in-out;
+        -moz-transition: opacity .4s ease-in-out;
+        -webkit-transition: opacity .4s ease-in-out;
+        -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .uploadifyImageShow
+    {
+        margin: 10px auto;
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        vertical-align:middle; /* 兼容ie */
+        text-align:center;
+        *display:block; 
+    }
+    .uploadifyImageShow .ImageShow
+    {
+        vertical-align: middle;
+    }
+    .uploadifyLoading
+    {
+        margin: 52px;
+    }
+    .uploadifyError
+    {
+        background-color: #FDE5DD !important;
+        border: 2px solid #FBCBBC !important;
+    }
+    .uploadifyQueueItem .cancel
+    {
+        float: right;
+        display: none;
+        cursor: pointer;
+    }
+    .uploadifyQueue .completed
+    {
+        background-color: #E5E5E5;
+    }
+    .uploadifyProgress
+    {
+        background-color: #E5E5E5;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .uploadifyProgressBar
+    {
+        background-color: #0099FF;
+        height: 3px;
+        width: 1px;
+    }
+</style>
+<script type="text/javascript" src="@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/jquery.uploadify.js")"></script>
 <script type="text/javascript">
     $(function () {
         @Html.Raw(ViewBag.jsInit)
 
-        var editor = $('#news_description').xheditor({
-            tools: 'Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,SelectAll,Removeformat,Align,List,Outdent,Indent,Link,Unlink,Img,Table,Source,Fullscreen',
-            hoverExecDelay: -1,
-            html5Upload: false,
-            upMultiple: '1',
-            upImgUrl: '/Areas/SuperAdmin/Public/UploadHandler.ashx?immediate=1',
-            upImgExt: "jpg,jpeg,gif,png"
+        var iscompled = false;
+        var filelimiz = 2048; // 2048K
+        $('#uploadify').uploadify({
+            'swf': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/uploadify.swf")',
+            'uploader': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/UploadHandler.ashx")',
+            'cancelImage': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/close.png")',
+            'multi': true,
+            'auto': true,
+            'checkExisting': false,
+            'fileTypeExts': '*.jpg;*.gif;*.png;*.bmp;',
+            'fileTypeDesc': 'Image Files (.JPG, .GIF, .PNG, .BMP)',
+            'queueID': 'fileQueue',
+            'queueSizeLimit': 4,
+            'uploadLimit': 4,
+            'fileSizeLimit': filelimiz,
+            'buttonImage': '',
+            'buttonText': '瀏覽圖片',
+            'removeCompleted': true,
+            'removeTimeout': 0,
+            'onDialogClose': function (queue) {
+                $('#status-message').text(queue.filesQueued + ' files have been added to the queue.');
+            },
+            'onUploadSuccess': function (file, data, response) {
+                if (data.indexOf("http://") == 0) {
+                    var thisfileobj = jQuery('#' + file.id);
+                    thisfileobj.find(".uploadifyImageShow").html("<img src='" + data + "' alt='' class='ImageShow' />");
+                    thisfileobj.find(".data,.uploadifyProgress").remove();
+                }
+                else
+                    alert(data);
+            },
+            'onQueueComplete': function (stats) {
+                $('#status-message').text(stats.successful_uploads + ' files uploaded, ' + stats.upload_errors + ' errors.');
+            }
         });
+
+
         $("#news_button").click(function () {
             var er = "";
             if ($.trim($("#news_title").val()).length == 0) {
@@ -195,4 +366,3 @@ else
         });
     });
 </script>
-<script src="@Url.Content("~/Areas/SuperAdmin/Scripts/xheditor/xheditor.js")" type="text/javascript"></script>
