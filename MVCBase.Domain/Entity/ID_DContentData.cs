@@ -53,11 +53,11 @@ namespace MVCBase.Domain.Entity
         /// <summary>
         /// Dc_Entrust
         /// </summary>
-        public virtual string Dc_Entrust { get; set; }
+        public virtual bool Dc_Entrust { get; set; }
         /// <summary>
         /// Dc_Decoration
         /// </summary>
-        public virtual string Dc_Decoration { get; set; }
+        public virtual bool Dc_Decoration { get; set; }
         /// <summary>
         /// Dc_price
         /// </summary>

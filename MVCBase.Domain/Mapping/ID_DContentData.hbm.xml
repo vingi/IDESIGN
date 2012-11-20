@@ -14,8 +14,8 @@
     <property name="Dc_htype" column="Dc_htype" type="string"  />
     <property name="Dc_dtype" column="Dc_dtype" type="string"  />
     <property name="Dc_stype" column="Dc_stype" type="string"  />
-    <property name="Dc_Entrust" column="Dc_Entrust" type="string"  />
-    <property name="Dc_Decoration" column="Dc_Decoration" type="string"  />
+    <property name="Dc_Entrust" column="Dc_Entrust" type="bool"  />
+    <property name="Dc_Decoration" column="Dc_Decoration" type="bool"  />
     <property name="Dc_price" column="Dc_price" type="string"  />
     <property name="Dc_Strengths" column="Dc_Strengths" type="string"  />
     <property name="Dc_Text" column="Dc_Text" type="string"  />

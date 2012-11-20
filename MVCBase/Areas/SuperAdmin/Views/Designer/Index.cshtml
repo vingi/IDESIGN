@@ -34,11 +34,11 @@ else
                     <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
                     <p>
                         <div class="checkboxfloat">
-                        <input type="checkbox" id="designer_pdesign" name="designer_pdesign" value="@Model.Dc_pdesign" /> <span>人氣設計師</span></div>
+                        <input type="checkbox" id="designer_pdesign" name="designer_pdesign" value="1" @MVCBase.Common.MVCCommon.BindCheckBox_Html(Model.Dc_pdesign) /> <span>人氣設計師</span></div>
                         <div class="checkboxfloat">
-                        <input type="checkbox" id="designer_ndesign" name="designer_ndesign" value="@Model.Dc_ndesign" /> <span>新星設計師</span></div>
+                        <input type="checkbox" id="designer_ndesign" name="designer_ndesign" value="1" @MVCBase.Common.MVCCommon.BindCheckBox_Html(Model.Dc_ndesign) /> <span>新星設計師</span></div>
                         <div class="checkboxfloat">
-                        <input type="checkbox" id="designer_sdesign" name="designer_sdesign" value="@Model.Dc_sdesign" /> <span>嚴選設計師</span></div>
+                        <input type="checkbox" id="designer_sdesign" name="designer_sdesign" value="1" @MVCBase.Common.MVCCommon.BindCheckBox_Html(Model.Dc_sdesign) /> <span>嚴選設計師</span></div>
                         <div class="clear"></div>
                     </p>
 
@@ -87,39 +87,50 @@ else
 
                     <p>
                         <label>房屋類型</label>
-                        @foreach (var item in @ViewBag.housetype)
-                        {
-                            <input type="checkbox" id="designer_htype_@(item.Ht_Id)" name="designer_htype" value="@item.Ht_Id" /> @item.Ht_name 
+                        @{
+                            string htype = Model.Dc_htype.Trim(',');
+                            string[] htypes = htype.Split(',');
+                            foreach (var item in @ViewBag.housetype)
+                            {
+                                <input type="checkbox" id="designer_htype_@(item.Ht_Id)" name="designer_htype" value="@item.Ht_Id" @(Array.Exists<string>(htypes,s=>s.Contains(item.Ht_Id.ToString())) ? MVCBase.Common.MVCCommon.BindCheckBox_Html(true) : "") /> @item.Ht_name 
+                            }
                         }
-                        <input type="hidden" id="designer_htype_h" name="designer_htype_h" value="@Model.Dc_htype" />
                         <br />
                     </p>
 
                     <p>
                         <label>設計型式</label>
-                        @foreach (var item in @ViewBag.designtype)
-                        {
-                            <input type="checkbox" id="designer_dtype_@(item.Dt_Id)" name="designer_dtype" value="@item.Dt_Id" /> @item.Dt_name 
+                        @{
+                            string dtype = Model.Dc_dtype.Trim(',');
+                            string[] dtypes = dtype.Split(',');
+                            foreach (var item in @ViewBag.designtype)
+                            {
+                                <input type="checkbox" id="designer_dtype_@(item.Dt_Id)" name="designer_dtype" value="@item.Dt_Id" @(Array.Exists<string>(dtypes,s=>s.Contains(item.Dt_Id.ToString())) ? MVCBase.Common.MVCCommon.BindCheckBox_Html(true) : "") /> @item.Dt_name 
+                            }
                         }
-                        <input type="hidden" id="designer_dtype_h" name="designer_dtype_h" value="@Model.Dc_dtype" />
+
                         <br />
                     </p>
 
                     <p>
                         <label>設計風格</label>
-                        @foreach (var item in @ViewBag.designstyletype)
-                        {
-                            <input type="checkbox" id="designer_stype_@(item.St_Id)" name="designer_stype" value="@item.St_Id" /> @item.St_name 
+                        @{
+                            string stype = Model.Dc_stype.Trim(',');
+                            string[] stypes = stype.Split(',');
+                            foreach (var item in @ViewBag.designstyletype)
+                            {
+                                <input type="checkbox" id="designer_stype_@(item.St_Id)" name="designer_stype" value="@item.St_Id" @(Array.Exists<string>(stypes,s=>s.Contains(item.St_Id.ToString())) ? MVCBase.Common.MVCCommon.BindCheckBox_Html(true) : "") /> @item.St_name 
+                            }
                         }
-                        <input type="hidden" id="designer_stype_h" name="designer_stype_h" value="@Model.Dc_stype" />
                         <br />
                     </p>
 
                     <p>
                         <div class="checkboxfloat"><label>委拖設計</label>
-                        <input type="checkbox" id="designer_entrust" name="designer_entrust" value="@Model.Dc_Entrust" /> 接受</div>
+                            <input type="checkbox" id="designer_entrust" name="designer_entrust" value="1" @MVCBase.Common.MVCCommon.BindCheckBox_Html(Model.Dc_Entrust) /> 接受</div>
+                        
                         <div class="checkboxfloat"><label>局部裝修</label>
-                        <input type="checkbox" id="designer_decoration" name="designer_decoration" value="@Model.Dc_Decoration" /> 接受</div>
+                        <input type="checkbox" id="designer_decoration" name="designer_decoration" value="1" @MVCBase.Common.MVCCommon.BindCheckBox_Html(Model.Dc_Decoration) /> 接受</div>
                         <div class="clear"></div>
                     </p>
 
@@ -140,9 +151,11 @@ else
                     </p>
 
                     <p>
+                        <div id="status-message"> * 可拖動已上傳的圖片對圖片進行排序.
+                        </div>
                         <div id="fileQueue">
                         </div>
-                        <div style="clear: both;"></div>
+                        <div class="clear"></div>
                         <div style="width: 140px; margin-top: 20px;">
                             <input type="file" name="uploadify" id="uploadify" />
                         </div>
@@ -152,7 +165,6 @@ else
                     <p>
                         <input id="designer_button" class="button" type="button" value="Submit" />
                     </p>
-
 
 
                 </fieldset>
@@ -227,6 +239,7 @@ else
         padding: 6px;
         border: 1px solid #E0E0E0;
         /* border: 1px solid #DBDBDB; */
+        overflow: hidden;
         float: left;
         margin-left: 5px;
         -o-transition: opacity .4s ease-in-out;
@@ -269,13 +282,13 @@ else
     {
         background-color: #E5E5E5;
     }
-    .uploadifyProgress
+    .uploadify-progress
     {
         background-color: #E5E5E5;
         margin-top: 10px;
         width: 100%;
     }
-    .uploadifyProgressBar
+    .uploadify-progress-bar
     {
         background-color: #0099FF;
         height: 3px;
@@ -288,12 +301,18 @@ else
     $(function () {
         @Html.Raw(ViewBag.jsInit)
 
+        //更新時初始化照片部分
+        //if ($("#designer_imageurl").val() != "") {
+
+        //}
+
         var iscompled = false;
         var filelimiz = 2048; // 2048K
         $('#uploadify').uploadify({
             'swf': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/uploadify.swf")',
             'uploader': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/UploadHandler.ashx")',
-            'cancelImage': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/close.png")',
+@*            'cancelImage': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/close.png")',*@
+            'buttonCursor': 'pointer',
             'multi': true,
             'auto': true,
             'checkExisting': false,
@@ -303,10 +322,50 @@ else
             'queueSizeLimit': 4,
             'uploadLimit': 4,
             'fileSizeLimit': filelimiz,
-            'buttonImage': '',
+            'buttonImage': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/selectbtn.jpg")',
             'buttonText': '瀏覽圖片',
             'removeCompleted': true,
             'removeTimeout': 0,
+            'itemTemplate': '<div id="${fileID}" class="uploadifyQueueItem">\
+					<div class="cancel" onclick="$(\'#${instanceID}\').uploadify(\'cancel\', \'${fileID}\')">\
+                        <img src="/Areas/SuperAdmin/Scripts/uploadify/close.png" border="0" />\
+					</div>\
+                    <div class="uploadifyImageShow"></div>\
+					<span class="fileName">${fileName} (${fileSize})</span><span class="data"></span>\
+					<div class="uploadify-progress">\
+						<div class="uploadify-progress-bar"><!--Progress Bar--></div>\
+					</div>\
+				</div>',
+            'onInit': function (swfuploadify) {
+                if ($("#designer_imageurl").val() != "") {
+                    var imgurls = $("#designer_imageurl").val().split(',');
+                    for (var i = 0; i < imgurls.length; i++) {
+                        var tid = 'SWFUpload_0_' + i;
+                        var tfilenames = imgurls[i].split('/');
+                        if (tfilenames.length > 0)
+                            tfilenames = tfilenames[tfilenames.length - 1].replace("thumb","");
+                        var thtml = '<div id="' + tid + '"  class="uploadifyQueueItem">\
+					<div class="cancel" onclick="$(\'#uploadify\').uploadify(\'cancel\', \'' + tid + '\')">\
+                        <img src="/Areas/SuperAdmin/Scripts/uploadify/close.png" border="0" />\
+					</div>\
+                    <div class="uploadifyImageShow"><img src="' + imgurls[i] + '" alt="" class="ImageShow"></div>\
+					<span class="fileName">' + tfilenames + '</span><span class="data"></span>\
+					<div class="uploadify-progress">\
+					</div>\
+				</div>';
+                        $("#fileQueue").append(thtml);
+                    }
+
+                    //var stats = this.getStats();
+                    //alert(stats);
+
+                    BindDelImg();
+                    BindSort();
+                }
+            },
+            'onUploadProgress': function (file) {
+                $('#' + file.id).find(".uploadifyImageShow").html("<img src='http://yimg.twhouses.com.tw/hdms/loading_min.gif' alt='Loading' class='uploadifyLoading' />");
+            },
             'onUploadSuccess': function (file, data, response) {
                 if (data.indexOf("http://") == 0) {
                     var thisfileobj = jQuery('#' + file.id);
@@ -315,19 +374,13 @@ else
                 }
                 else
                     alert(data);
+                $(thisfileobj).find(".uploadify-progress-bar").remove();
 
-                $("#fileQueue").sortable({
-                    opacity: 0.6, //设置拖动时候的透明度 
-                    revert: true, //缓冲效果 
-                    cursor: 'move', //拖动的时候鼠标样式 
-                    handle: '.uploadifyImageShow,.fileName',  //可以拖动的部位，模块的标题部分 
-                    update: function () {
-                        reset_imgurl();
-                    }
-                });
+                BindDelImg();
+                BindSort();
             },
             'onQueueComplete': function (stats) {
-                $('#status-message').text(stats.successful_uploads + ' files uploaded, ' + stats.upload_errors + ' errors.');
+                reset_imgurl();
             }
         });
 
@@ -359,7 +412,7 @@ else
                 },
                 success: function (msg) {
                     var ac = "新增";
-                    if ($("#news_id").val() != 0)
+                    if ($("#designer_id").val() != 0)
                         ac = "更新";
                     if (msg == "1") {
                         alert(ac + "成功");
@@ -370,6 +423,31 @@ else
             });
         });
     });
+
+    var BindDelImg = function () {
+        $(".uploadifyQueueItem").live({
+            mouseenter: function () {
+                $(this).find(".cancel").show();
+            },
+            mouseleave: function () {
+                $(this).find(".cancel").hide();
+            }
+        });
+    }
+
+    //绑定照片排序
+    var BindSort = function () {
+        $("#fileQueue").sortable({
+            opacity: 0.6, //设置拖动时候的透明度 
+            revert: true, //缓冲效果 
+            cursor: 'move', //拖动的时候鼠标样式 
+            handle: '.uploadifyImageShow,.fileName',  //可以拖动的部位，模块的标题部分 
+            update: function () {
+                reset_imgurl();
+            }
+        });
+    }
+
     //保存排序后的照片顺序
     var reset_imgurl = function () {
         var new_order = [];
