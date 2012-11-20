@@ -140,15 +140,13 @@ else
                     </p>
 
                     <p>
-                        <div id="showimg" class="clearfix"></div>
-                        <div id="status-message">
-                        </div>
                         <div id="fileQueue">
                         </div>
                         <div style="clear: both;"></div>
                         <div style="width: 140px; margin-top: 20px;">
                             <input type="file" name="uploadify" id="uploadify" />
                         </div>
+                        <input type="hidden" id="designer_imageurl" name="designer_imageurl" value="@Model.Dc_ImageUrl" />
                     </p>
 
                     <p>
@@ -284,6 +282,7 @@ else
         width: 1px;
     }
 </style>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui-1.8.20.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/jquery.uploadify.js")"></script>
 <script type="text/javascript">
     $(function () {
@@ -298,8 +297,8 @@ else
             'multi': true,
             'auto': true,
             'checkExisting': false,
-            'fileTypeExts': '*.jpg;*.gif;*.png;*.bmp;',
-            'fileTypeDesc': 'Image Files (.JPG, .GIF, .PNG, .BMP)',
+            'fileTypeExts': '*.jpg;*.gif;*.bmp;',
+            'fileTypeDesc': 'Image Files (.JPG, .GIF, .BMP)',
             'queueID': 'fileQueue',
             'queueSizeLimit': 4,
             'uploadLimit': 4,
@@ -308,9 +307,6 @@ else
             'buttonText': '瀏覽圖片',
             'removeCompleted': true,
             'removeTimeout': 0,
-            'onDialogClose': function (queue) {
-                $('#status-message').text(queue.filesQueued + ' files have been added to the queue.');
-            },
             'onUploadSuccess': function (file, data, response) {
                 if (data.indexOf("http://") == 0) {
                     var thisfileobj = jQuery('#' + file.id);
@@ -319,34 +315,43 @@ else
                 }
                 else
                     alert(data);
+
+                $("#fileQueue").sortable({
+                    opacity: 0.6, //设置拖动时候的透明度 
+                    revert: true, //缓冲效果 
+                    cursor: 'move', //拖动的时候鼠标样式 
+                    handle: '.uploadifyImageShow,.fileName',  //可以拖动的部位，模块的标题部分 
+                    update: function () {
+                        reset_imgurl();
+                    }
+                });
             },
             'onQueueComplete': function (stats) {
                 $('#status-message').text(stats.successful_uploads + ' files uploaded, ' + stats.upload_errors + ' errors.');
             }
         });
 
-
-        $("#news_button").click(function () {
+        $("#designer_button").click(function () {
             var er = "";
-            if ($.trim($("#news_title").val()).length == 0) {
-                er = "請填寫標題!";
-            }
-            else if ($.trim($("#news_title").val()).length < 3 || $.trim($("#news_title").val()).length > 50) {
-                er = "標題長度不符!";
-            }
+            //if ($.trim($("#news_title").val()).length == 0) {
+            //    er = "請填寫標題!";
+            //}
+            //else if ($.trim($("#news_title").val()).length < 3 || $.trim($("#news_title").val()).length > 50) {
+            //    er = "標題長度不符!";
+            //}
 
-            if ($.trim($("#news_description").val()).length < 5) {
-                er += "\r\n消息內容長度太短!";
-            }
-            if (er.length > 0) {
-                alert(er);
-                return;
-            }
+            //if ($.trim($("#news_description").val()).length < 5) {
+            //    er += "\r\n消息內容長度太短!";
+            //}
+            //if (er.length > 0) {
+            //    alert(er);
+            //    return;
+            //}
 
             var fields = $("form").serializeArray();
             $.ajax({
                 type: "POST",
-                url: "/SuperAdmin/NewsOperate/submit",
+                url: "/SuperAdmin/Designer/submit",
                 dataType: "text",
                 data: fields,
                 error: function () {
@@ -365,4 +370,13 @@ else
             });
         });
     });
+    //保存排序后的照片顺序
+    var reset_imgurl = function () {
+        var new_order = [];
+        $("#fileQueue").find(".ImageShow").each(function () {
+            new_order.push(this.src);
+        });
+        var newid = new_order.join(',');
+        $("#designer_imageurl").val(newid);
+    }
 </script>

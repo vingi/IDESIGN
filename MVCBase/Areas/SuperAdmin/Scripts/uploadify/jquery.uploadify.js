@@ -276,7 +276,8 @@ if (jQuery) (
 	                            fileName = fileName.substr(0, 25) + '...';
 	                        }
 
-	                        jQuery('#showimg').append('<div id="' + file.id + '" class="uploadifyQueueItem">\
+	                        // Add the file item to the queue
+	                        jQuery('#' + swfuploadify.settings.queueID).append('<div id="' + file.id + '" class="uploadifyQueueItem">\
 								<div class="cancel" onclick="jQuery(\'#' + swfuploadify.settings.id + '\').uploadifyCancel(\'' + file.id + '\')">\
 									<img src="' + swfuploadify.settings.cancelImage + '" border="0" />\
 								</div>\
@@ -286,17 +287,6 @@ if (jQuery) (
 									<div class="uploadifyProgressBar"><!--Progress Bar--></div>\
 								</div>\
 							</div>');
-	                        // Add the file item to the queue
-	                        //jQuery('#' + swfuploadify.settings.queueID).append('<div id="' + file.id + '" class="uploadifyQueueItem">\
-							//	<div class="cancel" onclick="jQuery(\'#' + swfuploadify.settings.id + '\').uploadifyCancel(\'' + file.id + '\')">\
-							//		<img src="' + swfuploadify.settings.cancelImage + '" border="0" />\
-							//	</div>\
-                            //    <div class="uploadifyImageShow"></div>\
-							//	<span class="fileName">' + fileName + ' (' + fileSize + ')</span><span class="data"></span>\
-							//	<div class="uploadifyProgress">\
-							//		<div class="uploadifyProgressBar"><!--Progress Bar--></div>\
-							//	</div>\
-							//</div>');
 	                        swfuploadify.queue.queueSize += file.size;
 	                    }
 	                    swfuploadify.queue.files[file.id] = file;
@@ -364,9 +354,9 @@ if (jQuery) (
 	                                        if (jQuery('#' + file.id)) {
 	                                            swfuploadify.queue.queueSize -= file.size;
 	                                            delete swfuploadify.queue.files[file.id]
-	                                            jQuery('#' + file.id).fadeOut(500, function () {
-	                                                jQuery(this).remove();
-	                                            });
+	                                            //jQuery('#' + file.id).fadeOut(500, function () {
+	                                            //    jQuery(this).remove();
+	                                            //});
 	                                        }
 	                                    }, swfuploadify.settings.removeTimeout * 1000);
 	                                    break;
@@ -393,11 +383,11 @@ if (jQuery) (
 	                function onUploadError(file, errorCode, errorMsg) {
 	                    var errorString = 'Error';
 	                    if (errorCode != SWFUpload.UPLOAD_ERROR.FILE_CANCELLED && errorCode != SWFUpload.UPLOAD_ERROR.UPLOAD_STOPPED) {
-	                        try {
+	                        if (file) 
 	                            jQuery('#' + file.id).addClass('uploadifyError');
-	                        } catch (e) { }
 	                    }
-	                    jQuery('#' + file.id).find('.uploadifyProgressBar').css('width', '1px');
+	                    if (file)
+	                        jQuery('#' + file.id).find('.uploadifyProgressBar').css('width', '1px');
 	                    switch (errorCode) {
 	                        case SWFUpload.UPLOAD_ERROR.HTTP_ERROR:
 	                            errorString = 'HTTP Error (' + errorMsg + ')';
@@ -435,7 +425,7 @@ if (jQuery) (
 	                            errorString = 'Stopped';
 	                            break;
 	                    }
-	                    if (errorCode != SWFUpload.UPLOAD_ERROR.SPECIFIED_FILE_ID_NOT_FOUND && file.status != SWFUpload.FILE_STATUS.COMPLETE) {
+	                    if (errorCode != SWFUpload.UPLOAD_ERROR.SPECIFIED_FILE_ID_NOT_FOUND && file && file.status != SWFUpload.FILE_STATUS.COMPLETE) {
 	                        jQuery('#' + file.id).find('.data').html(' - ' + errorString);
 	                    }
 	                    if (swfuploadify.settings.onUploadError) swfuploadify.settings.onUploadError(file, errorCode, errorMsg, errorString, swfuploadify.queue);
@@ -559,24 +549,12 @@ if (jQuery) (
 	                        jQuery('#' + arguments[n]).delay(100 * n).fadeOut(500, function () {
 	                            jQuery(this).remove();
 	                        });
-	                        for (var m in swfuploadify.queue.files) {
-	                            queuedFile = swfuploadify.queue.files[m];
-	                            var thisfilename = jQuery('#' + arguments[n]).find(".fileName").html();
-	                            alert(thisfilename + "|||" + queuedFile.name);
-	                            if (thisfilename.indexOf(queuedFile.name) != -1) {
-	                                //swfuploadify.queue.files.deleteElementByValue(m);
-	                                swfuploadify.queue.filesSelected = swfuploadify.queue.filesSelected - 1;
-	                                swfuploadify.queue.filesQueued = swfuploadify.queue.filesQueued - 1;
-	                                alert(swfuploadify.settings.queueSizeLimit);
-	                            }
-	                        }
+                            //重置已上传的文件数量
+	                        var stats = swfuploadify.getStats();
+	                        stats.successful_uploads -= 1;
+	                        swfuploadify.setStats(stats);
 	                    }
 
-	                    //alert(swfuploadify.queue.files.count);
-	                    //for (var i = 0; i < swfuploadify.queue.files.length; i++) {
-	                    //    alert(swfuploadify.queue.files[i].name);
-	                    //}
-	                    //alert(swfuploadify.queue.files);
 	                }
 	            } else {
 	                jQuery('#' + swfuploadify.settings.queueID).find('.uploadifyQueueItem').get(0).fadeOut(500, function () {
@@ -723,17 +701,3 @@ if (jQuery) (
 	    })
 	}
 )(jQuery);
-
-// 删除数组中第一个匹配的元素，成功则返回位置索引，失败则返回 -1。
-Array.prototype.deleteElementByValue = function (varElement) {
-    var numDeleteIndex = -1;
-    for (var i = 0; i < this.length; i++) {
-        // 严格比较，即类型与数值必须同时相等。
-        if (this[i] === varElement) {
-            this.splice(i, 1);
-            numDeleteIndex = i;
-            break;
-        }
-    }
-    return numDeleteIndex;
-}

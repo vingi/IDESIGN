@@ -35,8 +35,29 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         [HttpPost,ValidateInput(false)]
         public ActionResult Submit(Designer_Form form)
         {
-
+            Sransform(form);
             return View();
+        }
+
+        public MVCBase.Domain.Entity.ID_DContentData Sransform(Designer_Form form)
+        {
+            DAL.Designer dal = new DAL.Designer();
+            var model = dal.GetSingledataById(form.designer_id == null ? 0 : form.designer_id);
+            if (model == null)
+                model = new MVCBase.Domain.Entity.ID_DContentData();
+            model.Dc_name = form.designer_name;
+            model.Dc_company = form.designer_company;
+            model.Dc_tel = form.designer_tel;
+            model.Dc_email = form.designer_email;
+            model.Dc_address = form.designer_address;
+            model.Dc_url = form.designer_url;
+            model.Dc_local = form.designer_local;
+            model.Dc_htype = form.designer_htype.Length > 0 ? "," + string.Join(",", form.designer_htype) + "," : string.Empty;
+            model.Dc_dtype = form.designer_dtype.Length > 0 ? "," + string.Join(",", form.designer_dtype) + "," : string.Empty;
+            model.Dc_stype = form.designer_stype.Length > 0 ? "," + string.Join(",", form.designer_stype) + "," : string.Empty;
+            model.Dc_Entrust = form.designer_entrust;
+
+            return model;
         }
     }
 
@@ -58,6 +79,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         public string designer_price { get; set; }
         public string designer_strengths { get; set; }
         public string designer_text { get; set; }
+        public string designer_imageurl { get; set; }
         public bool designer_pdesign { get; set; }
         public bool designer_ndesign { get; set; }
         public bool designer_sdesign { get; set; }
