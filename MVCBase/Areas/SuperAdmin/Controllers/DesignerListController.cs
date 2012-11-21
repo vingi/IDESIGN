@@ -13,6 +13,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.jsInit = Public.SuperAdminCommon.JSInit("DesignerManage", "DesignerOperate");
             return View();
         }
 

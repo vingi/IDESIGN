@@ -98,6 +98,10 @@ namespace MVCBase.Domain.Entity
         /// Dc_sdesign
         /// </summary>
         public virtual bool Dc_sdesign { get; set; }
+        /// <summary>
+        /// Dc_color
+        /// </summary>
+        public virtual string Dc_color { get; set; }
 
     }
 }

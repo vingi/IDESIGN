@@ -42,6 +42,10 @@ else
                         <div class="clear"></div>
                     </p>
 
+                        <label>個性顏色</label>
+                        <div id="colorSelector"><div style="background-color: @(Model.Dc_color == null ? "#0000ff" : Model.Dc_color)"></div></div>
+                        <input type="hidden" id="designer_color" name="designer_color" value="@Model.Dc_color" />
+
                     <p>
                         <label>設計師</label>
                         <input class="text-input small-input" type="text" id="designer_name" name="designer_name" value="@Model.Dc_name" />
@@ -295,11 +299,33 @@ else
         width: 1px;
     }
 </style>
+<link rel="stylesheet" href="@Url.Content("~/Areas/SuperAdmin/Scripts/colorpicker/css/colorpicker.css")" type="text/css" />
+<link rel="stylesheet" media="screen" type="text/css" href="@Url.Content("~/Areas/SuperAdmin/Scripts/colorpicker/css/layout.css")" />
 <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui-1.8.20.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/jquery.uploadify.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Areas/SuperAdmin/Scripts/colorpicker/js/colorpicker.js")"></script>
+
+
 <script type="text/javascript">
     $(function () {
         @Html.Raw(ViewBag.jsInit)
+
+        //color
+        $('#colorSelector').ColorPicker({
+            color: '@(Model.Dc_color == null ? "#0000ff" : Model.Dc_color)',
+            onShow: function (colpkr) {
+                $(colpkr).fadeIn(500);
+                return false;
+            },
+            onHide: function (colpkr) {
+                $(colpkr).fadeOut(500);
+                return false;
+            },
+            onChange: function (hsb, hex, rgb) {
+                $('#colorSelector div').css('backgroundColor', '#' + hex);
+                $("#designer_color").val("#" + hex);
+            }
+        });
 
         var existedfiles = 0;
         if ($("#designer_imageurl").val() != "") 

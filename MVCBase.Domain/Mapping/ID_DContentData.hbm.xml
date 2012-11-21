@@ -26,6 +26,7 @@
     <property name="Dc_pdesign" column="Dc_pdesign" type="bool"  />
     <property name="Dc_ndesign" column="Dc_ndesign" type="bool"  />
     <property name="Dc_sdesign" column="Dc_sdesign" type="bool"  />
+    <property name="Dc_color" column="Dc_color" type="string"  />
 
   </class>
 </hibernate-mapping>

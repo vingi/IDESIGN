@@ -128,9 +128,6 @@
     <Compile Include="Areas\SuperAdmin\Public\UploadHandler.ashx.cs">
       <DependentUpon>UploadHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Areas\SuperAdmin\Scripts\uploadify3.0\ReceiveImage.ashx.cs">
-      <DependentUpon>ReceiveImage.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Areas\SuperAdmin\SuperAdminAreaRegistration.cs" />
     <Compile Include="Common\common.cs" />
     <Compile Include="Common\Database.cs" />
@@ -140,6 +137,7 @@
     <Compile Include="Common\SqlInject.cs" />
     <Compile Include="Common\XSSInject.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DesignerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -201,13 +199,39 @@
     <Content Include="Areas\SuperAdmin\Content\images\shortcut-button-bg.gif" />
     <Content Include="Areas\SuperAdmin\Content\images\tl.png" />
     <Content Include="Areas\SuperAdmin\Content\images\tr.png" />
-    <Content Include="Areas\SuperAdmin\Scripts\uploadify3.0\cancel.png" />
-    <Content Include="Areas\SuperAdmin\Scripts\uploadify3.0\close.png" />
-    <Content Include="Areas\SuperAdmin\Scripts\uploadify3.0\jquery.uploadify.js" />
-    <Content Include="Areas\SuperAdmin\Scripts\uploadify3.0\jquery.uploadify.min.js" />
-    <Content Include="Areas\SuperAdmin\Scripts\uploadify3.0\selectbtn.jpg" />
-    <Content Include="Areas\SuperAdmin\Scripts\uploadify3.0\uploadify.css" />
-    <Content Include="Areas\SuperAdmin\Scripts\uploadify3.0\uploadify.swf" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\css\colorpicker.css" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\css\layout.css" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\blank.gif" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_background.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_hex.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_hsb_b.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_hsb_h.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_hsb_s.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_indic.gif" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_overlay.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_rgb_b.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_rgb_g.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_rgb_r.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_select.gif" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\colorpicker_submit.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\custom_background.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\custom_hex.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\custom_hsb_b.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\custom_hsb_h.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\custom_hsb_s.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\custom_indic.gif" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\custom_rgb_b.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\custom_rgb_g.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\custom_rgb_r.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\custom_submit.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\select.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\select2.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\slider.png" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\index.html" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\js\colorpicker.js" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\js\eye.js" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\js\layout.js" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\js\utils.js" />
     <Content Include="Areas\SuperAdmin\Scripts\uploadify\cancel.png" />
     <Content Include="Areas\SuperAdmin\Scripts\uploadify\close.png" />
     <Content Include="Areas\SuperAdmin\Scripts\uploadify\jquery.uploadify.js" />
@@ -472,6 +496,12 @@
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\img\wordimg.gif" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\ui.css" />
     <Content Include="Content\Base\Images\logo.png" />
+    <Content Include="Content\Base\Images\menu1.png" />
+    <Content Include="Content\Base\Images\menu2.png" />
+    <Content Include="Content\Base\Images\menu3.png" />
+    <Content Include="Content\Base\Images\menu4.png" />
+    <Content Include="Content\Base\Images\menudot.png" />
+    <Content Include="Content\Base\Images\top_bg.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -551,9 +581,8 @@
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\serverscript\php\ubb2html.php" />
     <Content Include="Areas\SuperAdmin\Public\UploadHandler.ashx" />
     <Content Include="Areas\SuperAdmin\Views\Designer\Index.cshtml" />
-    <Content Include="Areas\SuperAdmin\Scripts\uploadify3.0\ReceiveImage.ashx" />
-    <Content Include="Areas\SuperAdmin\Scripts\uploadify3.0\UploadHandler.ashx" />
     <Content Include="Areas\SuperAdmin\Scripts\uploadify\UploadHandler.ashx" />
+    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\Thumbs.db" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="hibernate.cfg.xml">
@@ -603,6 +632,7 @@
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Designer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\SuperAdmin\Models\" />

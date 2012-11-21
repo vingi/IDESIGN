@@ -14,6 +14,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
 
         public ActionResult Index(int? id)
         {
+            ViewBag.jsInit = Public.SuperAdminCommon.JSInit("DesignerManage", "DesignerOperate");
             DAL.Designer dal = new DAL.Designer();
             var model = dal.GetSingledataById(id.HasValue ? int.Parse(id.ToString()) : 0);
 
@@ -85,6 +86,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             model.Dc_sdesign = Common.MVCCommon.BindCheckBox_Entity(form.designer_sdesign);
             model.Dc_display = model.Dc_Id.Equals(0) ? true : model.Dc_display;
             model.Dc_createdate = model.Dc_createdate.HasValue ? model.Dc_createdate : DateTime.Now;
+            model.Dc_color = form.designer_color;
 
             return model;
         }
@@ -117,5 +119,6 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         public string designer_pdesign { get; set; }
         public string designer_ndesign { get; set; }
         public string designer_sdesign { get; set; }
+        public string designer_color { get; set; }
     }
 }
