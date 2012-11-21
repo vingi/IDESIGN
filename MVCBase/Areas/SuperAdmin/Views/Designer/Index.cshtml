@@ -88,7 +88,7 @@ else
                     <p>
                         <label>房屋類型</label>
                         @{
-                            string htype = Model.Dc_htype.Trim(',');
+                            string htype = Model.Dc_htype != null ? Model.Dc_htype.Trim(',') : string.Empty;
                             string[] htypes = htype.Split(',');
                             foreach (var item in @ViewBag.housetype)
                             {
@@ -101,7 +101,7 @@ else
                     <p>
                         <label>設計型式</label>
                         @{
-                            string dtype = Model.Dc_dtype.Trim(',');
+                            string dtype = Model.Dc_dtype != null ? Model.Dc_dtype.Trim(',') : string.Empty;
                             string[] dtypes = dtype.Split(',');
                             foreach (var item in @ViewBag.designtype)
                             {
@@ -115,7 +115,7 @@ else
                     <p>
                         <label>設計風格</label>
                         @{
-                            string stype = Model.Dc_stype.Trim(',');
+                            string stype = Model.Dc_stype != null ? Model.Dc_stype.Trim(',') : string.Empty;
                             string[] stypes = stype.Split(',');
                             foreach (var item in @ViewBag.designstyletype)
                             {
@@ -301,17 +301,12 @@ else
     $(function () {
         @Html.Raw(ViewBag.jsInit)
 
-        //更新時初始化照片部分
-        //if ($("#designer_imageurl").val() != "") {
-
-        //}
-
-        var iscompled = false;
-        var filelimiz = 2048; // 2048K
+        var existedfiles = 0;
+        if ($("#designer_imageurl").val() != "") 
+            existedfiles = $("#designer_imageurl").val().split(',').length;
         $('#uploadify').uploadify({
             'swf': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/uploadify.swf")',
             'uploader': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/UploadHandler.ashx")',
-@*            'cancelImage': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/close.png")',*@
             'buttonCursor': 'pointer',
             'multi': true,
             'auto': true,
@@ -321,7 +316,8 @@ else
             'queueID': 'fileQueue',
             'queueSizeLimit': 4,
             'uploadLimit': 4,
-            'fileSizeLimit': filelimiz,
+            'exitsfiles': existedfiles,
+            'fileSizeLimit': 2048, //2048K
             'buttonImage': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/selectbtn.jpg")',
             'buttonText': '瀏覽圖片',
             'removeCompleted': true,
@@ -336,11 +332,11 @@ else
 						<div class="uploadify-progress-bar"><!--Progress Bar--></div>\
 					</div>\
 				</div>',
-            'onInit': function (swfuploadify) {
+            'onInit': function (instance) {
                 if ($("#designer_imageurl").val() != "") {
                     var imgurls = $("#designer_imageurl").val().split(',');
                     for (var i = 0; i < imgurls.length; i++) {
-                        var tid = 'SWFUpload_0_' + i;
+                        var tid = 'SWFUpload_1_' + i;
                         var tfilenames = imgurls[i].split('/');
                         if (tfilenames.length > 0)
                             tfilenames = tfilenames[tfilenames.length - 1].replace("thumb","");
@@ -355,9 +351,6 @@ else
 				</div>';
                         $("#fileQueue").append(thtml);
                     }
-
-                    //var stats = this.getStats();
-                    //alert(stats);
 
                     BindDelImg();
                     BindSort();
@@ -378,9 +371,6 @@ else
 
                 BindDelImg();
                 BindSort();
-            },
-            'onQueueComplete': function (stats) {
-                reset_imgurl();
             }
         });
 
@@ -400,6 +390,8 @@ else
             //    alert(er);
             //    return;
             //}
+
+            reset_imgurl(); //同步显示照片及隐藏值
 
             var fields = $("form").serializeArray();
             $.ajax({
@@ -424,6 +416,7 @@ else
         });
     });
 
+    //绑定删除照片的action样式
     var BindDelImg = function () {
         $(".uploadifyQueueItem").live({
             mouseenter: function () {
@@ -456,5 +449,17 @@ else
         });
         var newid = new_order.join(',');
         $("#designer_imageurl").val(newid);
+    }
+
+    function ShowObjProperty(Obj) {
+        var PropertyList = '';
+        var PropertyCount = 0;
+        for (i in Obj) {
+            if (Obj.i != null)
+                PropertyList = PropertyList + i + '属性：' + Obj.i + '\r\n';
+            else
+                PropertyList = PropertyList + i + '方法\r\n';
+        }
+        alert(PropertyList);
     }
 </script>

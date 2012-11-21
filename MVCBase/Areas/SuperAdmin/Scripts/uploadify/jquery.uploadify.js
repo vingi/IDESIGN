@@ -126,7 +126,8 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					successTimeout  : 30,                 // The number of seconds to wait for Flash to detect the server's response after the file has finished uploading
 					uploadLimit     : 0,                  // The maximum number of files you can upload
 					width           : 120,                // The width of the browse button
-					
+					exitsfiles      : 0,                  // 用于编辑时,表示已存在的照片数量,如该数量和uploadLimit一致,则不允许上传
+
 					// Events
 					overrideEvents  : []             // (Array) A list of default event handlers to skip
 					/*
@@ -192,6 +193,10 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					upload_success_handler       : handlers.onUploadSuccess
 				}
 
+                //modify by vingi 初始化编辑时 是否已达照片允许上传的上限
+				if (settings.exitsfiles == settings.uploadLimit) 
+				    swfUploadSettings.button_disabled = true;
+				
 				// Merge the user-defined options with the defaults
 				if (swfUploadOptions) {
 					swfUploadSettings = $.extend(swfUploadSettings, swfUploadOptions);
@@ -342,10 +347,12 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 							$('#' + args[n]).fadeOut(300, function() {
 								$(this).remove();
 							});
+
 						    //modify by vingi 重置已上传的文件数量
 							var stats = swfuploadify.getStats();
-							stats.successful_uploads -= 1;
+							stats.successful_uploads = $(".uploadifyQueueItem .ImageShow").length - 1;
 							swfuploadify.setStats(stats);
+							swfuploadify.setButtonDisabled(false);
 						}
 					}
 				} else {
@@ -609,7 +616,8 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 		// Triggered once for each file added to the queue
 		onSelect : function(file) {
 			// Load the swfupload settings
-			var settings = this.settings;
+		    var settings = this.settings,
+		        swfuploadify = this;
 
 			// Check if a file with the same name exists in the queue
 			var queuedFile = {};
@@ -685,6 +693,11 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 			this.queueData.queueSize += file.size;
 			this.queueData.files[file.id] = file;
+
+		    //modify by vingi 重置已上传的文件数量
+			var stats = swfuploadify.getStats();
+			stats.successful_uploads = $(".uploadifyQueueItem .ImageShow").length;
+			swfuploadify.setStats(stats);
 
 			// Call the user-defined event handler
 			if (settings.onSelect) settings.onSelect.apply(this, arguments);
