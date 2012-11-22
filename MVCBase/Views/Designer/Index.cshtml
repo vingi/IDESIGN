@@ -1,5 +1,74 @@
-﻿@{
+﻿@model MVCBase.Domain.Entity.ID_DContentData
+@{
     ViewBag.Title = "Index";
 }
+@section head{
+    <link href="@Url.Content("~/Content/designerdetail.css")" rel="stylesheet" />
+}
 
-<h2>Index</h2>
+<div id="designerdetail">
+    <div id="detail_left">
+        <ul>
+            <li><label><span class="mark">▍</span>設 計 師</label>@Model.Dc_name</li>
+            <li><label><span class="mark">▍</span>公司名稱</label>@Model.Dc_company</li>
+            <li><label><span class="mark">▍</span>聯絡電話</label>@Model.Dc_tel</li>
+            <li><label><span class="mark">▍</span>電子郵件</label>@Model.Dc_email</li>
+            <li><label><span class="mark">▍</span>公司地址</label>@Model.Dc_address</li>
+            <li><label><span class="mark">▍</span>網&nbsp;&nbsp;&nbsp;&nbsp;站</label>@Model.Dc_url</li>
+            <li><label><span class="mark">▍</span>服務區域</label>@Model.Dc_local</li>
+            <li><label><span class="mark">▍</span>房屋類型</label>@{
+                    string temphtype = "";
+                    string htype = Model.Dc_htype != null ? Model.Dc_htype.Trim(',') : string.Empty;
+                    string[] htypes = htype.Split(',');
+                    for (int i = 0; i < htypes.Length; i++)
+                    {
+                        foreach (var item in @ViewBag.housetype)
+                        {
+
+                            if (item.Ht_Id.ToString().Equals(htypes[i]))
+                            {
+                                if (i != 0)
+                                {
+                                    temphtype += "、";       
+                                }
+                                temphtype += "<span>" + item.Ht_name + "</span>";
+                            }
+                        }
+                    }
+                    <h9>@temphtype</h9>
+                }
+            </li>
+            <li><label><span class="mark">▍</span>設計型式</label>@{
+                    string tempdtype = "";
+                    string dtype = Model.Dc_dtype != null ? Model.Dc_dtype.Trim(',') : string.Empty;
+                    string[] dtypes = dtype.Split(',');
+                    for (int i = 0; i < dtypes.Length; i++)
+                    {
+                        foreach (var item in @ViewBag.designtype)
+                        {
+
+                            if (item.Dt_Id.ToString().Equals(dtypes[i]))
+                            {
+                                if (i != 0)
+                                {
+                                    tempdtype += "、";
+                                }
+                                tempdtype += item.Dt_name;
+                            }
+                        }
+                    }
+                    <h9>@tempdtype</h9>
+                }
+            </li>
+            <li><label><span class="mark">▍</span>設計風格</label></li>
+            <li><label><span class="mark">▍</span>委托設計</label></li>
+            <li><label><span class="mark">▍</span>局部裝修</label></li>
+            <li><label><span class="mark">▍</span>平均收費</label></li>
+        </ul>
+    </div>
+    <div id="detail_mid">
+        <li><label><span class="mark">▍</span>設計強項</label></li>
+        <li><label><span class="mark">▍</span>設計理念</label></li>
+    </div>
+    <div id="detail_right">images</div>
+</div>

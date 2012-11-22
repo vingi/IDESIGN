@@ -495,6 +495,8 @@
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\img\wmp.gif" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\img\wordimg.gif" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\ui.css" />
+    <Content Include="Content\designerdetail.css" />
+    <Content Include="Content\Base\Images\base.png" />
     <Content Include="Content\Base\Images\logo.png" />
     <Content Include="Content\Base\Images\menu1.png" />
     <Content Include="Content\Base\Images\menu2.png" />

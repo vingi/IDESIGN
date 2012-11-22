@@ -7,7 +7,6 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 
 body {
     font-size: .85em;
-    font-family: "新細明體", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
     color: #696969;
@@ -91,20 +90,19 @@ page width. Or, you can specify an exact pixel width. */
     width: 227px;
     height: 77px;
     margin: 0 0 0 90px;
-    background : url(/content/Base/Images/logo.png) no-repeat top left;
+    background : url(/content/Base/Images/base.png) no-repeat 0 0;
 }
 
 header, #header {
     color: #000;
     padding: 0;
-    height: 100px;
 }
 
 #title {
     width: 871px;
     height: 98px;
-    margin: 15px auto 3px auto;
-    background : url(/content/Base/Images/top_bg.png) no-repeat top left;
+    margin: 15px auto 0 auto;
+    background : url(/content/Base/Images/base.png) no-repeat 0 -444px;
     display: block;
     text-align: left;
 }
@@ -114,10 +112,12 @@ header, #header {
     font-weight: bold;
     float: left;
     width: 200px;
+    font-family: "新細明體", Verdana, Helvetica, Sans-Serif;
 }
 
 #main {
-    
+    width: 871px;
+    margin: 10px auto;
 }
 
 footer, 
@@ -125,6 +125,8 @@ footer,
     background-color: #fff;
     color: #1978bf;
     height: 50px;
+    width: 871px;
+    margin: 5px auto;
 }
 
 #footer_left {
@@ -133,21 +135,50 @@ footer,
     margin: 14px 0 0 5px;
 }
 
-.Base_fb{ background-image: url(/content/Base/Images/base.png);background-position: 0 0; width: 36px; height: 35px; float: right;margin: 8px 8px; } 
-
+#menubar {
+    height: 40px;
+    border-bottom: 1px solid #e53c55;
+    width: 871px;
+    margin: 0 auto;
+    overflow: hidden;
+}
 /* TAB MENU   
 ----------------------------------------------------------*/
 ul#menu {
-    border-bottom: 1px #5C87B2 solid;
-    padding: 0 0 2px;
     position: relative;
-    margin: 0;
-    text-align: right;
+    margin: 10px 0 0 220px;
+    height: 20px;
 }
 
 ul#menu li {
     display: inline;
     list-style: none;
+    float: left;
+}
+ul#menu .menuitem {border-bottom: 5px solid #FFF;
+}
+ul#menu .menuitem:hover {border-bottom: 5px solid #e53c55;
+}
+ul#menu .menuitem,ul#menu .menudot {
+    background-image : url(/content/Base/Images/base.png);
+    background-repeat: no-repeat;
+}
+
+#menu_designer {
+    background-position: 0 -127px; width: 48px;  height: 25px;
+}
+#menu_furniture {
+    background-position: 0 -193px; width: 79px;  height: 25px;
+}
+#menu_calculate {
+    background-position: 0 -259px; width: 64px;  height: 25px;
+}
+#menu_news {
+    background-position: 0 -325px; width: 64px;  height: 25px;
+}
+ul#menu .menudot {
+    background-position: 0 -391px; width: 4px; height: 3px;
+    margin: 10px 20px 0 20px;
 }
 
 ul#menu li#greeting {
@@ -159,29 +190,23 @@ ul#menu li#greeting {
 }
 
 ul#menu li a {
-    padding: 10px 20px;
     font-weight: bold;
     text-decoration: none;
-    line-height: 2.8em;
-    background-color: #e8eef4;
-    color: #034af3;
-    -webkit-border-radius: 4px 4px 0 0;
-    -moz-border-radius: 4px 4px 0 0;
-    border-radius: 4px 4px 0 0;
+    display: block;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 ul#menu li a:hover {
-    background-color: #fff;
     text-decoration: none;
 }
 
 ul#menu li a:active {
-    background-color: #a6e2a6;
     text-decoration: none;
 }
 
 ul#menu li.selected a {
-    background-color: #fff;
     color: #000;
 }
 

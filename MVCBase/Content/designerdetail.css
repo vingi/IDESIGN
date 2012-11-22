@@ -1,0 +1,39 @@
+﻿#designerdetail {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 95%;
+    letter-spacing: -1px;
+}
+
+#detail_left, #detail_mid {
+    width: 270px;
+    float: left;
+    margin-left: 10px;
+}
+
+#detail_right {
+    float: left;
+    width: 300px;
+}
+
+#designerdetail .mark {
+    color: #e53c55;
+}
+
+#designerdetail ul {
+}
+
+#detail_left li {
+    list-style: none;
+    margin-top: 7px;
+}
+
+#detail_mid li {
+    list-style: none;
+    margin-top: 7px;
+    margin-bottom: 30px;
+}
+
+#designerdetail li label {
+    margin-right: 20px;
+}

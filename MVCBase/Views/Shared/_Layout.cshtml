@@ -5,6 +5,7 @@
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery.js")" type="text/javascript"></script>
+    @RenderSection("head",false)
 </head>
 <body>
     <div class="page">
@@ -13,7 +14,17 @@
                 <div class="link">住商不動產 | iHouse</div>
                 <div id="logo"></div>
             </div>
-            
+            <div id="menubar">
+                <ul id="menu">
+                    <li id="menu_designer" class="menuitem"><a href=""></a></li>
+                    <li class="menudot"></li>
+                    <li id="menu_furniture" class="menuitem"><a href=""></a></li>
+                    <li class="menudot"></li>
+                    <li id="menu_calculate" class="menuitem"><a href=""></a></li>
+                    <li class="menudot"></li>
+                    <li id="menu_news" class="menuitem"><a href=""></a></li>
+                </ul>
+            </div>
         </header>
         <section id="main">
             @RenderBody()
