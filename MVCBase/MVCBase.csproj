@@ -585,6 +585,7 @@
     <Content Include="Areas\SuperAdmin\Views\Designer\Index.cshtml" />
     <Content Include="Areas\SuperAdmin\Scripts\uploadify\UploadHandler.ashx" />
     <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\Thumbs.db" />
+    <Content Include="Areas\SuperAdmin\Views\DesignerList\Index.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="hibernate.cfg.xml">

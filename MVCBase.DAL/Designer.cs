@@ -42,5 +42,15 @@ namespace MVCBase.DAL
             return model;
         }
 
+        public IList<ID_DContentData> GetModel(int pagenum)
+        {
+            int pagestep = 10;
+            return session.CreateQuery("from ID_DContentData as ns where ns.Dc_Display=:st order by ns.Dc_createdate desc")
+                .SetBoolean("st", true)
+                .SetFirstResult((pagenum - 1) * pagestep)
+                .SetMaxResults(pagenum * pagestep)
+                .List<ID_DContentData>();
+        }
+
     }
 }
