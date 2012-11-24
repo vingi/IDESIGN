@@ -6,18 +6,17 @@
     <link href="@Url.Content("~/Content/designerdetail.css")" rel="stylesheet" />
 }
 
-<div id="designerdetail">
+<div id="designerdetail" class="clearfix">
     <div id="detail_left">
-        <ul>
-            <li><label><span class="mark">▍</span>設 計 師</label>@Model.Dc_name</li>
-            <li><label><span class="mark">▍</span>公司名稱</label>@Model.Dc_company</li>
-            <li><label><span class="mark">▍</span>聯絡電話</label>@Model.Dc_tel</li>
-            <li><label><span class="mark">▍</span>電子郵件</label>@Model.Dc_email</li>
-            <li><label><span class="mark">▍</span>公司地址</label>@Model.Dc_address</li>
-            <li><label><span class="mark">▍</span>網&nbsp;&nbsp;&nbsp;&nbsp;站</label>@Model.Dc_url</li>
-            <li><label><span class="mark">▍</span>服務區域</label>@Model.Dc_local</li>
-            <li><label><span class="mark">▍</span>房屋類型</label>@{
-                    string temphtype = "";
+        <ul class="designeritem">
+            <li><label><span class="mark">▍</span>設 計 師</label><span>@Model.Dc_name</span></li>
+            <li><label><span class="mark">▍</span>公司名稱</label><span>@Model.Dc_company</span></li>
+            <li><label><span class="mark">▍</span>聯絡電話</label><span>@Model.Dc_tel</span></li>
+            <li><label><span class="mark">▍</span>電子郵件</label><span>@Model.Dc_email</span></li>
+            <li><label><span class="mark">▍</span>公司地址</label><span>@Model.Dc_address</span></li>
+            <li><label><span class="mark">▍</span>網&nbsp;&nbsp;&nbsp;&nbsp;站</label><span>@Model.Dc_url</span></li>
+            <li><label><span class="mark">▍</span>服務區域</label><span>@Model.Dc_local</span></li>
+            <li><label><span class="mark">▍</span>房屋類型</label><span>@{
                     string htype = Model.Dc_htype != null ? Model.Dc_htype.Trim(',') : string.Empty;
                     string[] htypes = htype.Split(',');
                     for (int i = 0; i < htypes.Length; i++)
@@ -29,17 +28,15 @@
                             {
                                 if (i != 0)
                                 {
-                                    temphtype += "、";       
+                                    @("、");       
                                 }
-                                temphtype += "<span>" + item.Ht_name + "</span>";
+                                <h3>@item.Ht_name</h3>
                             }
                         }
                     }
-                    <h9>@temphtype</h9>
-                }
+                }</span>
             </li>
-            <li><label><span class="mark">▍</span>設計型式</label>@{
-                    string tempdtype = "";
+            <li><label><span class="mark">▍</span>設計型式</label><span>@{
                     string dtype = Model.Dc_dtype != null ? Model.Dc_dtype.Trim(',') : string.Empty;
                     string[] dtypes = dtype.Split(',');
                     for (int i = 0; i < dtypes.Length; i++)
@@ -51,24 +48,65 @@
                             {
                                 if (i != 0)
                                 {
-                                    tempdtype += "、";
+                                    @("、");
                                 }
-                                tempdtype += item.Dt_name;
+                                <h3>@item.Dt_name</h3>
                             }
                         }
                     }
-                    <h9>@tempdtype</h9>
-                }
+                }</span>
             </li>
-            <li><label><span class="mark">▍</span>設計風格</label></li>
-            <li><label><span class="mark">▍</span>委托設計</label></li>
-            <li><label><span class="mark">▍</span>局部裝修</label></li>
-            <li><label><span class="mark">▍</span>平均收費</label></li>
+            <li><label><span class="mark">▍</span>設計風格</label><span>@{
+                    string stype = Model.Dc_stype != null ? Model.Dc_stype.Trim(',') : string.Empty;
+                    string[] stypes = stype.Split(',');
+                    for (int i = 0; i < stypes.Length; i++)
+                    {
+                        foreach (var item in @ViewBag.designstyletype)
+                        {
+
+                            if (item.St_Id.ToString().Equals(stypes[i]))
+                            {
+                                if (i != 0)
+                                {
+                                    @("、");
+                                }
+                                <h3>@item.St_name</h3>
+                            }
+                        }
+                    }
+                }</span></li>
+            <li><label><span class="mark">▍</span>委托設計</label>@(Model.Dc_Entrust ? "接受" : "不接受")</li>
+            <li><label><span class="mark">▍</span>局部裝修</label>@(Model.Dc_Decoration ? "接受" : "不接受")</li>
+            <li><label><span class="mark">▍</span>平均收費</label><span>@Model.Dc_price</span></li>
         </ul>
     </div>
     <div id="detail_mid">
-        <li><label><span class="mark">▍</span>設計強項</label></li>
-        <li><label><span class="mark">▍</span>設計理念</label></li>
+        <ul class="designeritem">
+        <li><label><span class="mark">▍</span>設計強項</label><div>@Model.Dc_Strengths</div></li>
+        <li><label><span class="mark">▍</span>設計理念</label><div>@Model.Dc_Text</div></li>
+            </ul>
     </div>
-    <div id="detail_right">images</div>
+    <div id="detail_right">
+        <div id="imgshow"><img id="mainimg" src="" /></div>
+            <div id="imglist">
+                @{
+                    string[] imgs = Model.Dc_ImageUrl.Split(',');
+                    foreach (var item in imgs)
+                    {
+                        <span><img src="@item" /></span>
+                    }
+                }
+            </div>
+    </div>
 </div>
+<div id="detailfoot"></div>
+<script type="text/javascript">
+    $(function () {
+        $("#imglist img").click(function () {
+            $("#mainimg").attr("src", $(this).attr("src").replace("thumb",""));
+        });
+        if ($("#imglist img").length > 0) {
+            $("#mainimg").attr("src", $("#imglist img:first").attr("src").replace("thumb", ""));
+        }
+    });
+</script>
