@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MVCBase.Domain" namespace="MVCBase.Domain.Entity">
+  <class name="MVCBase.Domain.Entity.ID_TopStarData" table="ID_TopStarData">
+    <id name="Ts_place" column="Ts_place" type="int" unsaved-value="0">
+
+    </id>
+    <property name="Ts_Id" column="Ts_Id" type="int"  insert="false" update="false" />
+    <property name="Ts_DcID_FK" column="Ts_DcID_FK" type="int"  />
+
+  </class>
+</hibernate-mapping>

@@ -132,6 +132,8 @@
     <Compile Include="Common\common.cs" />
     <Compile Include="Common\Database.cs" />
     <Compile Include="Common\Encrypt.cs" />
+    <Compile Include="Common\HtmlPageInfo.cs" />
+    <Compile Include="Common\HtmlPagerControl.cs" />
     <Compile Include="Common\JScript.cs" />
     <Compile Include="Common\MVCCommon.cs" />
     <Compile Include="Common\SqlInject.cs" />
@@ -495,6 +497,7 @@
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\img\wmp.gif" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\img\wordimg.gif" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\ui.css" />
+    <Content Include="Content\Base\Images\select_bg.png" />
     <Content Include="Content\designerdetail.css" />
     <Content Include="Content\Base\Images\base.png" />
     <Content Include="Content\Base\Images\logo.png" />
@@ -504,6 +507,7 @@
     <Content Include="Content\Base\Images\menu4.png" />
     <Content Include="Content\Base\Images\menudot.png" />
     <Content Include="Content\Base\Images\top_bg.png" />
+    <Content Include="Content\designerlist.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -585,7 +589,10 @@
     <Content Include="Areas\SuperAdmin\Views\Designer\Index.cshtml" />
     <Content Include="Areas\SuperAdmin\Scripts\uploadify\UploadHandler.ashx" />
     <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\Thumbs.db" />
-    <Content Include="Areas\SuperAdmin\Views\DesignerList\Index.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\DesignerList\Page.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\DesignerList\Popular.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\DesignerList\Star.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\DesignerList\Choose.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="hibernate.cfg.xml">
@@ -604,6 +611,7 @@
     <Content Include="Areas\SuperAdmin\Scripts\facebox.js" />
     <Content Include="Areas\SuperAdmin\Scripts\jquery.wysiwyg.js" />
     <Content Include="Areas\SuperAdmin\Scripts\simpla.jquery.configuration.js" />
+    <Content Include="Scripts\jquery.CRselectBox.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -636,6 +644,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Designer\Index.cshtml" />
+    <Content Include="Views\Designer\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\SuperAdmin\Models\" />

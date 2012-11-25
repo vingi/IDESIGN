@@ -1,0 +1,92 @@
+﻿#topselect {
+    float: left;
+    width: 270px;
+    font-weight: bold;
+}
+
+    #topselect span {
+        margin-right: 10px;
+    }
+
+#functionselect {
+    float: right;
+    width: 435px;
+}
+
+.selectitem {
+    float: left;
+    width: 135px;
+    height: 18px;
+    font-size: 88%;
+    margin-left: 10px;
+    padding-top: 1px;
+    background: url(/content/Base/Images/select_bg.png) no-repeat 0 0;
+    cursor: pointer;
+}
+
+    .selectitem label {
+        color: #FFF;
+        font-weight: bold;
+        margin-left: 7px;
+        float: left;
+        width: 60px;
+        cursor: pointer;
+    }
+
+    .selectitem span {
+        float: left;
+        width: 60px;
+        text-align: center;
+    }
+
+
+.CRselectBox {
+    float: left;
+    width: 65px;
+    text-align: center;
+    /*height: 20px;*/
+}
+.CRselectBoxHover {
+}
+.CRselectBox a.CRselectValue {
+	display:block;
+	white-space:nowrap;
+	overflow:hidden;
+	width:45px;
+    padding-right: 20px;
+    color:dimGray;
+}
+.CRselectBoxOptions {
+	border:1px solid #999;
+	margin-left:-1px;
+	list-style:none;
+	overflow-y:auto;
+	z-index:1000;
+	position: absolute;
+	width:60px;display:none;
+}
+.CRselectBoxOptions a{
+	color:dimGray;
+	display:block;
+	height:16px;
+	line-height:16px;
+	padding-left:4px;
+	background:#fff;	
+	overflow:hidden;
+	white-space:nowrap;
+}
+.CRselectBoxOptions a:hover{
+	background:#bbb
+}
+.CRselectBoxOptions a.selected{
+	background:#bbb
+}
+/* 解决 firefox 点击放大出现虚线框，从而导致滚动条的问题  */
+.CRselectBox a { 
+	outline: none; 
+	text-decoration:none;
+}
+.CRselectBox a:focus { 
+	outline: none; 
+	text-decoration:none;
+} 

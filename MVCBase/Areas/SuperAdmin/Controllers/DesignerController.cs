@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVCBase.Domain.Entity;
+using MVCBase.DAL;
+using NHibernate;
 
 namespace MVCBase.Areas.SuperAdmin.Controllers
 {
@@ -51,6 +54,21 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
                 {
                     result = ex.ToString();
                 }
+            }
+
+            return result;
+        }
+
+        public string Delete(int id)
+        {
+            string result = "0";
+            Designer dal = new Designer();
+            var model = dal.GetSingledataById(id);
+            if (model != null)
+            {
+                model.Dc_display = false;
+                dal.Update(model);
+                result = "1";
             }
 
             return result;

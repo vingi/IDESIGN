@@ -34,6 +34,13 @@ namespace MVCBase.DAL
             session.Flush();
         }
 
+        public int GetCount() {
+            int count = 0;
+            count = session.CreateSQLQuery("select count(0) from ID_DContentData where Dc_display=:st")
+                .SetBoolean("st", true).UniqueResult<int>();
+            return count;
+        }
+
         public ID_DContentData GetSingledataById(int Dc_Id)
         {
             var model = session.Get<ID_DContentData>(Dc_Id);
@@ -45,7 +52,7 @@ namespace MVCBase.DAL
         public IList<ID_DContentData> GetModel(int pagenum)
         {
             int pagestep = 10;
-            return session.CreateQuery("from ID_DContentData as ns where ns.Dc_Display=:st order by ns.Dc_createdate desc")
+            return session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st order by ns.Dc_createdate desc")
                 .SetBoolean("st", true)
                 .SetFirstResult((pagenum - 1) * pagestep)
                 .SetMaxResults(pagenum * pagestep)

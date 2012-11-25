@@ -1,0 +1,33 @@
+﻿@model IList<MVCBase.Domain.Entity.ID_DContentData>
+@{
+    ViewBag.Title = "Index";
+}
+@section head{
+    <link href="@Url.Content("~/Content/designerlist.css")" rel="stylesheet" />
+}
+
+<div id="designerbar" class="clearfix">
+    <div id="topselect"><span>人氣設計師</span><span>新星設計師</span><span>嚴選設計師</span></div>
+    <div id="functionselect"><div class="selectitem"><label>房屋類型</label><span>不拘</span></div><div class="selectitem"><label>設計型式</label><span>不拘</span></div>
+        <div class="selectitem">
+            <label>設計風格</label><select name="abc" id="abc">
+					<option value="1">选项一一</option>
+					<option value="2">选项二三</option>
+					<option value="3">选项三</option>
+					<option value="4">选项四</option>
+					<option value="5">选项五</option>
+					<option value="6">不拘</option>
+				</select>
+        </div>
+
+    </div>
+</div>
+<div id="designerlist" class="clearfix">
+</div>
+<script src="@Url.Content("~/Scripts/jquery.CRselectBox.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#abc").CRselectBox();
+    });
+
+</script>
