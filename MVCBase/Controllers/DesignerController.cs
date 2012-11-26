@@ -17,7 +17,7 @@ namespace MVCBase.Controllers
         public ActionResult Index(int? id)
         {
             DAL.Designer dal = new DAL.Designer();
-            var model = dal.GetSingledataById(id.HasValue ? int.Parse(id.ToString()) : 0);
+            var model = dal.GetSingledataById(id.HasValue ? id.Value : 0);
 
             //房屋類型
             DAL.HouseType dal_housetype = new DAL.HouseType();
@@ -35,10 +35,26 @@ namespace MVCBase.Controllers
             return View(model);
         }
 
-        public ActionResult List(int? id)
-        {
 
-            return View();
+        public ActionResult List(string designertype, int? id)
+        {
+            //房屋類型
+            DAL.HouseType dal_housetype = new DAL.HouseType();
+            var housetype = dal_housetype.GetAllModel();
+            ViewBag.housetype = housetype;
+            //設計型式
+            DAL.DesignType dal_designtype = new DAL.DesignType();
+            var designtype = dal_designtype.GetAllModel();
+            ViewBag.designtype = designtype;
+            //設計風格
+            DAL.DesignStyleType dal_designstyletype = new DAL.DesignStyleType();
+            var designstyletype = dal_designstyletype.GetAllModel();
+            ViewBag.designstyletype = designstyletype;
+
+            Designer dal = new Designer();
+            var model = dal.GetPopularList(id.HasValue ? id.Value : 0);
+            return View(model);
         }
+
     }
 }

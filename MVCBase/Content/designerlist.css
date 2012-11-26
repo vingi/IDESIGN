@@ -13,6 +13,10 @@
     width: 435px;
 }
 
+.sheetfocus {
+    color: #e53c55;
+}
+
 .selectitem {
     float: left;
     width: 135px;
@@ -42,7 +46,7 @@
 
 .CRselectBox {
     float: left;
-    width: 65px;
+    width: 67px;
     text-align: center;
     /*height: 20px;*/
 }
@@ -63,14 +67,14 @@
 	overflow-y:auto;
 	z-index:1000;
 	position: absolute;
-	width:60px;display:none;
+	width:67px;
+    display:none;
 }
 .CRselectBoxOptions a{
 	color:dimGray;
 	display:block;
 	height:16px;
 	line-height:16px;
-	padding-left:4px;
 	background:#fff;	
 	overflow:hidden;
 	white-space:nowrap;
@@ -89,4 +93,37 @@
 .CRselectBox a:focus { 
 	outline: none; 
 	text-decoration:none;
-} 
+}
+
+#designerlist {
+    margin: 15px 0;
+}
+    #designerlist .designeritem {
+        border: 1px solid #ddd;
+        float: left;
+        width: 141px;
+        height: 150px;
+        margin: 1px 0 0 1px;
+        overflow: hidden;
+    }
+
+    #designerlist .imgshow {
+        width: 100%;
+        height: 134px;
+    }
+        #designerlist .imgshow img {
+            width: 100%;
+            height: 134px;
+        }
+    #designerlist .designername {
+        color: #FFF;
+        text-align: center;
+        font-size: 90%;
+        height: 16px;
+        line-height: 16px;
+    }
+
+    #designerlist .pagination {
+        border-bottom: 5px solid #e53c55;
+        margin: 15px 0 35px 0;
+    }
