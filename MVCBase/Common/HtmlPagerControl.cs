@@ -75,6 +75,8 @@ namespace MVCBase.Common
                 info.IndexPage = 1;
                 info.Text = "&laquo; 首頁";
                 info.Width = 50;
+                if (SimpleTheme) info = null;
+
                 info2 = new HtmlPageInfo();
                 info2.CurrentPage = this._current_page;
                 info2.IndexPage = this._current_page - 1;
@@ -82,6 +84,7 @@ namespace MVCBase.Common
                 info2.ClickEvent = this._clickevent;
                 info2.Text = "&laquo; 上一頁";
                 info2.Width = 50;
+
             }
             else
             {
@@ -97,6 +100,7 @@ namespace MVCBase.Common
                 info3.IndexPage = this._current_page + 1;
                 info3.Text = "下一頁 &raquo;";
                 info3.Width = 50;
+
                 info4 = new HtmlPageInfo();
                 info4.CurrentPage = this._current_page;
                 info4.HrefPage = this._href_page;
@@ -104,6 +108,7 @@ namespace MVCBase.Common
                 info4.IndexPage = this._page_count;
                 info4.Text = "末頁 &raquo;";
                 info4.Width = 50;
+                if (SimpleTheme) info4 = null;
             }
             else
             {
@@ -171,7 +176,11 @@ namespace MVCBase.Common
             StringBuilder builder = new StringBuilder();
             if (this._page_count > 1)
             {
-                builder.Append("<div style=\"text-align: center;margin: 10px;font-family: 黑体;color: #57A000;\"><div style=\"float: left;\">總 " + this._totalcount.ToString() + " 筆</div><div style=\"float: right;\">共 <span id=\"" + this._totalpageid + "\">" + this._page_count.ToString() + "</span> 頁</div>");
+                builder.Append("<div style=\"text-align: center;margin: 10px;font-family: 黑体;color: #57A000;\">");
+                if (!(SimpleTheme || !DisplayTotal))
+                    builder.Append("<div style=\"float: left;\">總 " + this._totalcount.ToString() +
+                                   " 筆</div><div style=\"float: right;\">共 <span id=\"" + this._totalpageid + "\">" +
+                                   this._page_count.ToString() + "</span> 頁</div>");
                 foreach (HtmlPageInfo info in this._items)
                 {
                     builder.Append(info.Render());
@@ -183,6 +192,32 @@ namespace MVCBase.Common
             }
             builder.Append("<div style=\"clear: both;\"></div></div>");
             return builder.ToString();
+        }
+
+        //设置是否显示精简样式(即,不显示首页和尾页,以及不显示总笔数和总页数)
+        private bool _simpletheme = false;
+        public bool SimpleTheme {
+            get { return _simpletheme; }
+            set { _simpletheme = value; }
+        }
+
+        private bool _displaytotal = true;
+        public bool DisplayTotal
+        {
+            get { return _displaytotal; }
+            set { _displaytotal = value; }
+        }
+
+        public string HrefPage
+        {
+            get
+            {
+                return this._href_page;
+            }
+            set
+            {
+                this._href_page = value;
+            }
         }
 
         public string ClickEvent
@@ -229,18 +264,6 @@ namespace MVCBase.Common
             set
             {
                 this._display_count = value;
-            }
-        }
-
-        public string HrefPage
-        {
-            get
-            {
-                return this._href_page;
-            }
-            set
-            {
-                this._href_page = value;
             }
         }
 

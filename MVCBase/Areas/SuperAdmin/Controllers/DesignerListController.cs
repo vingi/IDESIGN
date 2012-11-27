@@ -22,11 +22,12 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             IList<ID_DContentData> designers = dal.GetModel(id.HasValue ? (int)id : 1);
 
             int pagecount = 1;
+            int pagestep = 16;
             int objectcount = dal.GetCount();
-            if (objectcount % 3 == 0)
-                pagecount = objectcount / 3;
+            if (objectcount % pagestep == 0)
+                pagecount = objectcount / pagestep;
             else
-                pagecount = objectcount / 3 + 1;
+                pagecount = objectcount / pagestep + 1;
             //////
             /////pagecount = 13;
             int currentpage = id.HasValue ? (int)id : 1;
