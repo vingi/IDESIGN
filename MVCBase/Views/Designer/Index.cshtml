@@ -90,10 +90,13 @@
         <div id="imgshow"><img id="mainimg" src="" /></div>
             <div id="imglist">
                 @{
-                    string[] imgs = Model.Dc_ImageUrl.Split(',');
-                    foreach (var item in imgs)
+                    if (Model.Dc_ImageUrl != null)
                     {
-                        <span><img src="@item" /></span>
+                        string[] imgs = Model.Dc_ImageUrl.Split(',');
+                        foreach (var item in imgs)
+                        {
+                            <span><img src="@item" /></span>
+                        }
                     }
                 }
             </div>

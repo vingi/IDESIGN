@@ -44,12 +44,16 @@
 <div id="designerlist" class="clearfix">
     @foreach (var item in Model)
     {
-        string[] tempimgs = item.Dc_ImageUrl.Split(',');
         string imgsrc = "defaultimg";
-        if (tempimgs.Length > 0)
+        if (item.Dc_ImageUrl != null)
         {
-            imgsrc = tempimgs[0];
+            string[] tempimgs = item.Dc_ImageUrl.Split(',');
+            if (tempimgs.Length > 0)
+            {
+                imgsrc = tempimgs[0];
+            }
         }
+
         <div class="designeritem"><a href="@Url.Action("index", "designer", new { id = @item.Dc_Id })">
             <div class="imgshow"><img src="@imgsrc" alt="@(item.Dc_company)" /></div>
             <div class="designername" style="background-color: @(item.Dc_color)">@item.Dc_name</div></a>

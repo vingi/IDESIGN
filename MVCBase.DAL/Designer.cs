@@ -110,13 +110,7 @@ namespace MVCBase.DAL
                     for (int i = 1; i < pagestep + 1; i++)
                     {
                         if (di.ContainsKey(i))
-                        {
-                            foreach (var item in speciallist)
-                            {
-                                if (item.Dc_Id.Equals(di[i]))
-                                    data.Add(item);
-                            }
-                        }
+                            data.Add(speciallist.Where(it => it.Dc_Id.Equals(di[i])).Single());
                         else
                         {
                             if (commonlist.Count > commlist_index)
