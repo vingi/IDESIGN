@@ -20,6 +20,7 @@ namespace MVCBase.DAL
         {
             session.Save(news);
             session.Flush();
+
         }
 
         public void Update(Ba_News news)

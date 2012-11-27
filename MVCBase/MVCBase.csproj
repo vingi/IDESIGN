@@ -75,9 +75,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -564,7 +561,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="App_Data\MVCBaseDB.db" />
     <Content Include="Areas\SuperAdmin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\Shared\_SuperAdminLayout.cshtml" />
     <Content Include="API\StaticRequestHandler.ashx" />
@@ -588,12 +584,11 @@
     <Content Include="Areas\SuperAdmin\Public\UploadHandler.ashx" />
     <Content Include="Areas\SuperAdmin\Views\Designer\Index.cshtml" />
     <Content Include="Areas\SuperAdmin\Scripts\uploadify\UploadHandler.ashx" />
-    <Content Include="Areas\SuperAdmin\Scripts\colorpicker\images\Thumbs.db" />
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Page.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Popular.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Star.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Choose.cshtml" />
-    <None Include="Properties\PublishProfiles\local.pubxml" />
+    <None Include="Properties\PublishProfiles\local2.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -647,6 +642,7 @@
     <Content Include="Views\Designer\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\SuperAdmin\Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -50,14 +50,14 @@
         {
             imgsrc = tempimgs[0];
         }
-        <div class="designeritem">
+        <div class="designeritem"><a href="@Url.Action("index", "designer", new { id = @item.Dc_Id })">
             <div class="imgshow"><img src="@imgsrc" alt="@(item.Dc_company)" /></div>
-            <div class="designername" style="background-color: @(item.Dc_color)">@item.Dc_name</div>
+            <div class="designername" style="background-color: @(item.Dc_color)">@item.Dc_name</div></a>
         </div>
     }
 
     <div class="clear"></div>
-    <div class="pagination">sadf</div>
+    <div class="pagination"></div>
 </div>
 <script src="@Url.Content("~/Scripts/jquery.CRselectBox.js")" type="text/javascript"></script>
 <script type="text/javascript">
