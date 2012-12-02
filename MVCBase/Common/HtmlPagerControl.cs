@@ -73,7 +73,7 @@ namespace MVCBase.Common
                 info.HrefPage = this._href_page;
                 info.ClickEvent = this._clickevent;
                 info.IndexPage = 1;
-                info.Text = "&laquo; 首頁";
+                info.Text = string.IsNullOrEmpty(NavigateFirst) ? "&laquo; 首頁" : NavigateFirst;
                 info.Width = 50;
                 if (SimpleTheme) info = null;
 
@@ -82,9 +82,8 @@ namespace MVCBase.Common
                 info2.IndexPage = this._current_page - 1;
                 info2.HrefPage = this._href_page;
                 info2.ClickEvent = this._clickevent;
-                info2.Text = "&laquo; 上一頁";
+                info2.Text = string.IsNullOrEmpty(NavigatePrevious) ? "&laquo; 上一頁" : NavigatePrevious;
                 info2.Width = 50;
-
             }
             else
             {
@@ -98,7 +97,7 @@ namespace MVCBase.Common
                 info3.HrefPage = this._href_page;
                 info3.ClickEvent = this._clickevent;
                 info3.IndexPage = this._current_page + 1;
-                info3.Text = "下一頁 &raquo;";
+                info3.Text = string.IsNullOrEmpty(NavigateNext) ? "下一頁 &raquo;" : NavigateNext;
                 info3.Width = 50;
 
                 info4 = new HtmlPageInfo();
@@ -106,7 +105,7 @@ namespace MVCBase.Common
                 info4.HrefPage = this._href_page;
                 info4.ClickEvent = this._clickevent;
                 info4.IndexPage = this._page_count;
-                info4.Text = "末頁 &raquo;";
+                info4.Text = string.IsNullOrEmpty(NavigateLast) ? "末頁 &raquo;" : NavigateLast;
                 info4.Width = 50;
                 if (SimpleTheme) info4 = null;
             }
@@ -115,14 +114,8 @@ namespace MVCBase.Common
                 info4 = null;
                 info3 = null;
             }
-            if (info != null)
-            {
-                this._items.Add(info);
-            }
-            if (info2 != null)
-            {
-                this._items.Add(info2);
-            }
+            if (info != null) this._items.Add(info);
+            if (info2 != null) this._items.Add(info2);
             for (int i = this._left_display_number; i <= this._right_display_number; i++)
             {
                 HtmlPageInfo item = new HtmlPageInfo();
@@ -137,14 +130,8 @@ namespace MVCBase.Common
                 item.IndexPage = i;
                 this._items.Add(item);
             }
-            if (info3 != null)
-            {
-                this._items.Add(info3);
-            }
-            if (info4 != null)
-            {
-                this._items.Add(info4);
-            }
+            if (info3 != null) this._items.Add(info3);
+            if (info4 != null) this._items.Add(info4);
         }
 
         private List<int> ListPage(int current, int place, bool reverse)
@@ -154,13 +141,9 @@ namespace MVCBase.Common
             {
                 list.Add(current);
                 if (reverse)
-                {
                     current++;
-                }
                 else
-                {
                     current--;
-                }
             }
             return list;
         }
@@ -195,11 +178,7 @@ namespace MVCBase.Common
         }
 
         //设置是否显示精简样式(即,不显示首页和尾页,以及不显示总笔数和总页数)
-        private bool _simpletheme = false;
-        public bool SimpleTheme {
-            get { return _simpletheme; }
-            set { _simpletheme = value; }
-        }
+        public bool SimpleTheme { get; set; }
 
         private bool _displaytotal = true;
         public bool DisplayTotal
@@ -208,143 +187,101 @@ namespace MVCBase.Common
             set { _displaytotal = value; }
         }
 
+        ///首页 文本
+        public string NavigateFirst { get; set; }
+        ///末页 文本
+        public string NavigateLast { get; set; }
+        // 上一页 文本
+        public string NavigatePrevious { get; set; }
+        //下一页 文本
+        public string NavigateNext { get; set; }
+
         public string HrefPage
         {
-            get
-            {
-                return this._href_page;
-            }
-            set
-            {
-                this._href_page = value;
-            }
+            get { return _href_page; }
+            set { _href_page = value; }
         }
 
         public string ClickEvent
         {
-            get
-            {
-                return this._clickevent;
-            }
-            set
-            {
-                this._clickevent = value;
-            }
+            get { return _clickevent; }
+            set { _clickevent = value; }
         }
 
         public int CurrentPage
         {
-            get
-            {
-                return this._current_page;
-            }
+            get { return _current_page; }
             set
             {
-                if (value > this._page_count)
+                if (value > _page_count)
                 {
-                    this._current_page = this._page_count;
+                    _current_page = _page_count;
                 }
                 else if (value < 1)
                 {
-                    this._current_page = 1;
+                    _current_page = 1;
                 }
                 else
                 {
-                    this._current_page = value;
+                    _current_page = value;
                 }
             }
         }
 
         public int Displaycount
         {
-            get
-            {
-                return this._display_count;
-            }
-            set
-            {
-                this._display_count = value;
-            }
+            get { return _display_count; }
+            set { _display_count = value; }
         }
 
         public HtmlPageInfo this[int index]
         {
             get
             {
-                if ((index >= this._page_count) || (index < 0))
+                if ((index >= _page_count) || (index < 0))
                 {
                     throw new Exception("索引超出大小");
                 }
-                return this._items[index];
+                return _items[index];
             }
         }
 
         public List<HtmlPageInfo> Items
         {
-            get
-            {
-                return this._items;
-            }
-            set
-            {
-                this._items = value;
-            }
+            get { return _items; }
+            set { _items = value; }
         }
 
         public int left_display_number
         {
-            get
-            {
-                return this._left_display_number;
-            }
+            get { return _left_display_number; }
         }
 
         public string MiddleSeperator
         {
-            get
-            {
-                return this._middle_seperator;
-            }
-            set
-            {
-                this._middle_seperator = value;
-            }
+            get { return _middle_seperator; }
+            set { _middle_seperator = value; }
         }
 
         public int PageCount
         {
-            get
-            {
-                return this._page_count;
-            }
+            get { return _page_count; }
         }
 
         public int right_display_number
         {
-            get
-            {
-                return this._right_display_number;
-            }
+            get { return _right_display_number; }
         }
 
         public int step
         {
-            get
-            {
-                return this._step;
-            }
+            get { return _step; }
         }
 
         public string TotalPageId
         {
-            get
-            {
-                return this._totalpageid;
-            }
-            set
-            {
-                this._totalpageid = value;
-            }
+            get { return _totalpageid; }
+            set { _totalpageid = value; }
         }
     }
 }

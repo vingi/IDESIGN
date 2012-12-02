@@ -22,7 +22,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             IList<ID_DContentData> designers = dal.GetModel(id.HasValue ? (int)id : 1);
 
             int pagecount = 1;
-            int pagestep = 16;
+            int pagestep = 18;
             int objectcount = dal.GetCount();
             if (objectcount % pagestep == 0)
                 pagecount = objectcount / pagestep;
@@ -53,7 +53,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             TopPopular dal = new DAL.TopPopular();
             try
             {
-                for (int i = 1; i < 17; i++)
+                for (int i = 1; i < 19; i++)
                 {
                     if (form["toppopular" + i.ToString()] != null)
                     {
@@ -91,7 +91,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             TopStar dal = new DAL.TopStar();
             try
             {
-                for (int i = 1; i < 17; i++)
+                for (int i = 1; i < 19; i++)
                 {
                     if (form["topstar" + i.ToString()] != null)
                     {
@@ -129,7 +129,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             TopChoose dal = new DAL.TopChoose();
             try
             {
-                for (int i = 1; i < 17; i++)
+                for (int i = 1; i < 19; i++)
                 {
                     if (form["topchoose" + i.ToString()] != null)
                     {

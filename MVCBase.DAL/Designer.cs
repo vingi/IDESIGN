@@ -35,7 +35,7 @@ namespace MVCBase.DAL
             session.Flush();
         }
 
-        public int GetCount() {
+        public int GetCount(string designertype) {
             int count = 0;
             count = session.CreateSQLQuery("select count(0) from ID_DContentData where Dc_display=:st")
                 .SetBoolean("st", true).UniqueResult<int>();
@@ -52,7 +52,7 @@ namespace MVCBase.DAL
 
         public IList<ID_DContentData> GetModel(int pagenum)
         {
-            int pagestep = 16;
+            int pagestep = 18;
             return session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st order by ns.Dc_createdate desc")
                 .SetBoolean("st", true)
                 .SetFirstResult((pagenum - 1) * pagestep)
@@ -62,7 +62,7 @@ namespace MVCBase.DAL
 
         public IList<ID_DContentData> GetPopularList(int pagenum)
         {
-            int pagestep = 16;
+            int pagestep = 18;
             ICriteria crt = session.CreateCriteria(typeof(ID_TopPopularData));
             crt.AddOrder(new NHibernate.Criterion.Order("Tp_place", true));
             IList<ID_TopPopularData> pop = crt.List<ID_TopPopularData>();

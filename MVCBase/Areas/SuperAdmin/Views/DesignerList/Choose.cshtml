@@ -27,7 +27,12 @@
     <!-- End .content-box-header -->
     <div class="content-box-content">
         <form action="" method="post">
-                <div class="notification information png_bg">				<a href="#" class="close"><img src="@Url.Content("~/Areas/SuperAdmin/Content/images/icons/cross_grey_small.png")" title="Close this notification" alt="close" /></a>				<div>					填寫設計師ID,以設定在首頁顯示的位置				</div>			</div>
+                <div class="notification information png_bg">
+				<a href="#" class="close"><img src="@Url.Content("~/Areas/SuperAdmin/Content/images/icons/cross_grey_small.png")" title="Close this notification" alt="close" /></a>
+				<div>
+					填寫設計師ID,以設定在首頁顯示的位置
+				</div>
+			</div>
         <div>
             @foreach (var item in Model)
             {
@@ -35,7 +40,10 @@
                     <label>排位 @(item.Tc_place)</label><input class="text-input small-input" type="text" id="topchoose@(item.Tc_place)" name="topchoose@(item.Tc_place)" value="@item.Tc_DcID_FK">
                 </p>
             }
-            <p>                <input id="designer_button" class="button" type="button" value="Submit" />            </p>
+            <p>
+                <input id="designer_button" class="button" type="button" value="Submit" />
+            </p>
+
         </div>
         </form>
     </div>

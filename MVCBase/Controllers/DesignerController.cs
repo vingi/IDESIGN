@@ -53,6 +53,25 @@ namespace MVCBase.Controllers
 
             Designer dal = new Designer();
             var model = dal.GetPopularList(id.HasValue ? id.Value : 0);
+
+            int pagecount = 1;
+            int pagestep = 18;
+            int objectcount = dal.GetCount(designertype);
+            if (objectcount % pagestep == 0)
+                pagecount = objectcount / pagestep;
+            else
+                pagecount = objectcount / pagestep + 1;
+            //////
+            pagecount = 13;
+            int currentpage = id.HasValue ? (int)id : 1;
+            Common.HtmlPagerControl page = new Common.HtmlPagerControl(pagecount, 7, objectcount);
+            page.CurrentPage = currentpage;
+            page.HrefPage = "/designer/list/" + designertype + "/";
+            page.SimpleTheme = true;
+            page.NavigateNext = "&gt;";
+            page.NavigatePrevious = "&lt;";
+            ViewBag.pageinfo = page.Render();
+
             return View(model);
         }
 
