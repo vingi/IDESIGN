@@ -51,18 +51,28 @@ namespace MVCBase.Controllers
             var designstyletype = dal_designstyletype.GetAllModel();
             ViewBag.designstyletype = designstyletype;
 
+            //create query
+            var query = new DesignerListQuery();
+            query.Pageindex = id.HasValue ? id.Value : 0;
+            query.DeesignerType = designertype;
+            query.Housetype = Common.common.ConvertInt32(Request.QueryString["housetype"]);
+            query.Designtype = Common.common.ConvertInt32(Request.QueryString["designtype"]);
+            query.Designstyletype = Common.common.ConvertInt32(Request.QueryString["designstyletype"]);
+
+            //Get List
             Designer dal = new Designer();
             var model = dal.GetPopularList(id.HasValue ? id.Value : 0);
 
+            //page info
             int pagecount = 1;
             int pagestep = 18;
-            int objectcount = dal.GetCount(designertype);
+            int objectcount = dal.GetCount(query);
             if (objectcount % pagestep == 0)
                 pagecount = objectcount / pagestep;
             else
                 pagecount = objectcount / pagestep + 1;
             //////
-            pagecount = 13;
+            //pagecount = 13;
             int currentpage = id.HasValue ? (int)id : 1;
             Common.HtmlPagerControl page = new Common.HtmlPagerControl(pagecount, 7, objectcount);
             page.CurrentPage = currentpage;

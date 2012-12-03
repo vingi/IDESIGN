@@ -111,5 +111,17 @@ namespace MVCBase.Common
         }
         #endregion
 
+        #region 安全转换string to int32
+
+        public static int ConvertInt32(string str)
+        {
+            int tempi = 0;
+            int.TryParse(str, out tempi);
+            return tempi;
+        }
+
+        #endregion
+
+
     }
 }
