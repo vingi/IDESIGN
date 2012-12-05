@@ -6,6 +6,7 @@
 
     #topselect span {
         margin-right: 10px;
+        cursor: pointer;
     }
 
 #functionselect {

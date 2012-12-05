@@ -143,16 +143,11 @@ namespace MVCBase.DAL
             string specialid = string.Join(",", ar.ToArray());
 
             // specialid 为空时...正常查询
-            IList<ID_DContentData> data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_pdesign=:st")
-                .SetBoolean("st", true)
-                .SetFirstResult((query.Pageindex - 1) * pagestep)
-                .SetMaxResults(query.Pageindex * pagestep)
-                .List<ID_DContentData>();
+            IList<ID_DContentData> data = new List<ID_DContentData>();
 
             // specialid 有指定位置时
             if (specialid.Length > 0)
             {
-                data.Clear();
                 var commonquery = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_pdesign=:st and ns.Dc_Id not in (" + specialid + ")")
                     .SetBoolean("st", true);
                 //commonquery.SetString("specialid", specialid);
@@ -174,7 +169,11 @@ namespace MVCBase.DAL
                     for (int i = 1; i < pagestep + 1; i++)
                     {
                         if (di.ContainsKey(i))
-                            data.Add(speciallist.Where(it => it.Dc_Id.Equals(di[i])).Single());
+                        {
+                            var te = speciallist.Where(it => it.Dc_Id.Equals(di[i]));
+                            if (te.Any())
+                                data.Add(te.Single());
+                        }
                         else
                         {
                             if (commonlist.Count > commlist_index)
@@ -189,6 +188,14 @@ namespace MVCBase.DAL
                 {
                     data = commonquery.List<ID_DContentData>();
                 }
+            }
+            else
+            {
+                data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_pdesign=:st")
+                .SetBoolean("st", true)
+                .SetFirstResult((query.Pageindex - 1) * pagestep)
+                .SetMaxResults(query.Pageindex * pagestep)
+                .List<ID_DContentData>();
             }
             return data;
         }
@@ -216,11 +223,7 @@ namespace MVCBase.DAL
             string specialid = string.Join(",", ar.ToArray());
 
             // specialid 为空时...正常查询
-            IList<ID_DContentData> data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_ndesign=:st")
-                .SetBoolean("st", true)
-                .SetFirstResult((query.Pageindex - 1) * pagestep)
-                .SetMaxResults(query.Pageindex * pagestep)
-                .List<ID_DContentData>();
+            IList<ID_DContentData> data = new List<ID_DContentData>();
 
             // specialid 有指定位置时
             if (specialid.Length > 0)
@@ -247,7 +250,11 @@ namespace MVCBase.DAL
                     for (int i = 1; i < pagestep + 1; i++)
                     {
                         if (di.ContainsKey(i))
-                            data.Add(speciallist.Where(it => it.Dc_Id.Equals(di[i])).Single());
+                        {
+                            var te = speciallist.Where(it => it.Dc_Id.Equals(di[i]));
+                            if (te.Any())
+                                data.Add(te.Single());
+                        }
                         else
                         {
                             if (commonlist.Count > commlist_index)
@@ -262,6 +269,14 @@ namespace MVCBase.DAL
                 {
                     data = commonquery.List<ID_DContentData>();
                 }
+            }
+            else
+            {
+                data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_ndesign=:st")
+                .SetBoolean("st", true)
+                .SetFirstResult((query.Pageindex - 1) * pagestep)
+                .SetMaxResults(query.Pageindex * pagestep)
+                .List<ID_DContentData>();
             }
             return data;
         }
@@ -289,16 +304,11 @@ namespace MVCBase.DAL
             string specialid = string.Join(",", ar.ToArray());
 
             // specialid 为空时...正常查询
-            IList<ID_DContentData> data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_sdesign=:st")
-                .SetBoolean("st", true)
-                .SetFirstResult((query.Pageindex - 1) * pagestep)
-                .SetMaxResults(query.Pageindex * pagestep)
-                .List<ID_DContentData>();
+            IList<ID_DContentData> data = new List<ID_DContentData>();
 
             // specialid 有指定位置时
             if (specialid.Length > 0)
             {
-                data.Clear();
                 var commonquery = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_sdesign=:st and ns.Dc_Id not in (" + specialid + ")")
                     .SetBoolean("st", true);
                 //commonquery.SetString("specialid", specialid);
@@ -320,7 +330,11 @@ namespace MVCBase.DAL
                     for (int i = 1; i < pagestep + 1; i++)
                     {
                         if (di.ContainsKey(i))
-                            data.Add(speciallist.Where(it => it.Dc_Id.Equals(di[i])).Single());
+                        {
+                            var te = speciallist.Where(it => it.Dc_Id.Equals(di[i]));
+                            if (te.Any()) 
+                                data.Add(te.Single());
+                        }
                         else
                         {
                             if (commonlist.Count > commlist_index)
@@ -336,12 +350,22 @@ namespace MVCBase.DAL
                     data = commonquery.List<ID_DContentData>();
                 }
             }
+            else
+            {
+                data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_sdesign=:st")
+                .SetBoolean("st", true)
+                .SetFirstResult((query.Pageindex - 1) * pagestep)
+                .SetMaxResults(query.Pageindex * pagestep)
+                .List<ID_DContentData>();
+            }
             return data;
         }
 
         public IList<ID_DContentData> GetList(DesignerListQuery query)
         {
             IList<ID_DContentData> model = new List<ID_DContentData>();
+            if (query.DeesignerType == null)
+                model = this.GetPopularList(query);
             switch (query.DeesignerType.ToLower())
             {
                 case "popular":

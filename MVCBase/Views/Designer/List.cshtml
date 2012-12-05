@@ -97,6 +97,20 @@
         $("#housetype").CRselectBox();
         $("#designtype").CRselectBox();
         $("#designstyletype").CRselectBox();
+
+        $("#housetype_CRtext,#designtype_CRtext,#designstyletype_CRtext").live("change", function () {
+            alert("xx");
+        });
+
+        $("#sheet_popular").click(function() {
+            window.location.href = "/designer/list/popular/1";
+        });
+        $("#sheet_star").click(function () {
+            window.location.href = "/designer/list/star/1";
+        });
+        $("#sheet_choose").click(function () {
+            window.location.href = "/designer/list/choose/1";
+        });
     });
 
 </script>

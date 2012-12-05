@@ -171,7 +171,10 @@ namespace MVCBase.Common
             }
             else
             {
-                builder.Append("<div style=\"text-align: center;margin: 10px;color: #57A000;\"><div style=\"float: left;\">總 " + this._totalcount.ToString() + " 筆</div><div style=\"float: right;\">共 <span id=\"" + this._totalpageid + "\">" + this._page_count.ToString() + "</span> 頁</div>");
+                if (!(SimpleTheme || !DisplayTotal))
+                    builder.Append("<div style=\"float: left;\">總 " + this._totalcount.ToString() +
+                                   " 筆</div><div style=\"float: right;\">共 <span id=\"" + this._totalpageid + "\">" +
+                                   this._page_count.ToString() + "</span> 頁</div>");
             }
             builder.Append("<div style=\"clear: both;\"></div></div>");
             return builder.ToString();

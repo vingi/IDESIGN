@@ -10,7 +10,7 @@ using NHibernate;
 
 namespace MVCBase.Areas.SuperAdmin.Controllers
 {
-    public class DesignerController : Controller
+    public class DesignerOperateController : Controller
     {
         //
         // GET: /SuperAdmin/Designer/

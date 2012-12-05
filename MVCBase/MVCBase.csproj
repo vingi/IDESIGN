@@ -116,7 +116,7 @@
       <DependentUpon>StaticRequestHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Areas\SuperAdmin\Controllers\DefaultController.cs" />
-    <Compile Include="Areas\SuperAdmin\Controllers\DesignerController.cs" />
+    <Compile Include="Areas\SuperAdmin\Controllers\DesignerOperateController.cs" />
     <Compile Include="Areas\SuperAdmin\Controllers\DesignerListController.cs" />
     <Compile Include="Areas\SuperAdmin\Controllers\LoginController.cs" />
     <Compile Include="Areas\SuperAdmin\Controllers\NewsListController.cs" />
@@ -582,12 +582,12 @@
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\demos\uploadthumb.php" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\serverscript\php\ubb2html.php" />
     <Content Include="Areas\SuperAdmin\Public\UploadHandler.ashx" />
-    <Content Include="Areas\SuperAdmin\Views\Designer\Index.cshtml" />
     <Content Include="Areas\SuperAdmin\Scripts\uploadify\UploadHandler.ashx" />
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Page.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Popular.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Star.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Choose.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\DesignerOperate\Index.cshtml" />
     <None Include="Properties\PublishProfiles\local2.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="hibernate.cfg.xml">

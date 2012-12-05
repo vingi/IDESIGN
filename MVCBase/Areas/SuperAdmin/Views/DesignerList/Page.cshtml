@@ -53,7 +53,7 @@
                             <td>@designer.Dc_name</td>
                             <td>@designer.Dc_company</td>
                             <td>@designer.Dc_createdate</td>
-                            <td><a href="@Url.Action("index","Designer", new {id=@designer.Dc_Id})">修改</a> | <a href="javascript:void(0)" onclick="del(@designer.Dc_Id)">刪除</a></td>
+                            <td><a href="@Url.Action("index","DesignerOperate", new {id=@designer.Dc_Id})">修改</a> | <a href="javascript:void(0)" onclick="del(@designer.Dc_Id)">刪除</a></td>
                         </tr>
                     }
                 </tbody>
