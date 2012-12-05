@@ -61,7 +61,8 @@ namespace MVCBase.Controllers
 
             //Get List
             Designer dal = new Designer();
-            var model = dal.GetPopularList(id.HasValue ? id.Value : 0);
+            IList<ID_DContentData> model;
+            model = dal.GetList(query);
 
             //page info
             int pagecount = 1;

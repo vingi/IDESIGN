@@ -120,25 +120,13 @@ namespace MVCBase.DAL
             return data;
         }
 
-        public IList<ID_DContentData> GetList(DesignerListQuery query)
+        public IList<ID_DContentData> GetPopularList(DesignerListQuery query)
         {
             if (!(query.Housetype.Equals(0) && query.Designtype.Equals(0) && query.Designstyletype.Equals(0)))
                 //basic mode
                 return GetListBasic(query);
 
             // special mode
-            switch (query.DeesignerType.ToLower())
-            {
-                case "popular":
-                    tsql += " and Dc_pdesign=1 ";
-                    break;
-                case "star":
-                    tsql += " and Dc_ndesign=1 ";
-                    break;
-                case "choose":
-                    tsql += " and Dc_sdesign=1 ";
-                    break;
-            }
             ICriteria crt = session.CreateCriteria(typeof(ID_TopPopularData));
             crt.AddOrder(new NHibernate.Criterion.Order("Tp_place", true));
             IList<ID_TopPopularData> pop = crt.List<ID_TopPopularData>();
@@ -205,48 +193,53 @@ namespace MVCBase.DAL
             return data;
         }
 
-        public IList<ID_DContentData> GetPopularList(int pagenum)
+        public IList<ID_DContentData> GetStarList(DesignerListQuery query)
         {
-            ICriteria crt = session.CreateCriteria(typeof(ID_TopPopularData));
-            crt.AddOrder(new NHibernate.Criterion.Order("Tp_place", true));
-            IList<ID_TopPopularData> pop = crt.List<ID_TopPopularData>();
+            if (!(query.Housetype.Equals(0) && query.Designtype.Equals(0) && query.Designstyletype.Equals(0)))
+                //basic mode
+                return GetListBasic(query);
+
+            // special mode
+            ICriteria crt = session.CreateCriteria(typeof(ID_TopStarData));
+            crt.AddOrder(new NHibernate.Criterion.Order("Ts_place", true));
+            IList<ID_TopStarData> pop = crt.List<ID_TopStarData>();
             ArrayList ar = new ArrayList();
             Dictionary<int, int> di = new Dictionary<int, int>();
             foreach (var item in pop)
             {
-                if (item.Tp_DcID_FK.HasValue)
+                if (item.Ts_DcID_FK.HasValue)
                 {
-                    ar.Add(item.Tp_DcID_FK.Value.ToString());
-                    di.Add(item.Tp_place, item.Tp_DcID_FK.Value);
+                    ar.Add(item.Ts_DcID_FK.Value.ToString());
+                    di.Add(item.Ts_place, item.Ts_DcID_FK.Value);
                 }
             }
             string specialid = string.Join(",", ar.ToArray());
 
             // specialid 为空时...正常查询
-            IList<ID_DContentData> data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_pdesign=:st")
+            IList<ID_DContentData> data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_ndesign=:st")
                 .SetBoolean("st", true)
-                .SetFirstResult((pagenum - 1) * pagestep)
-                .SetMaxResults(pagenum * pagestep)
+                .SetFirstResult((query.Pageindex - 1) * pagestep)
+                .SetMaxResults(query.Pageindex * pagestep)
                 .List<ID_DContentData>();
 
             // specialid 有指定位置时
             if (specialid.Length > 0)
             {
                 data.Clear();
-                var commonquery = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_pdesign=:st and ns.Dc_Id not in (" + specialid + ")")
+                var commonquery = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_ndesign=:st and ns.Dc_Id not in (" + specialid + ")")
                     .SetBoolean("st", true);
                 //commonquery.SetString("specialid", specialid);
-                if (((pagenum - 1) * pagestep) - ar.Count > -1)
-                    commonquery.SetFirstResult((pagenum - 1) * pagestep - ar.Count);
+                if (((query.Pageindex - 1) * pagestep) - ar.Count > -1)
+                    commonquery.SetFirstResult((query.Pageindex - 1) * pagestep - ar.Count);
                 else
                     commonquery.SetFirstResult(0);
-                commonquery.SetMaxResults(pagenum * pagestep - ar.Count);
+                commonquery.SetMaxResults(query.Pageindex * pagestep - ar.Count);
                 var commonlist = commonquery.List<ID_DContentData>();
 
                 var commlist_index = 0;
-                if (pagenum.Equals(1))
-	            {
-		            var speciallist = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_pdesign=:st and ns.Dc_Id in (" + specialid + ")")
+                if (query.Pageindex.Equals(1))
+                {
+                    var speciallist = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_ndesign=:st and ns.Dc_Id in (" + specialid + ")")
                         .SetBoolean("st", true)
                         //.SetString("specialid", specialid)
                         .List<ID_DContentData>();
@@ -264,27 +257,105 @@ namespace MVCBase.DAL
                             }
                         }
                     }
-	            }
+                }
                 else
                 {
                     data = commonquery.List<ID_DContentData>();
                 }
             }
-
-            //.List<ID_DContentData>();
-
             return data;
         }
 
-        //public IList<ID_DContentData> GetStarList(int pagenum)
-        //{
+        public IList<ID_DContentData> GetChooseList(DesignerListQuery query)
+        {
+            if (!(query.Housetype.Equals(0) && query.Designtype.Equals(0) && query.Designstyletype.Equals(0)))
+                //basic mode
+                return GetListBasic(query);
 
-        //}
+            // special mode
+            ICriteria crt = session.CreateCriteria(typeof(ID_TopChooseData));
+            crt.AddOrder(new NHibernate.Criterion.Order("Tc_place", true));
+            IList<ID_TopChooseData> pop = crt.List<ID_TopChooseData>();
+            ArrayList ar = new ArrayList();
+            Dictionary<int, int> di = new Dictionary<int, int>();
+            foreach (var item in pop)
+            {
+                if (item.Tc_DcID_FK.HasValue)
+                {
+                    ar.Add(item.Tc_DcID_FK.Value.ToString());
+                    di.Add(item.Tc_place, item.Tc_DcID_FK.Value);
+                }
+            }
+            string specialid = string.Join(",", ar.ToArray());
 
-        //public IList<ID_DContentData> GetChooseList(int pagenum)
-        //{
-        //}
+            // specialid 为空时...正常查询
+            IList<ID_DContentData> data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_sdesign=:st")
+                .SetBoolean("st", true)
+                .SetFirstResult((query.Pageindex - 1) * pagestep)
+                .SetMaxResults(query.Pageindex * pagestep)
+                .List<ID_DContentData>();
 
+            // specialid 有指定位置时
+            if (specialid.Length > 0)
+            {
+                data.Clear();
+                var commonquery = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_sdesign=:st and ns.Dc_Id not in (" + specialid + ")")
+                    .SetBoolean("st", true);
+                //commonquery.SetString("specialid", specialid);
+                if (((query.Pageindex - 1) * pagestep) - ar.Count > -1)
+                    commonquery.SetFirstResult((query.Pageindex - 1) * pagestep - ar.Count);
+                else
+                    commonquery.SetFirstResult(0);
+                commonquery.SetMaxResults(query.Pageindex * pagestep - ar.Count);
+                var commonlist = commonquery.List<ID_DContentData>();
+
+                var commlist_index = 0;
+                if (query.Pageindex.Equals(1))
+                {
+                    var speciallist = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_sdesign=:st and ns.Dc_Id in (" + specialid + ")")
+                        .SetBoolean("st", true)
+                        //.SetString("specialid", specialid)
+                        .List<ID_DContentData>();
+
+                    for (int i = 1; i < pagestep + 1; i++)
+                    {
+                        if (di.ContainsKey(i))
+                            data.Add(speciallist.Where(it => it.Dc_Id.Equals(di[i])).Single());
+                        else
+                        {
+                            if (commonlist.Count > commlist_index)
+                            {
+                                data.Add(commonlist[commlist_index]);
+                                commlist_index++;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    data = commonquery.List<ID_DContentData>();
+                }
+            }
+            return data;
+        }
+
+        public IList<ID_DContentData> GetList(DesignerListQuery query)
+        {
+            IList<ID_DContentData> model = new List<ID_DContentData>();
+            switch (query.DeesignerType.ToLower())
+            {
+                case "popular":
+                    model = this.GetPopularList(query);
+                    break;
+                case "star":
+                    model = this.GetStarList(query);
+                    break;
+                case "choose":
+                    model = this.GetChooseList(query);
+                    break;
+            }
+            return model;
+        }
     }
 
     public class DesignerListQuery
