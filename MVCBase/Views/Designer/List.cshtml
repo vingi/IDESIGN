@@ -35,14 +35,21 @@
 </style>
 
 <div id="designerbar" class="clearfix">
-    <div id="topselect"><span id="sheet_popular" class="sheetfocus">人氣設計師</span><span id="sheet_star">新星設計師</span><span id="sheet_choose">嚴選設計師</span></div>
+    <div id="topselect"><span id="sheet_popular">人氣設計師</span><span id="sheet_star">新星設計師</span><span id="sheet_choose">嚴選設計師</span></div>
     <div id="functionselect">
         <div class="selectitem"><label>房屋類型</label>
             <select name="housetype" id="housetype">
 				<option value="0">不拘</option>
                 @foreach (var item in ViewBag.housetype)
                 {
-                    <option value="@(item.Ht_Id)">@item.Ht_name</option>
+                    if (ViewBag.query.Housetype == item.Ht_Id)
+                    {
+                        <option value="@(item.Ht_Id)" selected="selected">@item.Ht_name</option>
+                    }
+                    else
+                    {
+                        <option value="@(item.Ht_Id)">@item.Ht_name</option>
+                    }
                 }
 			</select>
         </div>
@@ -51,7 +58,14 @@
 				<option value="0">不拘</option>
                 @foreach (var item in ViewBag.designtype)
                 {
-                    <option value="@(item.Dt_Id)">@item.Dt_name</option>
+                    if (ViewBag.query.Designtype == item.Dt_Id)
+                    {
+                        <option value="@(item.Dt_Id)" selected="selected">@item.Dt_name</option>
+                    }
+                    else
+                    {
+                        <option value="@(item.Dt_Id)">@item.Dt_name</option>
+                    }
                 }
 			</select>
         </div>
@@ -61,7 +75,14 @@
 				<option value="0">不拘</option>
                 @foreach (var item in ViewBag.designstyletype)
                 {
-                    <option value="@(item.St_Id)">@item.St_name</option>
+                    if (ViewBag.query.Designstyletype == item.St_Id)
+                    {
+                        <option value="@(item.St_Id)" selected="selected">@item.St_name</option>
+                    }
+                    else
+                    {
+                        <option value="@(item.St_Id)">@item.St_name</option>
+                    }
                 }
 			</select>
 
@@ -98,9 +119,7 @@
         $("#designtype").CRselectBox();
         $("#designstyletype").CRselectBox();
 
-        $("#housetype_CRtext,#designtype_CRtext,#designstyletype_CRtext").live("change", function () {
-            alert("xx");
-        });
+        $("#sheet_@(ViewBag.query.DeesignerType)").addClass("sheetfocus");
 
         $("#sheet_popular").click(function() {
             window.location.href = "/designer/list/popular/1";
@@ -112,5 +131,21 @@
             window.location.href = "/designer/list/choose/1";
         });
     });
+
+    function relocation() {
+        var focusid = $(".sheetfocus").attr("id").replace("sheet_", "");
+        var paramarray = new Array();
+        if ($("#housetype").val() != "0") {
+            paramarray.push("housetype=" + $("#housetype").val());
+        }
+        if ($("#designtype").val() != "0") {
+            paramarray.push("designtype=" + $("#designtype").val());
+        }
+        if ($("#designstyletype").val() != "0") {
+            paramarray.push("designstyletype=" + $("#designstyletype").val());
+        }
+        var url = paramarray.join('&');
+        window.location.href = "/designer/list/" + focusid + "/1/?" + url;
+    }
 
 </script>

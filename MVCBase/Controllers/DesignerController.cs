@@ -59,6 +59,8 @@ namespace MVCBase.Controllers
             query.Designtype = Common.common.ConvertInt32(Request.QueryString["designtype"]);
             query.Designstyletype = Common.common.ConvertInt32(Request.QueryString["designstyletype"]);
 
+            ViewBag.query = query;
+
             //Get List
             Designer dal = new Designer();
             IList<ID_DContentData> model;

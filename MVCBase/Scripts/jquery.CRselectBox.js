@@ -45,7 +45,11 @@ jQuery.fn.CRselectBox = jQuery.fn.sBox = function(){
 		$(".CRselectValue",$wrapHtml).text(txt);
 		$(".CRselectBoxItem a",$wrapHtml).removeClass("selected");
 		$(this).addClass("selected");
-		$(".CRselectBoxOptions",$wrapHtml).hide();
+		$(".CRselectBoxOptions", $wrapHtml).hide();
+		//扩展 vingi添
+		if (typeof(relocation) == "function") {
+		    relocation();
+		}
 		return false;
 	});
 	$(document).click(function(event){

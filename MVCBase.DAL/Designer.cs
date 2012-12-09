@@ -364,8 +364,10 @@ namespace MVCBase.DAL
         public IList<ID_DContentData> GetList(DesignerListQuery query)
         {
             IList<ID_DContentData> model = new List<ID_DContentData>();
-            if (query.DeesignerType == null)
+            if (query.DeesignerType == null){
                 model = this.GetPopularList(query);
+                return model;
+            }
             switch (query.DeesignerType.ToLower())
             {
                 case "popular":
