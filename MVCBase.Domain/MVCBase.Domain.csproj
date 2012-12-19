@@ -75,7 +75,9 @@
     <EmbeddedResource Include="Mapping\ID_Admin.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mapping\ID_DContentData.hbm.xml" />
+    <EmbeddedResource Include="Mapping\ID_DContentData.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mapping\ID_HouseType.hbm.xml" />
   </ItemGroup>
   <ItemGroup>

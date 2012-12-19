@@ -14,6 +14,7 @@
 #detail_right {
     float: left;
     width: 300px;
+    margin-left: 10px;
 }
 
 #designerdetail .mark {
@@ -89,5 +90,41 @@
 #detailfoot {
     margin: 30px auto;
     border-top: 1px solid #e53c55;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 80%;
 }
-
+#detailfoot a {
+    width: 120px;
+    height: 100%;
+    color: white;
+    display: block;
+    text-decoration: none;
+    display: block;
+    float: left;
+}
+#detailfoot .left {
+    float: left;
+    width: 170px;
+}
+#detailfoot .left span {
+    width:0; height:0; border-width:9px; border-style:solid;
+    display: block;
+    float: left;
+}
+#detailfoot .left a {
+    padding: 2px 0 2px 12px;
+}
+#detailfoot .right {
+    margin-left: 8px;
+    float: left;
+    width: 170px;
+}
+#detailfoot .right span {
+    width:0; height:0; border-width:9px; border-style:solid;
+    display: block;
+    float: right;
+}
+#detailfoot .right a {
+    padding: 2px 0 2px 12px;
+}

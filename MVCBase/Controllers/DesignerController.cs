@@ -32,6 +32,13 @@ namespace MVCBase.Controllers
             var designstyletype = dal_designstyletype.GetAllModel();
             ViewBag.designstyletype = designstyletype;
 
+            //设定相临设计师
+            if (id.HasValue)
+            {
+                ViewBag.Prev = dal.Prev(id.Value);
+                ViewBag.Next = dal.Next(id.Value);
+            }
+
             return View(model);
         }
 

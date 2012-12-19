@@ -89,6 +89,26 @@ namespace MVCBase.DAL
                 .List<ID_DContentData>();
         }
 
+        public ID_DContentData Prev(int Dc_Id)
+        {
+            IList<ID_DContentData> data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_Id < :did order by ns.Dc_Id desc")
+                .SetBoolean("st", true)
+                .SetInt32("did", Dc_Id)
+                .SetMaxResults(1)
+                .List<ID_DContentData>();
+            return data.FirstOrDefault();
+        }
+
+        public ID_DContentData Next(int Dc_Id)
+        {
+            IList<ID_DContentData> data = session.CreateQuery("from ID_DContentData as ns where ns.Dc_display=:st and ns.Dc_Id > :did order by ns.Dc_Id asc")
+                .SetBoolean("st", true)
+                .SetInt32("did", Dc_Id)
+                .SetMaxResults(1)
+                .List<ID_DContentData>();
+            return data.FirstOrDefault();
+        }
+
         public IList<ID_DContentData> GetListBasic(DesignerListQuery query)
         {
             string tsql = "from ID_DContentData as ns where ns.Dc_display=:st ";
