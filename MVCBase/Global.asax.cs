@@ -24,8 +24,8 @@ namespace MVCBase
 
             routes.MapRoute(
                 "Default", // 路由名称
-                "{controller}/{action}/{id}", // 带有参数的 URL
-                new { controller = "Designer", action = "List", id = UrlParameter.Optional }
+                "{controller}/{action}/{designertype}", // 带有参数的 URL
+                new { controller = "Designer", action = "List", designertype = UrlParameter.Optional }
             );
 
             routes.MapRoute(

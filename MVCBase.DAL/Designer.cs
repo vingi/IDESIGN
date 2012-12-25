@@ -47,7 +47,7 @@ namespace MVCBase.DAL
 
         public int GetCount(DesignerListQuery query) {
             string tsql = "select count(0) from ID_DContentData where Dc_display=:st ";
-            switch (query.DeesignerType.ToLower())
+            switch (query.DeesignerType)
             {
                 case "popular":
                     tsql += " and Dc_pdesign=1 ";
@@ -57,6 +57,9 @@ namespace MVCBase.DAL
                     break;
                 case "choose":
                     tsql += " and Dc_sdesign=1 ";
+                    break;
+                default:
+                    tsql += " and Dc_pdesign=1 ";
                     break;
             }
 

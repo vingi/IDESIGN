@@ -588,7 +588,7 @@
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Star.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Choose.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\DesignerOperate\Index.cshtml" />
-    <None Include="Properties\PublishProfiles\local2.pubxml" />
+    <None Include="Properties\PublishProfiles\IDESIGN.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -60,7 +60,7 @@ namespace MVCBase.Controllers
 
             //create query
             var query = new DesignerListQuery();
-            query.Pageindex = id.HasValue ? id.Value : 0;
+            query.Pageindex = id.HasValue ? id.Value : 1;
             query.DeesignerType = designertype;
             query.Housetype = Common.common.ConvertInt32(Request.QueryString["housetype"]);
             query.Designtype = Common.common.ConvertInt32(Request.QueryString["designtype"]);
