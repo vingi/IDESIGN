@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MVCBase.Domain" namespace="MVCBase.Domain.Entity">
+	<class name="MVCBase.Domain.Entity.Ba_NewsType" table="Ba_NewsType">
+		<id name="Nt_ID" column="Nt_ID" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>
+		<property name="Nt_TypeName" column="Nt_TypeName" type="string"  />
+		<property name="Nt_ListOrder" column="Nt_ListOrder" type="int"  />
+		
+	</class>
+</hibernate-mapping>

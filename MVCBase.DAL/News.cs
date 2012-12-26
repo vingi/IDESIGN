@@ -20,7 +20,6 @@ namespace MVCBase.DAL
         {
             session.Save(news);
             session.Flush();
-
         }
 
         public void Update(Ba_News news)
@@ -29,13 +28,13 @@ namespace MVCBase.DAL
             session.Flush();
         }
 
-        public void SaveOrUpdate(Ba_News news)
+        public void Save(Ba_News news)
         {
             session.SaveOrUpdate(news);
             session.Flush();
         }
 
-        public Ba_News GetSingleNewsById(int Ns_ID)
+        public Ba_News GetSingleById(int Ns_ID)
         {
             return session.Get<Ba_News>(Ns_ID);
         }
@@ -45,6 +44,16 @@ namespace MVCBase.DAL
             return session.CreateQuery("from Ba_News as ns where ns.Ns_State=:st")
                 .SetBoolean("st", true).List<Ba_News>();
         }
+
+        public int GetCount()
+        {
+            int count = 0;
+            count = session.CreateSQLQuery("select count(0) from Ba_News where Ns_State=:st")
+                .SetBoolean("st", true).UniqueResult<int>();
+            return count;
+        }
+
+
 
         //public IList<Ba_Admin> GetModel(string adminname, string adminpwd)
         //{

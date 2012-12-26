@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Ba_News.cs" />
+    <Compile Include="Entity\Ba_NewsType.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\ID_Admin.cs" />
     <Compile Include="Entity\ID_DContentData.cs" />
@@ -88,6 +89,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\ID_TopChooseData.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mapping\Ba_NewsType.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
