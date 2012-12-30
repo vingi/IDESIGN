@@ -34,9 +34,9 @@ using System.Collections.Generic;
         }
 
         /// <summary>
-        /// 弹出消息框并且转向到新的URL
+        /// 弹出情報框并且转向到新的URL
         /// </summary>
-        /// <param name="message">消息内容</param>
+        /// <param name="message">情報内容</param>
         /// <param name="toURL">连接地址</param>
         public static void AlertAndRedirect(string message, string toURL, Page page)
         {

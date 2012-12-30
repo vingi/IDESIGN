@@ -143,7 +143,7 @@ public class UploadHandler : IHttpHandler {
             int size = r.Read(buffer, 0, bufferLength);
             Stream postStream = httpReq.GetRequestStream();
 
-            //发送请求头部消息
+            //发送请求头部情報
             postStream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
 
             while (size > 0)
@@ -164,7 +164,7 @@ public class UploadHandler : IHttpHandler {
             Stream s = webRespon.GetResponseStream();
             StreamReader sr = new StreamReader(s);
 
-            //读取服务器端返回的消息
+            //读取服务器端返回的情報
             String sReturnString = sr.ReadLine();
             s.Close();
             sr.Close();

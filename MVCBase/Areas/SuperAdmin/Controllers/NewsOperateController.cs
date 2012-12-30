@@ -17,11 +17,15 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         public ActionResult Index(int? id)
         {
             ViewBag.jsInit = Public.SuperAdminCommon.JSInit("NewsManage", "NewsOperate");
+
+            var newstype = new NewsType();
+            ViewBag.newstype = newstype.GetList();
+
             var model = new Ba_News();
             if (id != null)
             {
                 News dal = new News();
-                model = dal.GetSingleNewsById((int)id);
+                model = dal.GetSingleById((int)id);
             }
             if (model == null)
                 model = new Ba_News();
@@ -29,9 +33,9 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             ViewBag.model = model;
 
             if (model.Ns_ID.Equals(0))
-                ViewBag.Title = "新增最新消息";
+                ViewBag.Title = "新增最新情報";
             else
-                ViewBag.Title = "更新最新消息";
+                ViewBag.Title = "更新最新情報";
 
             return View();
         }
@@ -41,17 +45,18 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         {
             string result = string.Empty;
             News dal = new News();
-            var model = dal.GetSingleNewsById(form.news_id);
+            var model = dal.GetSingleById(form.news_id);
             if (model == null)
                 model = new Ba_News();
             model.Ns_Title = form.news_title;
-            model.Ns_SubTitle = form.news_subtitle;
+            model.Ns_Type = form.news_type;
             model.Ns_Content = form.news_description;
-            model.Ns_BuildTime = DateTime.Now;
+            model.Ns_ImagePath = form.news_imageurl;
+            model.Ns_PostTime = DateTime.Now;
             model.Ns_State = true;
             try
             {
-                dal.SaveOrUpdate(model);
+                dal.Save(model);
                 result = "1";
             }
             catch (System.Exception ex)
@@ -66,7 +71,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         {
             string result = "0";
             News dal = new News();
-            var model = dal.GetSingleNewsById(id);
+            var model = dal.GetSingleById(id);
             if (model != null)
             {
                 model.Ns_State = false;
@@ -83,7 +88,8 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
     {
         public int news_id { get; set; }
         public string news_title { get; set; }
-        public string news_subtitle { get; set; }
+        public int news_type { get; set; }
         public string news_description { get; set; }
+        public string news_imageurl { get; set; }
     }
 }

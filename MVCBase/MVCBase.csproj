@@ -568,7 +568,7 @@
     <Content Include="Areas\SuperAdmin\Views\Default\Index.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\Shared\_UserPowerCheck.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\Login\Index.cshtml" />
-    <Content Include="Areas\SuperAdmin\Views\NewsList\Index.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\NewsList\Page.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\NewsOperate\Index.cshtml" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\demos\saveremoteimg.php" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\demos\show.php" />

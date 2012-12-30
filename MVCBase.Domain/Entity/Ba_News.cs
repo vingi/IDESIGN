@@ -29,6 +29,10 @@ namespace MVCBase.Domain.Entity{
 		/// Ns_State
         /// </summary>
         public virtual bool Ns_State { get; set; }        
+		/// <summary>
+		/// Ns_ImagePath
+        /// </summary>
+        public virtual string Ns_ImagePath { get; set; }        
 		   
 	}
 }

@@ -9,6 +9,7 @@
 		<property name="Ns_Content" column="Ns_Content" type="string"  />
 		<property name="Ns_PostTime" column="Ns_PostTime" type="DateTime"  />
 		<property name="Ns_State" column="Ns_State" type="bool"  />
+		<property name="Ns_ImagePath" column="Ns_ImagePath" type="string"  />
 		
 	</class>
 </hibernate-mapping>

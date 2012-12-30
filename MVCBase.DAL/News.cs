@@ -39,10 +39,17 @@ namespace MVCBase.DAL
             return session.Get<Ba_News>(Ns_ID);
         }
 
-        public IList<Ba_News> GetNews()
+        public IList<Ba_News> GetNews(int pagenum)
         {
-            return session.CreateQuery("from Ba_News as ns where ns.Ns_State=:st")
-                .SetBoolean("st", true).List<Ba_News>();
+            //return session.CreateQuery("from Ba_News as ns where ns.Ns_State=:st")
+            //    .SetBoolean("st", true).List<Ba_News>();
+
+            int pagestep = 18;
+            return session.CreateQuery("from Ba_News as ns where ns.Ns_State=:st order by ns.Ns_PostTime desc")
+                .SetBoolean("st", true)
+                .SetFirstResult((pagenum - 1) * pagestep)
+                .SetMaxResults(pagenum * pagestep)
+                .List<Ba_News>();
         }
 
         public int GetCount()

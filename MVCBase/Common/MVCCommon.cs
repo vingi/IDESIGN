@@ -31,5 +31,19 @@ namespace MVCBase.Common
                 istrue = false;
             return istrue;
         }
+
+        /// <summary>
+        /// 前台绑定DDL对象.select
+        /// </summary>
+        /// <param name="selectid"></param>
+        /// <param name="thisid"></param>
+        /// <returns></returns>
+        public static string BindSelect_Html(int selectid,int thisid)
+        {
+            string str = string.Empty;
+            if (selectid.Equals(thisid))
+                str = "selected=\"selected\"";
+            return str;
+        }
     }
 }
