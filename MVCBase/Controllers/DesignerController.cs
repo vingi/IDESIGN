@@ -58,6 +58,7 @@ namespace MVCBase.Controllers
             var designstyletype = dal_designstyletype.GetAllModel();
             ViewBag.designstyletype = designstyletype;
 
+            designertype = designertype == null ? "popular" : designertype;
             //create query
             var query = new DesignerListQuery();
             query.Pageindex = id.HasValue ? id.Value : 1;

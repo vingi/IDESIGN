@@ -118,6 +118,8 @@
     <Compile Include="Areas\SuperAdmin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\SuperAdmin\Controllers\DesignerOperateController.cs" />
     <Compile Include="Areas\SuperAdmin\Controllers\DesignerListController.cs" />
+    <Compile Include="Areas\SuperAdmin\Controllers\FurnitureListController.cs" />
+    <Compile Include="Areas\SuperAdmin\Controllers\FurnitureOperateController.cs" />
     <Compile Include="Areas\SuperAdmin\Controllers\LoginController.cs" />
     <Compile Include="Areas\SuperAdmin\Controllers\NewsListController.cs" />
     <Compile Include="Areas\SuperAdmin\Controllers\NewsOperateController.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DesignerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -505,6 +508,8 @@
     <Content Include="Content\Base\Images\menudot.png" />
     <Content Include="Content\Base\Images\top_bg.png" />
     <Content Include="Content\designerlist.css" />
+    <Content Include="Content\newsdetail.css" />
+    <Content Include="Content\newslist.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -588,12 +593,39 @@
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Star.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\DesignerList\Choose.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\DesignerOperate\Index.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\FurnitureOperate\Index.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\FurnitureList\Page.cshtml" />
     <None Include="Properties\PublishProfiles\IDESIGN.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Scripts\fancybox\blank.gif" />
+    <Content Include="Scripts\fancybox\fancybox-x.png" />
+    <Content Include="Scripts\fancybox\fancybox-y.png" />
+    <Content Include="Scripts\fancybox\fancybox.png" />
+    <Content Include="Scripts\fancybox\fancy_close.png" />
+    <Content Include="Scripts\fancybox\fancy_loading.png" />
+    <Content Include="Scripts\fancybox\fancy_nav_left.png" />
+    <Content Include="Scripts\fancybox\fancy_nav_right.png" />
+    <Content Include="Scripts\fancybox\fancy_shadow_e.png" />
+    <Content Include="Scripts\fancybox\fancy_shadow_n.png" />
+    <Content Include="Scripts\fancybox\fancy_shadow_ne.png" />
+    <Content Include="Scripts\fancybox\fancy_shadow_nw.png" />
+    <Content Include="Scripts\fancybox\fancy_shadow_s.png" />
+    <Content Include="Scripts\fancybox\fancy_shadow_se.png" />
+    <Content Include="Scripts\fancybox\fancy_shadow_sw.png" />
+    <Content Include="Scripts\fancybox\fancy_shadow_w.png" />
+    <Content Include="Scripts\fancybox\fancy_title_left.png" />
+    <Content Include="Scripts\fancybox\fancy_title_main.png" />
+    <Content Include="Scripts\fancybox\fancy_title_over.png" />
+    <Content Include="Scripts\fancybox\fancy_title_right.png" />
+    <Content Include="Scripts\fancybox\jquery.easing-1.3.pack.js" />
+    <Content Include="Scripts\fancybox\jquery.fancybox-1.3.4.css" />
+    <Content Include="Scripts\fancybox\jquery.fancybox-1.3.4.js" />
+    <Content Include="Scripts\fancybox\jquery.fancybox-1.3.4.pack.js" />
+    <Content Include="Scripts\fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -640,6 +672,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Designer\Index.cshtml" />
     <Content Include="Views\Designer\List.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

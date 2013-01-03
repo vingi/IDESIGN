@@ -1,0 +1,60 @@
+﻿@model MVCBase.Domain.Entity.Ba_News
+@{
+    ViewBag.Title = "Index";
+}
+@section head{
+    <link href="@Url.Content("~/Content/newsdetail.css")" rel="stylesheet" />
+}
+<div id="newsdetail" class="clearfix">
+    <div id="detail_left">
+        @{
+            foreach (var newstype in ViewBag.newstype)
+            {
+                if (newstype.Nt_ID == Model.Ns_Type)
+                {
+                    <div class="typebase focus">@newstype.Nt_TypeName</div>
+                }
+                else
+                {
+                    <div class="typebase">@newstype.Nt_TypeName</div>
+                }
+            }
+        }
+    </div>
+    <div id="detail_mid">
+        <div class="title">@Model.Ns_Title</div>
+        <div class="content">@Html.Raw(Model.Ns_Content)</div>
+    </div>
+
+    <div id="detail_right">
+        @{
+            var imgpaths = Model.Ns_ImagePath.Split(',');
+            for (int i = 0; i < imgpaths.Length; i++)
+            {
+                <div class="imgshow"><a rel="example_group" href="@imgpaths[i].Replace("thumb","")" title=""><img src="@imgpaths[i].Replace("thumb","")" alt=""/></a></div>
+            }
+        }
+    </div>
+
+</div>
+<div class="ft"></div>
+
+<script type="text/javascript" src="/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="/Scripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="/Scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#menu_news").addClass("focus");
+        $("a[rel=example_group]").fancybox({
+            'transitionIn': 'none',
+            'transitionOut': 'none',
+            'titlePosition': 'over',
+            'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
+                return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+            }
+        });
+    });
+
+	</script>
+
+

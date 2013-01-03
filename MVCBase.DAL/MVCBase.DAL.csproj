@@ -68,6 +68,7 @@
     <Compile Include="DesignType.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Furniture.cs" />
     <Compile Include="FurnitureType.cs">
       <SubType>Code</SubType>
     </Compile>

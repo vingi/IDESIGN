@@ -6,34 +6,6 @@
     <link href="@Url.Content("~/Content/designerlist.css")" rel="stylesheet" />
 }
 
-<style type="text/css"> 
-    /*************** Pagination ***************/
-#main-content .pagination {
-                text-align: center;
-                padding: 20px 0 5px 0;
-                font-family: Verdana, Arial, Helvetica, sans-serif;
-                font-size: 10px;
-                }
-.pagination a {
-                margin: 0 5px 0 0;
-                padding: 3px 4px;
-                text-decoration: none;
-                color: #444;
-                }
-
-.pagination a.number {
-                text-decoration: none;
-                }
-
-.pagination a.current {
-                color: #E53C55 !important;
-                }
-				
-.pagination a.current:hover {
-				text-decoration: underline;
-                }
-</style>
-
 <div id="designerbar" class="clearfix">
     <div id="topselect"><span id="sheet_popular">人氣設計師</span><span id="sheet_star">新星設計師</span><span id="sheet_choose">嚴選設計師</span></div>
     <div id="functionselect">
@@ -115,6 +87,8 @@
 <script src="@Url.Content("~/Scripts/jquery.CRselectBox.js")" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
+        $("#menu_designer").addClass("focus");
+
         $("#housetype").CRselectBox();
         $("#designtype").CRselectBox();
         $("#designstyletype").CRselectBox();

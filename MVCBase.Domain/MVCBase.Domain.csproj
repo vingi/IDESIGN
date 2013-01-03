@@ -42,6 +42,11 @@
     <Compile Include="Entity\Ba_News.cs" />
     <Compile Include="Entity\Ba_NewsType.cs" />
     <Compile Include="Entity\Customer.cs" />
+    <Compile Include="Entity\Fr_ContentData.cs" />
+    <Compile Include="Entity\Fr_TopChoose.cs" />
+    <Compile Include="Entity\Fr_TopKindOfFurniture.cs" />
+    <Compile Include="Entity\Fr_TopKnowAlls.cs" />
+    <Compile Include="Entity\Fr_Type.cs" />
     <Compile Include="Entity\ID_Admin.cs" />
     <Compile Include="Entity\ID_DContentData.cs" />
     <Compile Include="Entity\ID_DesignStyleType.cs">
@@ -92,6 +97,15 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\Ba_NewsType.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\Fr_ContentData.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Fr_Type.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\Fr_TopChoose.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Fr_TopKindOfFurniture.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Fr_TopKnowAlls.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

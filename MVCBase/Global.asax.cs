@@ -23,17 +23,34 @@ namespace MVCBase
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "NewsList", // 路由名称
+                "News/List/{newstype}/{id}", // 带有参数的 URL
+                new { controller = "News", action = "List", newstype = UrlParameter.Optional, id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                "News", // 路由名称
+                "News/{action}/{id}", // 带有参数的 URL
+                new { controller = "News", action = "List", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                "DesignerDetail", // 路由名称
+                "Designer/Index/{id}", // 带有参数的 URL
+                new { controller = "Designer", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 "Default", // 路由名称
                 "{controller}/{action}/{designertype}", // 带有参数的 URL
                 new { controller = "Designer", action = "List", designertype = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-                "Designer", // 路由名称
-                "{controller}/{action}/{designertype}/{id}", // 带有参数的 URL
+                "DesignerList", // 路由名称
+                "Designer/List/{designertype}/{id}", // 带有参数的 URL
                 new { controller = "Designer", action = "List", designertype = UrlParameter.Optional, id = UrlParameter.Optional }
             );
-
         }
 
         protected void Application_Start()

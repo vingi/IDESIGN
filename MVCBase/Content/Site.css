@@ -157,7 +157,7 @@ ul#menu li {
 }
 ul#menu .menuitem {border-bottom: 5px solid #FFF;
 }
-ul#menu .menuitem:hover {border-bottom: 5px solid #e53c55;
+ul#menu .focus, ul#menu .menuitem:hover {border-bottom: 5px solid #e53c55;
 }
 ul#menu .menuitem,ul#menu .menudot {
     background-image : url(/content/Base/Images/base.png);

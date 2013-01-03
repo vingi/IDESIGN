@@ -1,0 +1,27 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MVCBase.Domain" namespace="MVCBase.Domain.Entity">
+	<class name="MVCBase.Domain.Entity.Fr_ContentData" table="Fr_ContentData">
+		<id name="Fc_ID" column="Fc_ID" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>
+		<property name="Fc_company" column="Fc_company" type="string"  />
+		<property name="Fc_tel" column="Fc_tel" type="string"  />
+		<property name="Fc_email" column="Fc_email" type="string"  />
+		<property name="Fc_address" column="Fc_address" type="string"  />
+		<property name="Fc_url" column="Fc_url" type="string"  />
+		<property name="Fc_local" column="Fc_local" type="string"  />
+		<property name="Fc_summary" column="Fc_summary" type="string"  />
+		<property name="Fc_history" column="Fc_history" type="string"  />
+		<property name="Fc_concept" column="Fc_concept" type="string"  />
+		<property name="Fc_description" column="Fc_description" type="string"  />
+		<property name="Fc_ImageUrl" column="Fc_ImageUrl" type="string"  />
+		<property name="Fc_createtime" column="Fc_createtime" type="DateTime"  />
+		<property name="Fc_endtime" column="Fc_endtime" type="DateTime"  />
+		<property name="Fc_display" column="Fc_display" type="bool"  />
+		<property name="Fc_color" column="Fc_color" type="string"  />
+		<property name="Fc_pdesign" column="Fc_pdesign" type="bool"  />
+		<property name="Fc_ndesign" column="Fc_ndesign" type="bool"  />
+		<property name="Fc_sdesign" column="Fc_sdesign" type="bool"  />
+		
+	</class>
+</hibernate-mapping>

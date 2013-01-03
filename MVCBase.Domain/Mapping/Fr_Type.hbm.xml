@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"  encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MVCBase.Domain" namespace="MVCBase.Domain.Entity">
+	<class name="MVCBase.Domain.Entity.Fr_Type" table="Fr_Type">
+		<id name="Fr_ID" column="Fr_ID" type="int" unsaved-value="0">
+      			<generator class="native" />       			
+      	</id>
+		<property name="Fr_TypeName" column="Fr_TypeName" type="string"  />
+		<property name="Fr_ListOrder" column="Fr_ListOrder" type="int"  />
+		
+	</class>
+</hibernate-mapping>

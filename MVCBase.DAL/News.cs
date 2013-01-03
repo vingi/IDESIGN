@@ -36,17 +36,31 @@ namespace MVCBase.DAL
 
         public Ba_News GetSingleById(int Ns_ID)
         {
-            return session.Get<Ba_News>(Ns_ID);
+            var model = session.Get<Ba_News>(Ns_ID);
+            if (model == null)
+                model = new Ba_News();
+            return model;
         }
 
         public IList<Ba_News> GetNews(int pagenum)
         {
-            //return session.CreateQuery("from Ba_News as ns where ns.Ns_State=:st")
-            //    .SetBoolean("st", true).List<Ba_News>();
-
             int pagestep = 18;
             return session.CreateQuery("from Ba_News as ns where ns.Ns_State=:st order by ns.Ns_PostTime desc")
                 .SetBoolean("st", true)
+                .SetFirstResult((pagenum - 1) * pagestep)
+                .SetMaxResults(pagenum * pagestep)
+                .List<Ba_News>();
+        }
+
+        public IList<Ba_News> GetNews(int newstype,int pagenum)
+        {
+            //return session.CreateQuery("from Ba_News as ns where ns.Ns_State=:st")
+            //    .SetBoolean("st", true).List<Ba_News>();
+
+            int pagestep = 5;
+            return session.CreateQuery("from Ba_News as ns where ns.Ns_State=:st and ns.Ns_Type=:ty order by ns.Ns_PostTime desc")
+                .SetBoolean("st", true)
+                .SetInt32("ty", newstype)
                 .SetFirstResult((pagenum - 1) * pagestep)
                 .SetMaxResults(pagenum * pagestep)
                 .List<Ba_News>();
@@ -60,6 +74,13 @@ namespace MVCBase.DAL
             return count;
         }
 
+        public int GetCount(int newstype)
+        {
+            int count = 0;
+            count = session.CreateSQLQuery("select count(0) from Ba_News where Ns_Type=:ty and Ns_State=:st")
+                .SetInt32("ty", newstype).SetBoolean("st", true).UniqueResult<int>();
+            return count;
+        }
 
 
         //public IList<Ba_Admin> GetModel(string adminname, string adminpwd)

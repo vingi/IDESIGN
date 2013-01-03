@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+@section head{
+    <link href="@Url.Content("~/Content/newslist.css")" rel="stylesheet" />
+}
+<div id="newslist" class="clearfix">
+    <div id="list_left">
+        @{
+            foreach (dynamic newstype in ViewBag.newstypes)
+            {
+                if (newstype.Nt_ID == ViewBag.newstype)
+                {
+                    <a href="/news/list/@(newstype.Nt_ID)/1"><div class="typebase focus">@newstype.Nt_TypeName</div></a>
+                }
+                else
+                {
+                    <a href="/news/list/@(newstype.Nt_ID)/1"><div class="typebase">@newstype.Nt_TypeName</div></a>
+                }
+            }
+        }
+    </div>
+    
+    <div id="list_right">
+        @{
+            foreach (var news in ViewBag.baNewses)
+            {
+                var imgpath = string.Empty;
+                var imgpaths = news.Ns_ImagePath.Split(',');
+                if (imgpaths.Length > 0)
+                {
+                    imgpath = imgpaths[0];
+                }
+                
+                <div class="item clearfix">
+                    <a href="/news/index/@(news.Ns_ID)">
+                    <div class="img"><img src="@imgpath"/></div>
+                    <div class="show">
+                        <div class="title">@news.Ns_Title</div>
+                        <div class="content">@Html.Raw(news.Ns_Content)</div>
+                    </div>
+                        </a>
+                </div>
+            }
+            
+        }
+@*        
+
+        <div class="item clearfix">
+            <div class="img"><img src="http://uimg.twhouses.com.tw/uploads/2012/12/30/2780922323313thumb.jpg"/></div>
+            <div class="show">
+                <div class="title">36+6科比逆生长</div>
+                <div class="content">北京时间1月2日消息，洛杉矶湖人主场又遭遇败仗，他们被费城76人复仇。虽然科比-布莱恩特拿到全场最高36分，但他无力阻止球队落败的命运。在这场败仗中，科比又让人有“逆生长”的感觉，他的几次突破相当漂亮。</div>
+            </div>
+        </div>*@
+    </div>
+
+</div>
+<div class="pagination clearfix"><div class="fr">@Html.Raw(ViewBag.pageinfo)</div></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#menu_news").addClass("focus");
+
+    });
+
+	</script>

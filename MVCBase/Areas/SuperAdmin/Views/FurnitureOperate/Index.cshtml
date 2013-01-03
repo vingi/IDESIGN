@@ -1,0 +1,439 @@
+﻿@model MVCBase.Domain.Entity.Fr_ContentData
+<!-- Page Head -->
+
+    <h2>@ViewBag.Title</h2>
+@if (Model.Fc_ID == 0)
+{
+    <p id="page-intro">Add a Furniture.</p>
+}
+else
+{
+    <p id="page-intro">Update Furniture @Model.Fc_company .</p>
+}
+<div class="clear"></div>
+<!-- End .clear -->
+<div class="content-box">
+    <!-- Start Content Box -->
+    <div class="content-box-header">
+        @if (Model.Fc_ID == 0)
+        {
+            <h3>Add a Furniture</h3>
+        }
+        else
+        {
+            <h3>Update Furniture @Model.Fc_company ID: @Model.Fc_ID</h3>
+        }
+        <div class="clear">
+        </div>
+    </div>
+    <!-- End .content-box-header -->
+    <div class="content-box-content">
+        <div class="tab-content default-tab" id="tab1">
+            <form action="" method="post">
+                <fieldset>
+                    <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+                    <p>
+                        <div class="checkboxfloat">
+                        <input type="checkbox" id="furniture_pdesign" name="furniture_pdesign" value="1" @MVCBase.Common.MVCCommon.BindCheckBox_Html(Model.Fc_pdesign) /> <span>建材萬事通</span></div>
+                        <div class="checkboxfloat">
+                        <input type="checkbox" id="furniture_ndesign" name="furniture_ndesign" value="1" @MVCBase.Common.MVCCommon.BindCheckBox_Html(Model.Fc_ndesign) /> <span>辦公傢俱王</span></div>
+                        <div class="checkboxfloat">
+                        <input type="checkbox" id="furniture_sdesign" name="furniture_sdesign" value="1" @MVCBase.Common.MVCCommon.BindCheckBox_Html(Model.Fc_sdesign) /> <span>嚴選廠商</span></div>
+                        <div class="clear"></div>
+                    </p>
+
+                        <label>個性顏色</label>
+                        <div id="colorSelector"><div style="background-color: @(Model.Fc_color == null ? "#0000ff" : Model.Fc_color)"></div></div>
+                        <input type="hidden" id="furniture_color" name="furniture_color" value="@(Model.Fc_color == null ? "#0000ff" : Model.Fc_color)" />
+
+                    <p>
+                        <label>公司名稱</label>
+                        <input class="text-input medium-input" type="text" id="furniture_company" name="furniture_company" value="@Model.Fc_company" />
+                    </p>
+
+                    <p>
+                        <label>聯絡電話</label>
+                        <input class="text-input small-input" type="text" id="furniture_tel" name="furniture_tel" value="@Model.Fc_tel" />
+                        <br />
+                    </p>
+
+                    <p>
+                        <label>電子郵件</label>
+                        <input class="text-input small-input" type="text" id="furniture_email" name="furniture_email" value="@Model.Fc_email" />
+                        <br />
+                    </p>
+
+                    <p>
+                        <label>公司地址</label>
+                        <input class="text-input medium-input" type="text" id="furniture_address" name="furniture_address" value="@Model.Fc_address" />
+                        <br />
+                    </p>
+
+                    <p>
+                        <label>網    站</label>
+                        <input class="text-input small-input" type="text" id="furniture_url" name="furniture_url" value="@Model.Fc_url" />
+                        <br />
+                    </p>
+
+                    <p>
+                        <label>服務區域</label>
+                        <input class="text-input small-input" type="text" id="furniture_local" name="furniture_local" value="@Model.Fc_local" />
+                        <br />
+                    </p>
+
+                    <p>
+                        <label>公司簡介</label>
+                        <textarea class="text-input textarea" id="furniture_summary" name="furniture_summary" cols="79" rows="10">@Model.Fc_summary</textarea>    
+                    </p>
+
+                    <p>
+                        <label>品牌故事</label>
+                        <textarea class="text-input textarea" id="furniture_history" name="furniture_history" cols="79" rows="10">@Model.Fc_history</textarea>    
+                    </p>
+
+                    <p>
+                        <label>經營理念</label>
+                        <textarea class="text-input textarea" id="furniture_concept" name="furniture_concept" cols="79" rows="10">@Model.Fc_concept</textarea>                        
+                    </p>
+                    
+                    <p>
+                        <label>產品介紹</label>
+                        <textarea class="text-input textarea" id="furniture_description" name="furniture_description" cols="79" rows="10">@Model.Fc_description</textarea>                        
+                    </p>
+
+                    <p>
+                        <div id="status-message"> * 可拖動已上傳的圖片對圖片進行排序.
+                        </div>
+                        <div id="fileQueue">
+                        </div>
+                        <div class="clear"></div>
+                        <div style="width: 140px; margin-top: 20px;">
+                            <input type="file" name="uploadify" id="uploadify" />
+                        </div>
+                        <input type="hidden" id="furniture_imageurl" name="furniture_imageurl" value="@Model.Fc_ImageUrl" />
+                    </p>
+
+                    <p>
+                        <input id="furniture_button" class="button" type="button" value="Submit" />
+                    </p>
+
+
+                </fieldset>
+                <div class="clear"></div>
+                <!-- End .clear -->
+                <input type="hidden" id="furniture_id" name="furniture_id" value="@Model.Fc_ID" />
+            </form>
+        </div>
+        <!-- End #tab1 -->
+    </div>
+    <!-- End .content-box-content -->
+</div>
+<!-- End .content-box -->
+
+<div class="clear">
+</div>
+
+<style type="text/css">
+    .price {
+        color: Red;
+    }
+
+    .content-box-content .action {
+        cursor: pointer;
+    }
+
+    #facebox .content p, #facebox .content form {
+        border-top: 1px solid #DDD;
+        padding: 10px 0;
+    }
+
+    #facebox .content .orderid {
+        color: Green;
+    }
+
+    #note {
+        color: #d3d3d3;
+    }
+
+    .checkboxfloat {
+        float: left;
+        width: 110px;
+    }
+    .checkboxfloat span {
+        padding: 0 0 10px;
+        font-weight: bold;
+    }
+
+    .uploadifyButton
+    {
+        background-color: #505050;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color: #FFF;
+        font: 12px Arial, Helvetica, sans-serif;
+        padding: 8px 0;
+        text-align: center;
+        width: 100%;
+    }
+    .uploadify:hover .uploadifyButton
+    {
+        background-color: #808080;
+    }
+    .uploadifyQueueItem
+    {
+        background-color: White;
+        font: 11px Verdana, Geneva, sans-serif;
+        margin-top: 5px;
+        width: 150px;
+        max-width: 150px;
+        padding: 6px;
+        border: 1px solid #E0E0E0;
+        /* border: 1px solid #DBDBDB; */
+        overflow: hidden;
+        float: left;
+        margin-left: 5px;
+        -o-transition: opacity .4s ease-in-out;
+        -moz-transition: opacity .4s ease-in-out;
+        -webkit-transition: opacity .4s ease-in-out;
+        -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .uploadifyImageShow
+    {
+        margin: 10px auto;
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        vertical-align:middle; /* 兼容ie */
+        text-align:center;
+        *display:block; 
+    }
+    .uploadifyImageShow .ImageShow
+    {
+        vertical-align: middle;
+    }
+    .uploadifyLoading
+    {
+        margin: 52px;
+    }
+    .uploadifyError
+    {
+        background-color: #FDE5DD !important;
+        border: 2px solid #FBCBBC !important;
+    }
+    .uploadifyQueueItem .cancel
+    {
+        float: right;
+        display: none;
+        cursor: pointer;
+    }
+    .uploadifyQueue .completed
+    {
+        background-color: #E5E5E5;
+    }
+    .uploadify-progress
+    {
+        background-color: #E5E5E5;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .uploadify-progress-bar
+    {
+        background-color: #0099FF;
+        height: 3px;
+        width: 1px;
+    }
+</style>
+<link rel="stylesheet" href="@Url.Content("~/Areas/SuperAdmin/Scripts/colorpicker/css/colorpicker.css")" type="text/css" />
+<link rel="stylesheet" media="screen" type="text/css" href="@Url.Content("~/Areas/SuperAdmin/Scripts/colorpicker/css/layout.css")" />
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui-1.8.20.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/jquery.uploadify.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Areas/SuperAdmin/Scripts/colorpicker/js/colorpicker.js")"></script>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        @Html.Raw(ViewBag.jsInit)
+
+        //color
+        $('#colorSelector').ColorPicker({
+            color: '@(Model.Fc_color == null ? "#0000ff" : Model.Fc_color)',
+            onShow: function (colpkr) {
+                $(colpkr).fadeIn(500);
+                return false;
+            },
+            onHide: function (colpkr) {
+                $(colpkr).fadeOut(500);
+                return false;
+            },
+            onChange: function (hsb, hex, rgb) {
+                $('#colorSelector div').css('backgroundColor', '#' + hex);
+                $("#furniture_color").val("#" + hex);
+            }
+        });
+
+        var existedfiles = 0;
+        if ($("#furniture_imageurl").val() != "") 
+            existedfiles = $("#furniture_imageurl").val().split(',').length;
+        $('#uploadify').uploadify({
+            'swf': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/uploadify.swf")',
+            'uploader': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/UploadHandler.ashx")',
+            'buttonCursor': 'pointer',
+            'multi': true,
+            'auto': true,
+            'checkExisting': false,
+            'fileTypeExts': '*.jpg;*.gif;*.bmp;',
+            'fileTypeDesc': 'Image Files (.JPG, .GIF, .BMP)',
+            'queueID': 'fileQueue',
+            'queueSizeLimit': 4,
+            'uploadLimit': 4,
+            'exitsfiles': existedfiles,
+            'fileSizeLimit': 2048, //2048K
+            'buttonImage': '@Url.Content("~/Areas/SuperAdmin/Scripts/uploadify/selectbtn.jpg")',
+            'buttonText': '瀏覽圖片',
+            'removeCompleted': true,
+            'removeTimeout': 0,
+            'itemTemplate': '<div id="${fileID}" class="uploadifyQueueItem">\
+					<div class="cancel" onclick="$(\'#${instanceID}\').uploadify(\'cancel\', \'${fileID}\')">\
+                        <img src="/Areas/SuperAdmin/Scripts/uploadify/close.png" border="0" />\
+					</div>\
+                    <div class="uploadifyImageShow"></div>\
+					<span class="fileName">${fileName} (${fileSize})</span><span class="data"></span>\
+					<div class="uploadify-progress">\
+						<div class="uploadify-progress-bar"><!--Progress Bar--></div>\
+					</div>\
+				</div>',
+            'onInit': function (instance) {
+                if ($("#furniture_imageurl").val() != "") {
+                    var imgurls = $("#furniture_imageurl").val().split(',');
+                    for (var i = 0; i < imgurls.length; i++) {
+                        var tid = 'SWFUpload_1_' + i;
+                        var tfilenames = imgurls[i].split('/');
+                        if (tfilenames.length > 0)
+                            tfilenames = tfilenames[tfilenames.length - 1].replace("thumb","");
+                        var thtml = '<div id="' + tid + '"  class="uploadifyQueueItem">\
+					<div class="cancel" onclick="$(\'#uploadify\').uploadify(\'cancel\', \'' + tid + '\')">\
+                        <img src="/Areas/SuperAdmin/Scripts/uploadify/close.png" border="0" />\
+					</div>\
+                    <div class="uploadifyImageShow"><img src="' + imgurls[i] + '" alt="" class="ImageShow"></div>\
+					<span class="fileName">' + tfilenames + '</span><span class="data"></span>\
+					<div class="uploadify-progress">\
+					</div>\
+				</div>';
+                        $("#fileQueue").append(thtml);
+                    }
+
+                    BindDelImg();
+                    BindSort();
+                }
+            },
+            'onUploadProgress': function (file) {
+                $('#' + file.id).find(".uploadifyImageShow").html("<img src='http://yimg.twhouses.com.tw/hdms/loading_min.gif' alt='Loading' class='uploadifyLoading' />");
+            },
+            'onUploadSuccess': function (file, data, response) {
+                if (data.indexOf("http://") == 0) {
+                    var thisfileobj = jQuery('#' + file.id);
+                    thisfileobj.find(".uploadifyImageShow").html("<img src='" + data + "' alt='' class='ImageShow' />");
+                    thisfileobj.find(".data,.uploadifyProgress").remove();
+                }
+                else
+                    alert(data);
+                $(thisfileobj).find(".uploadify-progress-bar").remove();
+
+                BindDelImg();
+                BindSort();
+            }
+        });
+
+        $("#furniture_button").click(function () {
+            var er = "";
+            //if ($.trim($("#news_title").val()).length == 0) {
+            //    er = "請填寫標題!";
+            //}
+            //else if ($.trim($("#news_title").val()).length < 3 || $.trim($("#news_title").val()).length > 50) {
+            //    er = "標題長度不符!";
+            //}
+
+            //if ($.trim($("#news_description").val()).length < 5) {
+            //    er += "\r\n情報內容長度太短!";
+            //}
+            //if (er.length > 0) {
+            //    alert(er);
+            //    return;
+            //}
+
+            reset_imgurl(); //同步显示照片及隐藏值
+
+            var fields = $("form").serializeArray();
+            $.ajax({
+                type: "POST",
+                url: "/SuperAdmin/FurnitureOperate/submit",
+                dataType: "text",
+                data: fields,
+                error: function () {
+                    alert("error");
+                },
+                success: function (msg) {
+                    var ac = "新增";
+                    if ($("#furniture_id").val() != 0)
+                        ac = "更新";
+                    if (msg == "1") {
+                        alert(ac + "成功");
+                    }
+                    else
+                        alert(ac + "失敗");
+                }
+            });
+        });
+    });
+
+    //绑定删除照片的action样式
+    var BindDelImg = function() {
+        $(".uploadifyQueueItem").live({
+            mouseenter: function() {
+                $(this).find(".cancel").show();
+            },
+            mouseleave: function() {
+                $(this).find(".cancel").hide();
+            }
+        });
+    };
+
+    //绑定照片排序
+    var BindSort = function() {
+        $("#fileQueue").sortable({
+            opacity: 0.6, //设置拖动时候的透明度 
+            revert: true, //缓冲效果 
+            cursor: 'move', //拖动的时候鼠标样式 
+            handle: '.uploadifyImageShow,.fileName',  //可以拖动的部位，模块的标题部分 
+            update: function() {
+                reset_imgurl();
+            }
+        });
+    };
+
+    //保存排序后的照片顺序
+    var reset_imgurl = function() {
+        var new_order = [];
+        $("#fileQueue").find(".ImageShow").each(function() {
+            new_order.push(this.src);
+        });
+        var newid = new_order.join(',');
+        $("#furniture_imageurl").val(newid);
+    };
+
+    function ShowObjProperty(Obj) {
+        var PropertyList = '';
+        var PropertyCount = 0;
+        for (i in Obj) {
+            if (Obj.i != null)
+                PropertyList = PropertyList + i + '属性：' + Obj.i + '\r\n';
+            else
+                PropertyList = PropertyList + i + '方法\r\n';
+        }
+        alert(PropertyList);
+    };
+</script>
