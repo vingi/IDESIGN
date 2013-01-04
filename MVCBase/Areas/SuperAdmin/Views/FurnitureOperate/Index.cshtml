@@ -50,6 +50,18 @@ else
                         <label>公司名稱</label>
                         <input class="text-input medium-input" type="text" id="furniture_company" name="furniture_company" value="@Model.Fc_company" />
                     </p>
+                    
+                    <p>
+                        <label>建材/家俱 類型</label>
+                        @{
+
+                            foreach (var item in @ViewBag.furnitureType)
+                            {
+                                <input type="radio" id="furniture_type_@(item.Fr_ID)" name="furniture_type" value="@item.Fr_ID" @(item.Fr_ID == Model.Fc_type_FK ? MVCBase.Common.MVCCommon.BindCheckBox_Html(true) : "") /> @item.Fr_TypeName 
+                            }
+                        }
+                        <br />
+                    </p>
 
                     <p>
                         <label>聯絡電話</label>

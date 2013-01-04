@@ -139,6 +139,7 @@
     <Compile Include="Common\XSSInject.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DesignerController.cs" />
+    <Compile Include="Controllers\FurnitureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="default.aspx.cs">
@@ -508,6 +509,7 @@
     <Content Include="Content\Base\Images\menudot.png" />
     <Content Include="Content\Base\Images\top_bg.png" />
     <Content Include="Content\designerlist.css" />
+    <Content Include="Content\furnituredetail.css" />
     <Content Include="Content\newsdetail.css" />
     <Content Include="Content\newslist.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -677,6 +679,8 @@
     <Content Include="Views\Designer\List.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\List.cshtml" />
+    <Content Include="Views\Furniture\Index.cshtml" />
+    <Content Include="Views\Furniture\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

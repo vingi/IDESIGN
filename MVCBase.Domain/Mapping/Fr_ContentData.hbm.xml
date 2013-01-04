@@ -22,6 +22,7 @@
 		<property name="Fc_pdesign" column="Fc_pdesign" type="bool"  />
 		<property name="Fc_ndesign" column="Fc_ndesign" type="bool"  />
 		<property name="Fc_sdesign" column="Fc_sdesign" type="bool"  />
+		<property name="Fc_type_FK" column="Fc_type_FK" type="int"  />
 		
 	</class>
 </hibernate-mapping>

@@ -59,5 +59,32 @@ namespace MVCBase.DAL
                 .SetMaxResults(pagenum * pagestep)
                 .List<Fr_ContentData>();
         }
+
+        public Fr_ContentData Prev(int Fc_ID)
+        {
+            IList<Fr_ContentData> data = session.CreateQuery("from Fr_ContentData as ns where ns.Fc_display=:st and ns.Fc_ID < :did order by ns.Fc_ID desc")
+                .SetBoolean("st", true)
+                .SetInt32("did", Fc_ID)
+                .SetMaxResults(1)
+                .List<Fr_ContentData>();
+            return data.FirstOrDefault();
+        }
+
+        public Fr_ContentData Next(int Fc_ID)
+        {
+            IList<Fr_ContentData> data = session.CreateQuery("from Fr_ContentData as ns where ns.Fc_display=:st and ns.Fc_ID > :did order by ns.Fc_ID asc")
+                .SetBoolean("st", true)
+                .SetInt32("did", Fc_ID)
+                .SetMaxResults(1)
+                .List<Fr_ContentData>();
+            return data.FirstOrDefault();
+        }
+    }
+
+    public class FurnitureListQuery
+    {
+        public int Pageindex { get; set; }
+        public string FurnitureType { get; set; }
+        public int Type { get; set; }
     }
 }

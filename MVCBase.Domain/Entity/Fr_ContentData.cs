@@ -81,6 +81,10 @@ namespace MVCBase.Domain.Entity{
 		/// Fc_sdesign
         /// </summary>
         public virtual bool Fc_sdesign { get; set; }        
+		/// <summary>
+		/// Fc_type_FK
+        /// </summary>
+        public virtual int? Fc_type_FK { get; set; }        
 		   
 	}
 }

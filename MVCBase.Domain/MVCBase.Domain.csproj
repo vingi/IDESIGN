@@ -55,9 +55,6 @@
     <Compile Include="Entity\ID_DesignType.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Entity\ID_FurnitureType.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Entity\ID_HouseType.cs" />
     <Compile Include="Entity\ID_TopChooseData.cs" />
     <Compile Include="Entity\ID_TopPopularData.cs" />
@@ -72,7 +69,6 @@
     <EmbeddedResource Include="Mapping\ID_DesignType.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mapping\ID_FurnitureType.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\Ba_News.hbm.xml">
@@ -104,7 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\Fr_TopChoose.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Fr_TopKindOfFurniture.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Fr_TopKindOfFurniture.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mapping\Fr_TopKnowAlls.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

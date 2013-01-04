@@ -31,7 +31,13 @@ namespace MVCBase
             routes.MapRoute(
                 "News", // 路由名称
                 "News/{action}/{id}", // 带有参数的 URL
-                new { controller = "News", action = "List", id = UrlParameter.Optional }
+                new { controller = "News", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                "Furniture", // 路由名称
+                "Furniture/{action}/{id}", // 带有参数的 URL
+                new { controller = "Furniture", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

@@ -16,18 +16,18 @@ namespace MVCBase.DAL
             session = (new NHibernateHelper()).GetSession();
         }
 
-        public ID_FurnitureType GetAdminById(int Ft_Id)
+        public Fr_Type GetAdminById(int Ft_Id)
         {
-            return session.Get<ID_FurnitureType>(Ft_Id);
+            return session.Get<Fr_Type>(Ft_Id);
         }
 
-        public IList<ID_FurnitureType> GetAllModel()
+        public IList<Fr_Type> GetAllModel()
         {
             //ICriteria crt = session.CreateCriteria(typeof(ID_FurnitureType));
             //crt.AddOrder(new NHibernate.Criterion.Order("Ft_orderby", true));
             //return crt.List<ID_FurnitureType>();
-            return session.CreateQuery("from ID_FurnitureType as ft order by ft.Ft_orderby")
-            .List<ID_FurnitureType>();
+            return session.CreateQuery("from Fr_Type as ft order by ft.Fr_ListOrder")
+            .List<Fr_Type>();
         }
     }
 }

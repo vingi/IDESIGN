@@ -1,0 +1,64 @@
+﻿@model MVCBase.Domain.Entity.Fr_ContentData
+@{
+    ViewBag.Title = "Index";
+    }
+@section head{
+    <link href="@Url.Content("~/Content/furnituredetail.css")" rel="stylesheet" />
+}
+
+<div id="furnituredetail" class="clearfix">
+    <div id="detail_left">
+        <ul class="furnitureitem">
+            <li><label><span class="mark">▍</span>公司名稱</label><span>@Model.Fc_company</span></li>
+            <li><label><span class="mark">▍</span>聯絡電話</label><span>@Model.Fc_tel</span></li>
+            <li><label><span class="mark">▍</span>電子郵件</label><span>@Model.Fc_email</span></li>
+            <li><label><span class="mark">▍</span>公司地址</label><span>@Model.Fc_address</span></li>
+            <li><label><span class="mark">▍</span>網&nbsp;&nbsp;&nbsp;&nbsp;站</label><span>@Model.Fc_url</span></li>
+            <li><label><span class="mark">▍</span>服務區域</label><span>@Model.Fc_local</span></li>
+            <li><label><span class="mark">▍</span>公司簡介</label><div>@Model.Fc_summary</div></li>
+            <li><label><span class="mark">▍</span>品牌故事</label><div>@Model.Fc_history</div></li>
+            <li><label><span class="mark">▍</span>經營理念</label><div>@Model.Fc_concept</div></li>
+        </ul>
+    </div>
+    <div id="detail_mid">
+        <ul class="furnitureitem">
+        <li><label><span class="mark">▍</span>產品介紹</label><div>@Model.Fc_description</div></li>
+            </ul>
+    </div>
+    <div id="detail_right">
+        <div id="imgshow"><img id="mainimg" src="" /></div>
+            <div id="imglist">
+                @{
+                    if (Model.Fc_ImageUrl != null)
+                    {
+                        string[] imgs = Model.Fc_ImageUrl.Split(',');
+                        foreach (var item in imgs)
+                        {
+                            <span><img src="@item" /></span>
+                        }
+                    }
+                }
+            </div>
+    </div>
+</div>
+<div id="detailfoot">
+    @if (ViewBag.Prev != null)
+    {
+        <div class="left" style="background-color: @(ViewBag.Prev.Fc_color)"><span style="border-color: #FFFFFF @(ViewBag.Prev.Fc_color) #FFFFFF #FFFFFF"></span><a href="/furniture/index/@(ViewBag.Prev.Fc_ID)">@ViewBag.Prev.Fc_company</a></div>
+    }
+    @if (ViewBag.Next != null)
+    {
+        <div class="right" style="background-color: @(ViewBag.Next.Fc_color)"><a href="/furniture/index/@(ViewBag.Next.Fc_ID)">@ViewBag.Next.Fc_company</a><span style="border-color: #FFFFFF #FFFFFF #FFFFFF @(ViewBag.Next.Fc_color)"></span></div>
+    }
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#menu_furniture").addClass("focus");
+        $("#imglist img").click(function () {
+            $("#mainimg").attr("src", $(this).attr("src").replace("thumb",""));
+        });
+        if ($("#imglist img").length > 0) {
+            $("#mainimg").attr("src", $("#imglist img:first").attr("src").replace("thumb", ""));
+        }
+    });
+</script>

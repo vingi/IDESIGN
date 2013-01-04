@@ -19,7 +19,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             ViewBag.jsInit = Public.SuperAdminCommon.JSInit("FurnitureManage", "FurnitureOperate");
 
             FurnitureType furnitureType = new FurnitureType();
-            ViewBag.furnitureType = furnitureType;
+            ViewBag.furnitureType = furnitureType.GetAllModel();
 
             Furniture furniture = new Furniture();
             var model = furniture.GetSingleById(id.HasValue ? id.Value : 0);
@@ -77,6 +77,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             }
             model.Fc_ID = form.furniture_id;
             model.Fc_company = form.furniture_company;
+            model.Fc_type_FK = form.furniture_type;
             model.Fc_tel = form.furniture_tel;
             model.Fc_email = form.furniture_email;
             model.Fc_address = form.furniture_address;
@@ -104,6 +105,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         public int furniture_id { get; set; }
         [Required]
         public string furniture_company { get; set; }
+        public int furniture_type { get; set; }
         public string furniture_tel { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
