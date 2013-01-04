@@ -595,6 +595,9 @@
     <Content Include="Areas\SuperAdmin\Views\DesignerOperate\Index.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\FurnitureOperate\Index.cshtml" />
     <Content Include="Areas\SuperAdmin\Views\FurnitureList\Page.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\FurnitureList\KnowAlls.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\FurnitureList\KindOfFurniture.cshtml" />
+    <Content Include="Areas\SuperAdmin\Views\FurnitureList\FrChoose.cshtml" />
     <None Include="Properties\PublishProfiles\IDESIGN.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="hibernate.cfg.xml">
