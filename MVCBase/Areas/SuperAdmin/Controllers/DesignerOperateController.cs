@@ -121,7 +121,6 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         [DataType(DataType.EmailAddress)]
         public string designer_email { get; set; }
         public string designer_address { get; set; }
-        [Required]
         [DataType(DataType.Url)]
         public string designer_url { get; set; }
         public string designer_local { get; set; }

@@ -1,5 +1,85 @@
-﻿@{
-    ViewBag.Title = "List";
+﻿@model IList<MVCBase.Domain.Entity.Fr_ContentData>
+@{
+    ViewBag.Title = "Index";
+}
+@section head{
+    <link href="@Url.Content("~/Content/furniturelist.css")" rel="stylesheet" />
 }
 
-<h2>List</h2>
+<div id="furniturebar" class="clearfix">
+    <div id="topselect"><span id="sheet_knowalls">建材萬事通</span><span id="sheet_kindoffurniture">辦公傢俱王</span><span id="sheet_frchoose">嚴選廠商</span></div>
+    <div id="functionselect">
+        <div class="selectitem">
+            <label>類型快篩</label>
+            <select name="ftype" id="ftype">
+				<option value="0">不拘</option>
+                @foreach (var item in ViewBag.furnitureType)
+                {
+                    if (ViewBag.query.Type == item.Fr_ID)
+                    {
+                        <option value="@(item.Fr_ID)" selected="selected">@item.Fr_TypeName</option>
+                    }
+                    else
+                    {
+                        <option value="@(item.Fr_ID)">@item.Fr_TypeName</option>
+                    }
+                }
+			</select>
+
+        </div>
+
+    </div>
+</div>
+<div id="furniturelist" class="clearfix">
+    @foreach (var item in Model)
+    {
+        string imgsrc = "defaultimg";
+        if (item.Fc_ImageUrl != null)
+        {
+            string[] tempimgs = item.Fc_ImageUrl.Split(',');
+            if (tempimgs.Length > 0)
+            {
+                imgsrc = tempimgs[0];
+            }
+        }
+
+        <div class="furnitureitem"><a href="@Url.Action("index", "furniture", new { id = @item.Fc_ID })">
+            <div class="imgshow"><img src="@imgsrc" alt="@(item.Fc_company)" /></div>
+            <div class="furniturename" style="background-color: @(item.Fc_color)">@item.Fc_company</div></a>
+        </div>
+    }
+
+    <div class="clear"></div>
+    <div class="pagination">@Html.Raw(ViewBag.pageinfo)</div>
+</div>
+<script src="@Url.Content("~/Scripts/jquery.CRselectBox.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#menu_furniture").addClass("focus");
+
+        $("#ftype").CRselectBox();
+
+        $("#sheet_@(ViewBag.query.FurnitureType)").addClass("sheetfocus");
+
+        $("#sheet_knowalls").click(function() {
+            window.location.href = "/furniture/list/knowalls/1";
+        });
+        $("#sheet_kindoffurniture").click(function () {
+            window.location.href = "/furniture/list/kindoffurniture/1";
+        });
+        $("#sheet_frchoose").click(function () {
+            window.location.href = "/furniture/list/frchoose/1";
+        });
+    });
+
+    function relocation() {
+        var focusid = $(".sheetfocus").attr("id").replace("sheet_", "");
+        var paramarray = new Array();
+        if ($("#ftype").val() != "0") {
+            paramarray.push("ftype=" + $("#ftype").val());
+        }
+        var url = paramarray.join('&');
+        window.location.href = "/furniture/list/" + focusid + "/1/?" + url;
+    }
+
+</script>

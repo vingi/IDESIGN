@@ -111,7 +111,6 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         [DataType(DataType.EmailAddress)]
         public string furniture_email { get; set; }
         public string furniture_address { get; set; }
-        [Required]
         [DataType(DataType.Url)]
         public string furniture_url { get; set; }
         public string furniture_local { get; set; }

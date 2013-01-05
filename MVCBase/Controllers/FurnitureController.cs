@@ -44,9 +44,8 @@ namespace MVCBase.Controllers
             ViewBag.query = query;
 
             //Get List
-            Designer dal = new Designer();
-            IList<ID_DContentData> model;
-            model = dal.GetList(query);
+            Furniture dal = new Furniture();
+            IList<Fr_ContentData> model = dal.GetList(query);
 
             //page info
             int pagecount = 1;
@@ -61,7 +60,7 @@ namespace MVCBase.Controllers
             int currentpage = id.HasValue ? (int)id : 1;
             Common.HtmlPagerControl page = new Common.HtmlPagerControl(pagecount, 7, objectcount);
             page.CurrentPage = currentpage;
-            page.HrefPage = "/designer/list/" + furnituretype + "/";
+            page.HrefPage = "/furniture/list/" + furnituretype + "/";
             page.SimpleTheme = true;
             page.NavigateNext = "&gt;";
             page.NavigatePrevious = "&lt;";

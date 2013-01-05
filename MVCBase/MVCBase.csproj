@@ -510,6 +510,7 @@
     <Content Include="Content\Base\Images\top_bg.png" />
     <Content Include="Content\designerlist.css" />
     <Content Include="Content\furnituredetail.css" />
+    <Content Include="Content\furniturelist.css" />
     <Content Include="Content\newsdetail.css" />
     <Content Include="Content\newslist.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

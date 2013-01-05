@@ -1,0 +1,160 @@
+﻿#topselect {
+    float: left;
+    width: 270px;
+    font-weight: bold;
+}
+
+    #topselect span {
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+#functionselect {
+    float: right;
+    width: 155px;
+}
+
+.sheetfocus {
+    color: #e53c55;
+}
+
+.selectitem {
+    float: left;
+    width: 135px;
+    height: 18px;
+    font-size: 88%;
+    margin-left: 10px;
+    padding-top: 1px;
+    background: url(/content/Base/Images/select_bg.png) no-repeat 0 0;
+    cursor: pointer;
+}
+
+    .selectitem label {
+        color: #FFF;
+        font-weight: bold;
+        margin-left: 7px;
+        float: left;
+        width: 60px;
+        cursor: pointer;
+    }
+
+    .selectitem span {
+        float: left;
+        width: 60px;
+        text-align: center;
+    }
+
+
+.CRselectBox {
+    float: left;
+    width: 67px;
+    text-align: center;
+    /*height: 20px;*/
+}
+.CRselectBoxHover {
+}
+.CRselectBox a.CRselectValue {
+	display:block;
+	white-space:nowrap;
+	overflow:hidden;
+	width:45px;
+    padding-right: 20px;
+    color:dimGray;
+}
+.CRselectBoxOptions {
+	border:1px solid #999;
+	margin-left:-1px;
+	list-style:none;
+	overflow-y:auto;
+	z-index:1000;
+	position: absolute;
+	width:67px;
+    display:none;
+}
+.CRselectBoxOptions a{
+	color:dimGray;
+	display:block;
+	height:16px;
+	line-height:16px;
+	background:#fff;	
+	overflow:hidden;
+	white-space:nowrap;
+}
+.CRselectBoxOptions a:hover{
+	background:#bbb
+}
+.CRselectBoxOptions a.selected{
+	background:#bbb
+}
+/* 解决 firefox 点击放大出现虚线框，从而导致滚动条的问题  */
+.CRselectBox a { 
+	outline: none; 
+	text-decoration:none;
+}
+.CRselectBox a:focus { 
+	outline: none; 
+	text-decoration:none;
+}
+
+#furniturelist {
+    margin: 15px 0;
+}
+    #furniturelist .furnitureitem {
+        border: 1px solid #ddd;
+        float: left;
+        width: 141px;
+        height: 150px;
+        margin: 1px 0 0 1px;
+        overflow: hidden;
+    }
+
+    #furniturelist .imgshow {
+        width: 100%;
+        height: 134px;
+    }
+        #furniturelist .imgshow img {
+            width: 100%;
+            height: 134px;
+        }
+    #furniturelist .furniturename {
+        color: #FFF;
+        text-align: center;
+        font-size: 90%;
+        height: 16px;
+        line-height: 16px;
+    }
+
+    #furniturelist .pagination {
+        border-bottom: 5px solid #e53c55;
+        margin: 15px 0 35px 0;
+    }
+
+    #furniturelist .furnitureitem a {
+        text-decoration: none;
+    }
+
+/*************** Pagination ***************/
+#main-content .pagination {
+                text-align: center;
+                padding: 20px 0 5px 0;
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                }
+.pagination a {
+                margin: 0 5px 0 0;
+                padding: 3px 4px;
+                text-decoration: none;
+                color: #444;
+                }
+
+.pagination a.number {
+                text-decoration: none;
+                }
+
+.pagination a.current {
+                color: #E53C55 !important;
+                }
+				
+.pagination a.current:hover {
+				text-decoration: underline;
+                }

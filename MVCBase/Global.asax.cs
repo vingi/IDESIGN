@@ -41,6 +41,18 @@ namespace MVCBase
             );
 
             routes.MapRoute(
+                "FurnitureList1", // 路由名称
+                "Furniture/List/{furnituretype}", // 带有参数的 URL
+                new { controller = "Furniture", action = "List", designertype = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                "FurnitureList", // 路由名称
+                "Furniture/List/{furnituretype}/{id}", // 带有参数的 URL
+                new { controller = "Furniture", action = "List", furnituretype = UrlParameter.Optional, id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 "DesignerDetail", // 路由名称
                 "Designer/Index/{id}", // 带有参数的 URL
                 new { controller = "Designer", action = "Index", id = UrlParameter.Optional }
@@ -48,7 +60,7 @@ namespace MVCBase
 
             routes.MapRoute(
                 "Default", // 路由名称
-                "{controller}/{action}/{designertype}", // 带有参数的 URL
+                "{Designer}/{action}/{designertype}", // 带有参数的 URL
                 new { controller = "Designer", action = "List", designertype = UrlParameter.Optional }
             );
 

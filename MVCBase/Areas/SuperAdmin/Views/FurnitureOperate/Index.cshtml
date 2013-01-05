@@ -362,20 +362,16 @@ else
 
         $("#furniture_button").click(function () {
             var er = "";
-            //if ($.trim($("#news_title").val()).length == 0) {
-            //    er = "請填寫標題!";
-            //}
-            //else if ($.trim($("#news_title").val()).length < 3 || $.trim($("#news_title").val()).length > 50) {
-            //    er = "標題長度不符!";
-            //}
-
-            //if ($.trim($("#news_description").val()).length < 5) {
-            //    er += "\r\n情報內容長度太短!";
-            //}
-            //if (er.length > 0) {
-            //    alert(er);
-            //    return;
-            //}
+            if ($.trim($("#furniture_company").val()).length == 0) {
+                er = "請填寫公司名稱!";
+            }
+            if ($.trim($("#furniture_email").val()).length == 0) {
+                er = "請填寫Email!";
+            }
+            if (er.length > 0) {
+                alert(er);
+                return;
+            }
 
             reset_imgurl(); //同步显示照片及隐藏值
 
