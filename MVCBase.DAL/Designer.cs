@@ -13,10 +13,10 @@ namespace MVCBase.DAL
     {
         private int pagestep = 18;
 
-                ISession session;
-                public Designer()
+        ISession session;
+        public Designer()
         {
-            session = (new NHibernateHelper()).GetSession();
+            session = NHibernateHelper.GetSession();
         }
 
         public void Add(ID_DContentData data)

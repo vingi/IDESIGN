@@ -13,7 +13,7 @@ namespace MVCBase.DAL
                 ISession session;
                 public HouseType()
         {
-            session = (new NHibernateHelper()).GetSession();
+            session = NHibernateHelper.GetSession();
         }
 
                 public ID_HouseType GetAdminById(int Ht_Id)

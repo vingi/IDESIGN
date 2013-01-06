@@ -13,7 +13,7 @@ namespace MVCBase.DAL
         ISession session;
         public DesignStyleType()
         {
-            session = (new NHibernateHelper()).GetSession();
+            session = NHibernateHelper.GetSession();
         }
 
         public ID_DesignStyleType GetAdminById(int St_Id)

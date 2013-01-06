@@ -13,20 +13,20 @@ namespace MVCBase.DAL
         ISession session;
         public Sample()
         {
-            session = (new NHibernateHelper()).GetSession();
+            session = NHibernateHelper.GetSession();
         }
 
         public void CreateCustomer(Customer customer)
         {
             //Configuration cfg = new Configuration().Configure(path);
-            //ISession session = (new NHibernateHelper()).GetSession();
+            //ISession session = NHibernateHelper.GetSession();
             session.Save(customer);
             session.Flush();
         }
 
         public void UpdateCustomer(Customer customer)
         {
-            //ISession session = (new NHibernateHelper()).GetSession();
+            //ISession session = NHibernateHelper.GetSession();
             session.SaveOrUpdate(customer);
             session.Flush();
         }

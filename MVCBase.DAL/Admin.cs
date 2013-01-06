@@ -13,7 +13,7 @@ namespace MVCBase.DAL
         ISession session;
         public Admin()
         {
-            session = (new NHibernateHelper()).GetSession();
+            session = NHibernateHelper.GetSession();
         }
 
         public void CreateAdmin(ID_Admin admin)

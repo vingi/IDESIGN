@@ -13,7 +13,7 @@ namespace MVCBase.DAL
         ISession session;
         public News()
         {
-            session = (new NHibernateHelper()).GetSession();
+            session = NHibernateHelper.GetSession();
         }
 
         public void Add(Ba_News news)

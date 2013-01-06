@@ -9,21 +9,21 @@ namespace MVCBase.DAL
 {
     class NHibernateHelper
     {
-        private ISessionFactory _sessionFactory;
-        private string path = System.Web.HttpContext.Current.Server.MapPath("~/hibernate.cfg.xml");
-        public NHibernateHelper()
+        private static ISessionFactory _sessionFactory;
+        private static string path = System.Web.HttpContext.Current.Server.MapPath("~/hibernate.cfg.xml");
+        static NHibernateHelper()
         {
             _sessionFactory = GetSessionFactory();
         }
-        private ISessionFactory GetSessionFactory()
+        private static ISessionFactory GetSessionFactory()
         {
             return (new Configuration()).Configure(path).BuildSessionFactory();
         }
-        public ISession GetSession()
+        public static ISession GetSession()
         {
-            Configuration cfg = new Configuration().Configure(path);
-            ISession session = cfg.BuildSessionFactory().OpenSession();
-            return session;
+            //Configuration cfg = new Configuration().Configure(path);
+            //ISession session = cfg.BuildSessionFactory().OpenSession();
+            return GetSessionFactory().OpenSession();
         }
     }
 }

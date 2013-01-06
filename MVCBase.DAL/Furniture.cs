@@ -15,7 +15,7 @@ namespace MVCBase.DAL
         ISession session;
         public Furniture()
         {
-            session = (new NHibernateHelper()).GetSession();
+            session = NHibernateHelper.GetSession();
         }
 
         public void Add(Fr_ContentData data)

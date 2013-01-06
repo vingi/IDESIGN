@@ -13,7 +13,7 @@ namespace MVCBase.DAL
         ISession session;
         public FurnitureType()
         {
-            session = (new NHibernateHelper()).GetSession();
+            session = NHibernateHelper.GetSession();
         }
 
         public Fr_Type GetAdminById(int Ft_Id)

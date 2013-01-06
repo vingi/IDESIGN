@@ -11,7 +11,7 @@ namespace MVCBase.DAL
         ISession session;
         public NewsType()
         {
-            session = (new NHibernateHelper()).GetSession();
+            session = NHibernateHelper.GetSession();
         }
 
         public IList<Ba_NewsType> GetList()
@@ -19,6 +19,5 @@ namespace MVCBase.DAL
             return session.CreateQuery("from Ba_NewsType as ns order by ns.Nt_ListOrder")
                 .List<Ba_NewsType>();
         }
-
     }
 }

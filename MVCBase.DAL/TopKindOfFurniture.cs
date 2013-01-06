@@ -13,7 +13,7 @@ namespace MVCBase.DAL
         ISession session;
         public TopKindOfFurniture()
         {
-            session = (new NHibernateHelper()).GetSession();
+            session = NHibernateHelper.GetSession();
         }
         public void Update(Fr_TopKindOfFurniture data)
         {
