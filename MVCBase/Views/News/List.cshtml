@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Text.RegularExpressions
+@{
     ViewBag.Title = "List";
 }
 @section head{
@@ -37,7 +38,11 @@
                     <div class="img"><img src="@imgpath"/></div>
                     <div class="show">
                         <div class="title">@news.Ns_Title</div>
-                        <div class="content">@Html.Raw(news.Ns_Content)</div>
+                        @{
+                            string Htmlstring = Regex.Replace(news.Ns_Content, @"<.+?>|&(.+?);|\n|-|—|chr(.+?)", "", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                            <div class="content">@Html.Raw(MVCBase.Common.Tools.ClipString(Htmlstring,142))</div>
+                        }
+                        
                     </div>
                         </a>
                 </div>

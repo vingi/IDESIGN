@@ -135,7 +135,9 @@
     <Compile Include="Common\HtmlPagerControl.cs" />
     <Compile Include="Common\JScript.cs" />
     <Compile Include="Common\MVCCommon.cs" />
+    <Compile Include="Common\RegexHelper.cs" />
     <Compile Include="Common\SqlInject.cs" />
+    <Compile Include="Common\Tools.cs" />
     <Compile Include="Common\XSSInject.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DesignerController.cs" />
