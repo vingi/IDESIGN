@@ -117,7 +117,7 @@ header, #header {
 
 #main {
     width: 871px;
-    margin: 10px auto;
+    margin: 10px auto 0 auto;
 }
 
 footer, 
@@ -127,6 +127,39 @@ footer,
     height: 50px;
     width: 871px;
     margin: 5px auto;
+}
+#footer {
+        position: relative;
+}
+#footer div {
+    position: absolute;
+}
+#footer a {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+#footer .email {
+    right: 295px;
+    top: 55px;
+    float: left;
+    width: 345px;
+    height: 20px;
+}
+#footer .privacy {
+    right: 120px;
+    top: 5px;
+    float: left;
+    width: 100px;
+    height: 23px;
+}
+#footer .intell {
+    right: 15px;
+    top: 5px;
+    float: left;
+    width: 100px;
+    height: 23px;
 }
 
 #footer_left {

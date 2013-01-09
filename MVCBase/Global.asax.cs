@@ -31,19 +31,19 @@ namespace MVCBase
             routes.MapRoute(
                 "News", // 路由名称
                 "News/{action}/{id}", // 带有参数的 URL
-                new { controller = "News", action = "Index", id = UrlParameter.Optional }
+                new { controller = "News", action = "List", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 "Furniture", // 路由名称
-                "Furniture/{action}/{id}", // 带有参数的 URL
+                "Furniture/Index/{id}", // 带有参数的 URL
                 new { controller = "Furniture", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 "FurnitureList1", // 路由名称
-                "Furniture/List/{furnituretype}", // 带有参数的 URL
-                new { controller = "Furniture", action = "List", designertype = UrlParameter.Optional }
+                "Furniture/{action}/{furnituretype}", // 带有参数的 URL
+                new { controller = "Furniture", action = "List", furnituretype = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -60,7 +60,7 @@ namespace MVCBase
 
             routes.MapRoute(
                 "Default", // 路由名称
-                "{Designer}/{action}/{designertype}", // 带有参数的 URL
+                "{controller}/{action}/{designertype}", // 带有参数的 URL
                 new { controller = "Designer", action = "List", designertype = UrlParameter.Optional }
             );
 

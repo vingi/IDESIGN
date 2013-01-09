@@ -500,6 +500,7 @@
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\img\wmp.gif" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\img\wordimg.gif" />
     <Content Include="Areas\SuperAdmin\Scripts\xheditor\xheditor_skin\nostyle\ui.css" />
+    <Content Include="Content\Base\Images\Footer.gif" />
     <Content Include="Content\Base\Images\select_bg.png" />
     <Content Include="Content\designerdetail.css" />
     <Content Include="Content\Base\Images\base.png" />
