@@ -96,8 +96,14 @@
 	text-decoration:none;
 }
 
+#designerbar {
+    width: 871px;
+    margin: 10px auto 0 auto;
+}
+
 #designerlist {
-    margin: 15px 0;
+    width: 871px;
+    margin: 15px auto;
 }
     #designerlist .designeritem {
         border: 1px solid #ddd;

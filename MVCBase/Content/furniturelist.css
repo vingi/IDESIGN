@@ -95,9 +95,13 @@
 	outline: none; 
 	text-decoration:none;
 }
-
+#furniturebar {
+    width: 871px;
+    margin: 10px auto 0 auto;
+}
 #furniturelist {
-    margin: 15px 0;
+    width: 871px;
+    margin: 15px auto;
 }
     #furniturelist .furnitureitem {
         border: 1px solid #ddd;

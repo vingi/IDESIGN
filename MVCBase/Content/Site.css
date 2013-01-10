@@ -115,6 +115,11 @@ header, #header {
     font-family: "新細明體", Verdana, Helvetica, Sans-Serif;
 }
 
+#title .link a {
+    color: #5a5250;
+    text-decoration: none;
+}
+
 #main {
     width: 871px;
     margin: 10px auto 0 auto;

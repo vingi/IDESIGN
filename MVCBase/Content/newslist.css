@@ -2,7 +2,8 @@
     color: #444;
     font-size: 95%;
     /*letter-spacing: -1px;*/
-    margin-top: 30px;
+    margin: 30px auto 0 auto;
+    width: 871px;
 }
 
 #list_left {
@@ -11,6 +12,9 @@
     width: 170px;
 }
 
+    #list_left a {
+        text-decoration: none;
+    }
     #list_left .typebase {
         background-color: #939393;
         color: white;
@@ -78,7 +82,8 @@
     padding: 20px 0 5px 0;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     border-bottom: 5px solid #e53c55;
-    margin: 15px 0 0 0;
+    margin: 15px auto 0 auto;
+    width: 871px;
 }
 
     .pagination a {

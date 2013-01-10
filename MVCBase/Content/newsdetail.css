@@ -2,7 +2,8 @@
     color: #444;
     font-size: 95%;
     /*letter-spacing: -1px;*/
-    margin-top: 30px;
+    margin: 30px auto 0 auto;
+    width: 871px;
 }
 
 #detail_left {
@@ -61,5 +62,6 @@
 
 .ft {
     border-bottom: 4px solid #E53C55;
-    margin: 55px 0 35px 0;
+    margin: 55px auto 35px auto;
+    width: 871px;
 }

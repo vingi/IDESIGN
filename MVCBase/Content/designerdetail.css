@@ -1,5 +1,6 @@
 ﻿#designerdetail {
-    margin-top: 30px;
+    margin: 30px auto 0 auto;
+    width: 871px;
     font-size: 95%;
     letter-spacing: -1px;
     color: #444;
@@ -89,6 +90,7 @@
 }
 #detailfoot {
     margin: 30px auto;
+    width: 871px;
     border-top: 1px solid #e53c55;
     padding-top: 8px;
     text-align: center;

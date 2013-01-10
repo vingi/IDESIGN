@@ -1,9 +1,11 @@
 ﻿@using System.Text.RegularExpressions
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "室內設計情報,讓您居家空間裝潢,室內裝潢煥然一新-idesign台灣百大設計師網站";
 }
 @section head{
     <link href="@Url.Content("~/Content/newslist.css")" rel="stylesheet" />
+    <meta name="keywords" content="室內設計,裝潢,設計裝潢,室內裝潢,系統傢俱,商空設計,景觀設計,建築設計"/>
+    <meta name="description" content="住商idesign設計師網站，匯集知名設計師進駐，提供您室內設計裝潢、系統傢俱、商空設計、景觀設計、建築設計、建材家俱，多款設計師作品，滿足您對室內設計、裝潢設計、居家裝修、店面裝潢工程的需求，是您首選的居家設計網站！"/>
 }
 <div id="newslist" class="clearfix">
     <div id="list_left">
@@ -35,16 +37,17 @@
                 
                 <div class="item clearfix">
                     <a href="/news/index/@(news.Ns_ID)">
-                    <div class="img"><img src="@imgpath"/></div>
-                    <div class="show">
-                        <div class="title">@news.Ns_Title</div>
-                        @{
-                            string Htmlstring = Regex.Replace(news.Ns_Content, @"<.+?>|&(.+?);|\n|-|—|chr(.+?)", "", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                            <div class="content">@Html.Raw(MVCBase.Common.Tools.ClipString(Htmlstring,142))</div>
-                        }
+                        <div class="img"><img src="@imgpath"/></div>
+                        <div class="show">
+                            <div class="title">@news.Ns_Title</div>
+                            @{
+                                string Htmlstring = Regex.Replace(news.Ns_Content, @"<.+?>|&(.+?);|\n|-|—|chr(.+?)", "", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                                <div class="content">@Html.Raw(MVCBase.Common.Tools.ClipString(Htmlstring,142))</div>
+                            }
                         
-                    </div>
-                        </a>
+                        </div>
+                    </a>
+                    <div class="clear"></div>
                 </div>
             }
             

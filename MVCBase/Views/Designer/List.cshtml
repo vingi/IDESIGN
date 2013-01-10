@@ -1,9 +1,26 @@
 ﻿@model IList<MVCBase.Domain.Entity.ID_DContentData>
 @{
-    ViewBag.Title = "Index";
+    if (ViewBag.isindex != null)
+    {
+        ViewBag.Title = "室內設計,系統傢俱,商空設計,景觀設計-idesign台灣百大設計師網站";
+    }
+    else
+    {
+        ViewBag.Title = "idesign台灣百大設計師網站-室內設計,裝潢,設計裝潢,室內裝潢";
+    }
 }
 @section head{
     <link href="@Url.Content("~/Content/designerlist.css")" rel="stylesheet" />
+    @if (ViewBag.isindex != null)
+    {
+        <meta name="keywords" content="室內設計,裝潢,設計裝潢,室內裝潢,系統傢俱,商空設計,景觀設計,建築設計"/>
+        <meta name="description" content="住商idesign設計師網站，匯集知名設計師進駐，提供您室內設計裝潢、系統傢俱、商空設計、景觀設計、建築設計、建材家俱，多款設計師作品，滿足您對室內設計、裝潢設計、居家裝修、店面裝潢工程的需求，是您首選的居家設計網站！" />
+    }
+    else
+    {
+        <meta name="description" content="住商idesign設計師網站，匯集知名設計師進駐，提供您室內設計裝潢、系統傢俱、商空設計、景觀設計、建築設計、建材家俱，多款設計師作品，滿足您對室內設計、裝潢設計、居家裝修、店面裝潢工程的需求，是您首選的居家設計網站！"/>
+        <meta name="keywords" content="室內設計,裝潢,設計裝潢,室內裝潢,系統傢俱,商空設計,景觀設計,建築設計"/>
+    }
 }
 
 <div id="designerbar" class="clearfix">
@@ -11,7 +28,7 @@
     <div id="functionselect">
         <div class="selectitem"><label>房屋類型</label>
             <select name="housetype" id="housetype">
-				<option value="0">不拘</option>
+                <option value="0">不拘</option>
                 @foreach (var item in ViewBag.housetype)
                 {
                     if (ViewBag.query.Housetype == item.Ht_Id)
@@ -23,11 +40,11 @@
                         <option value="@(item.Ht_Id)">@item.Ht_name</option>
                     }
                 }
-			</select>
+            </select>
         </div>
         <div class="selectitem"><label>設計型式</label>
             <select name="designtype" id="designtype">
-				<option value="0">不拘</option>
+                <option value="0">不拘</option>
                 @foreach (var item in ViewBag.designtype)
                 {
                     if (ViewBag.query.Designtype == item.Dt_Id)
@@ -39,12 +56,12 @@
                         <option value="@(item.Dt_Id)">@item.Dt_name</option>
                     }
                 }
-			</select>
+            </select>
         </div>
         <div class="selectitem">
             <label>設計風格</label>
             <select name="designstyletype" id="designstyletype">
-				<option value="0">不拘</option>
+                <option value="0">不拘</option>
                 @foreach (var item in ViewBag.designstyletype)
                 {
                     if (ViewBag.query.Designstyletype == item.St_Id)
@@ -56,11 +73,12 @@
                         <option value="@(item.St_Id)">@item.St_name</option>
                     }
                 }
-			</select>
+            </select>
 
         </div>
 
     </div>
+    <div class="clear"></div>
 </div>
 <div id="designerlist" class="clearfix">
     @foreach (var item in Model)
