@@ -94,16 +94,23 @@
         }
 
         <div class="designeritem"><a href="@Url.Action("index", "designer", new { id = @item.Dc_Id })">
-            <div class="imgshow"><img src="@imgsrc" alt="@(item.Dc_company)" /></div>
-            <div class="designername" style="background-color: @(item.Dc_color)">@item.Dc_name</div></a>
+                                      <div class="imgshow bwWrapper"><img src="@imgsrc" alt="@(item.Dc_company)" /></div>
+                                      <div class="designername" style="background-color: @(item.Dc_color)">@item.Dc_company</div></a>
         </div>
     }
 
     <div class="clear"></div>
     <div class="pagination">@Html.Raw(ViewBag.pageinfo)</div>
 </div>
+<script src="@Url.Content("~/Scripts/jQuery.BlackAndWhite.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.CRselectBox.js")" type="text/javascript"></script>
 <script type="text/javascript">
+    $(window).load(function () {
+        $('.bwWrapper').BlackAndWhite({
+            hoverEffect: true,            webworkerPath: 'js/',            invertHoverEffect: true
+        });
+    });
+
     $(function () {
         $("#menu_designer").addClass("focus");
 

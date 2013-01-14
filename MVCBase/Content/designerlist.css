@@ -139,6 +139,12 @@
         text-decoration: none;
     }
 
+    .bwWrapper {
+    position:relative;
+    display:block;
+}
+
+
 /*************** Pagination ***************/
 #main-content .pagination {
                 text-align: center;
