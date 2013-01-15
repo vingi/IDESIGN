@@ -130,11 +130,9 @@ else
                     </p>
 
                     <p>
-                        <div class="checkboxfloat"><label>委拖設計</label>
+                        <div class="checkboxfloat"><label>委託設計</label>
                             <input type="checkbox" id="designer_entrust" name="designer_entrust" value="1" @MVCBase.Common.MVCCommon.BindCheckBox_Html(Model.Dc_Entrust) /> 接受</div>
                         
-                        <div class="checkboxfloat"><label>局部裝修</label>
-                        <input type="checkbox" id="designer_decoration" name="designer_decoration" value="1" @MVCBase.Common.MVCCommon.BindCheckBox_Html(Model.Dc_Decoration) /> 接受</div>
                         <div class="clear"></div>
                     </p>
 
@@ -152,6 +150,12 @@ else
                     <p>
                         <label>設計理念</label>
                         <textarea class="text-input textarea" id="designer_text" name="designer_text" cols="79" rows="15">@Model.Dc_Text</textarea>                        
+                    </p>
+                    
+                    <p>
+                        <label>FaceBook</label><small> 請填入FaceBook連接地址!</small>
+                        <input class="text-input medium-input" type="text" id="designer_facebook" name="designer_facebook" value="@Model.Dc_facebook" /><br/>
+                        
                     </p>
 
                     <p>

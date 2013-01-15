@@ -88,6 +88,11 @@
     height: 50px;
     cursor: pointer;
 }
+#fblink {
+    margin: 60px auto 0 auto;
+    text-align: center;
+}
+
 #detailfoot {
     margin: 30px auto;
     width: 871px;

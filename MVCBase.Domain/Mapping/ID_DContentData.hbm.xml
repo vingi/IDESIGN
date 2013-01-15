@@ -15,7 +15,6 @@
     <property name="Dc_dtype" column="Dc_dtype" type="string"  />
     <property name="Dc_stype" column="Dc_stype" type="string"  />
     <property name="Dc_Entrust" column="Dc_Entrust" type="bool"  />
-    <property name="Dc_Decoration" column="Dc_Decoration" type="bool"  />
     <property name="Dc_price" column="Dc_price" type="string"  />
     <property name="Dc_Strengths" column="Dc_Strengths" type="string"  />
     <property name="Dc_Text" column="Dc_Text" type="string"  />
@@ -27,6 +26,7 @@
     <property name="Dc_ndesign" column="Dc_ndesign" type="bool"  />
     <property name="Dc_sdesign" column="Dc_sdesign" type="bool"  />
     <property name="Dc_color" column="Dc_color" type="string"  />
+    <property name="Dc_facebook" column="Dc_facebook" type="string"  />
 
   </class>
 </hibernate-mapping>

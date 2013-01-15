@@ -139,10 +139,7 @@
         text-decoration: none;
     }
 
-    .bwWrapper {
-    position:relative;
-    display:block;
-}
+    .imghover{opacity: 0.50;XImageTransform.Microsoft.Alpha(style=0,opacity=50,finishOpacity=50);filter:alpha(opacity=50)}
 
 
 /*************** Pagination ***************/

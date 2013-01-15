@@ -16,7 +16,14 @@
             <li><label><span class="mark">▍</span>聯絡電話</label><span>@Model.Dc_tel</span></li>
             <li><label><span class="mark">▍</span>電子郵件</label><span>@Model.Dc_email</span></li>
             <li><label><span class="mark">▍</span>公司地址</label><span>@Model.Dc_address</span></li>
-            <li><label><span class="mark">▍</span>網&nbsp;&nbsp;&nbsp;&nbsp;站</label><span>@Model.Dc_url</span></li>
+            @{
+                var thisurl = Model.Dc_url;
+                if (Model.Dc_url != null && thisurl.IndexOf("http") < 0)
+                {
+                    thisurl = "http://" + thisurl;
+                }
+                <li><label><span class="mark">▍</span>網&nbsp;&nbsp;&nbsp;&nbsp;站</label><span><a href="@(thisurl)" target="_blank">@Model.Dc_url</a></span></li>
+            }
             <li><label><span class="mark">▍</span>服務區域</label><span>@Model.Dc_local</span></li>
             <li><label><span class="mark">▍</span>房屋類型</label><span>@{
                     string htype = Model.Dc_htype != null ? Model.Dc_htype.Trim(',') : string.Empty;
@@ -78,7 +85,6 @@
                     }
                 }</span></li>
             <li><label><span class="mark">▍</span>委托設計</label>@(Model.Dc_Entrust ? "接受" : "不接受")</li>
-            <li><label><span class="mark">▍</span>局部裝修</label>@(Model.Dc_Decoration ? "接受" : "不接受")</li>
             <li><label><span class="mark">▍</span>接案金額</label><span>@Model.Dc_price</span></li>
         </ul>
     </div>
@@ -90,18 +96,26 @@
     </div>
     <div id="detail_right">
         <div id="imgshow"><img id="mainimg" src="" /></div>
-            <div id="imglist">
-                @{
-                    if (Model.Dc_ImageUrl != null)
+        <div id="imglist">
+            @{
+                if (Model.Dc_ImageUrl != null)
+                {
+                    string[] imgs = Model.Dc_ImageUrl.Split(',');
+                    foreach (var item in imgs)
                     {
-                        string[] imgs = Model.Dc_ImageUrl.Split(',');
-                        foreach (var item in imgs)
-                        {
-                            <span><img src="@item" /></span>
-                        }
+                        <span><img src="@item" /></span>
                     }
                 }
-            </div>
+            }
+        </div>
+        <div id="fblink">
+            @{
+                if (Model.Dc_facebook != null && Model.Dc_facebook.Length > 10)
+                {
+                    <a href="@Model.Dc_facebook"><img src="@Url.Content("~/Content/Base/Images/facebookIcon.gif")" /></a>
+                }
+            }
+        </div>
     </div>
 </div>
 <div id="detailfoot">

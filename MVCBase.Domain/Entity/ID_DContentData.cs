@@ -55,10 +55,6 @@ namespace MVCBase.Domain.Entity
         /// </summary>
         public virtual bool Dc_Entrust { get; set; }
         /// <summary>
-        /// Dc_Decoration
-        /// </summary>
-        public virtual bool Dc_Decoration { get; set; }
-        /// <summary>
         /// Dc_price
         /// </summary>
         public virtual string Dc_price { get; set; }
@@ -102,6 +98,10 @@ namespace MVCBase.Domain.Entity
         /// Dc_color
         /// </summary>
         public virtual string Dc_color { get; set; }
+        /// <summary>
+        /// Dc_facebook
+        /// </summary>
+        public virtual string Dc_facebook { get; set; }
 
     }
 }

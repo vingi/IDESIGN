@@ -94,7 +94,6 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             model.Dc_dtype = form.designer_dtype != null && form.designer_dtype.Length > 0 ? "," + string.Join(",", form.designer_dtype) + "," : string.Empty;
             model.Dc_stype = form.designer_stype != null && form.designer_stype.Length > 0 ? "," + string.Join(",", form.designer_stype) + "," : string.Empty;
             model.Dc_Entrust = Common.MVCCommon.BindCheckBox_Entity(form.designer_entrust);
-            model.Dc_Decoration = Common.MVCCommon.BindCheckBox_Entity(form.designer_decoration);
             model.Dc_price = form.designer_price;
             model.Dc_Strengths = form.designer_strengths;
             model.Dc_Text = form.designer_text;
@@ -105,6 +104,7 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
             model.Dc_display = model.Dc_Id.Equals(0) ? true : model.Dc_display;
             model.Dc_createdate = model.Dc_createdate.HasValue ? model.Dc_createdate : DateTime.Now;
             model.Dc_color = form.designer_color;
+            model.Dc_facebook = form.designer_facebook;
 
             return model;
         }
@@ -128,7 +128,6 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         public string[] designer_dtype { get; set; }
         public string[] designer_stype { get; set; }
         public string designer_entrust { get; set; }
-        public string designer_decoration { get; set; }
         public string designer_price { get; set; }
         public string designer_strengths { get; set; }
         public string designer_text { get; set; }
@@ -137,5 +136,6 @@ namespace MVCBase.Areas.SuperAdmin.Controllers
         public string designer_ndesign { get; set; }
         public string designer_sdesign { get; set; }
         public string designer_color { get; set; }
+        public string designer_facebook { get; set; }
     }
 }
